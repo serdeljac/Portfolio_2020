@@ -1,0 +1,84 @@
+*, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 14px;
+}
+
+.grid {
+    display: grid;
+}
+
+
+
+/************************************
+    NAVIGATION
+*************************************/
+
+.navigation {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    background-color: #000;
+    padding: 7px 2em;
+
+    ul {
+        float: right;
+        margin-right: 10%;
+    }
+
+    li {
+        float: left;
+        list-style-type: none;
+        margin: 5px 8px;
+
+        a {
+            color: #bbb;
+            transition: all .23s ease;
+            font-size: 2em;
+            text-decoration: none;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
+
+/************************************
+    HERO
+*************************************/
+
+.hero {
+    min-height: 90vh;
+    width: 100%;
+    background-color: rgb(66, 0, 57);
+
+    .grid-column-2 {
+        grid-template-columns: 40vw auto;
+    }
+
+    .grid-column-4 {
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .portfolio {
+        background-color: #000;
+        max-width: 800px;
+    }
+
+    .header {
+        height: 100%;
+    }
+
+
+    
+}
+
+
+
