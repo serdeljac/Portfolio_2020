@@ -1,7 +1,7 @@
 <template>
     <div class="page-container">
 
-        <div class="navigation" v-if="hideNavigation">
+        <div class="navigation" v-if="hide.nav">
             <nav>
                 <ul>
                     <li><a href="#">home</a></li>
@@ -19,14 +19,20 @@
                     <!-- Place portfolio image: black and white, svg, animated -->
                 </div>
                 <div>
-                    <header class="grid grid-row-4 header">
-                        <div><h1>Stjepan Josip Erdeljac</h1></div>
-                        <div><h3>web designer and developer</h3></div>
-                        <div><p>small sentence about my work ethic</p></div>
-                        <div><button>Learn More --></button></div>
+                    <header class="flex center-content header">
+                        <div>
+                            <h1>Stjepan Josip Erdeljac</h1>
+                            <h3>web designer and developer</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                            <button>Learn More</button>
+                        </div>
                     </header>
                 </div>
             </div>
+        </div>
+
+        <div class="office-pic">
+            <img src="../img/office-pic.jpg" alt="my office" />
         </div>
 
         <main>
@@ -43,7 +49,10 @@
     export default {
         data() {
             return {
-                hideNavigation: false,
+                hide: {
+                    nav: false,
+                }
+
             };
         },
     };
