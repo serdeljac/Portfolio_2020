@@ -1,7 +1,7 @@
 <template>
     <div class="page-container">
 
-        <div class="navigation" v-if="hide.nav">
+        <div class="navigation" v-if="!hide.nav">
             <nav>
                 <ul>
                     <li><a href="#">home</a></li>
@@ -17,6 +17,7 @@
             <div class="grid grid-column-2">
                 <div class="portfolio">
                     <!-- Place portfolio image: black and white, svg, animated -->
+                    <img src="../img/portfolio.jpg" alt="Stjepan Erdeljac" />
                 </div>
                 <div>
                     <header class="flex center-content header">
@@ -35,9 +36,9 @@
             <img src="../img/office-pic.jpg" alt="my office" />
         </div>
 
-        <main>
+        <main class="content">
             <section class="introduction">
-
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus placeat optio quia, itaque sit laborum et architecto quod accusamus quidem doloribus laboriosam accusantium aut nulla aspernatur asperiores consectetur libero ratione.</p>
             </section>
         </main>
 
