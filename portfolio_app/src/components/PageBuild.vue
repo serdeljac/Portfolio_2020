@@ -10,6 +10,7 @@
                     <li><a href="#">resume</a></li>
                     <li><a href="#">contact</a></li>
                 </ul>
+
             </nav>
         </div>
 
@@ -23,8 +24,8 @@
                         <div>
                             <h1>Stjepan Josip Erdeljac</h1>
                             <h3>web designer and developer</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-                            <button>Learn More</button><br />
+                            <p>Find out more </p>
+                            <button>Continue</button>
                             <button>View my work</button>
                         </div>
                     </header>
@@ -61,11 +62,39 @@
                         <div class="title">
                             <h2>Work</h2>
                         </div>
-                        <div class="content grid">
-                            <div v-for="sites in websites" :key="sites.id">
+                        <div class="content">
+                            <div v-for="sites in websites" :key="sites.id" class="website">
                                 {{sites.name}}
                             </div>
                         </div>
+                        <div class="content">
+                            <div v-for="pens in codepen" :key="pens.id" class="codepen">
+                                {{pens.name}}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="about">
+                    <div class="wrapper">
+                        <div class="title">
+                            <h2>About</h2>
+                        </div>
+                        <div class="content grid">
+                            <div>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet officia at fuga qui dolorem alias perferendis ipsum, accusantium eius temporibus earum saepe voluptate minima animi, modi natus quo consectetur ullam?</p>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, dignissimos perspiciatis. Ratione quam in autem, consectetur ab deserunt omnis, reprehenderit perferendis nam voluptatum cupiditate!</p>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="contact">
+                    <div class="wrapper">
+
                     </div>
                 </section>
 
@@ -73,6 +102,9 @@
             </div>
         </main>
 
+        <footer>
+            <p>Stjepan Erdeljac &copy; 2020</p>
+        </footer>
         
     </div>
 </template>
@@ -138,7 +170,31 @@ const myCodepen = [
         name: 'style',
         href: 'unknown',
         date: '2313',
-    }
+    },
+    {
+        id: 2,
+        name: 'style',
+        href: 'unknown',
+        date: '2313',
+    },
+    {
+        id: 3,
+        name: 'style',
+        href: 'unknown',
+        date: '2313',
+    },
+    {
+        id: 4,
+        name: 'style',
+        href: 'unknown',
+        date: '2313',
+    },
+    {
+        id: 5,
+        name: 'style',
+        href: 'unknown',
+        date: '2313',
+    },
 ];
 
     export default {
@@ -148,6 +204,7 @@ const myCodepen = [
                 smallDevice: false,
                 scrollTop: 0,
                 websites: myWebsites,
+                codepen: myCodepen,
             };
         },
         methods: {

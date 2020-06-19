@@ -1,3 +1,5 @@
+
+
 *, a {
     margin: 0;
     padding: 0;
@@ -11,8 +13,6 @@ body {
     color: #fff;
     background-color: #040202;
 }
-
-
 
 .grid {
     display: grid;
@@ -109,13 +109,18 @@ body {
 *************************************/
 
 .main {
+    padding-top: 50px;
 
     .container {
         width: calc(100% - 4em);
         margin: auto;
         position: relative;
         z-index: 100;
-        min-height: 1500px;
+    }
+
+    section {
+        width: 100%;
+        float: left;
     }
 }
 
@@ -124,7 +129,6 @@ body {
 *************************************/
 
 section.introduction {
-    margin-top: 50px;
 
     .wrapper {
         grid-template-columns: 1fr 1fr 1fr;
@@ -152,13 +156,80 @@ section.introduction {
 *************************************/
 
 section.work {
+
+    .wrapper {
+        width: calc(100% - 4em);
+        margin: auto;
+    }
+
     .title {
         text-align: center;
-        font-size: 10vw;
+        font-size: 7vw;
         margin: auto;
         color: #555;
+        h2 {
+            user-select: none;
+        }
     }
+
     .content {
-        
+        max-width: 1400px;
+        margin: auto;
+        margin-bottom: 20px;
     }
+
+    .website, .codepen {
+        background: grey;
+        min-height: 100px;
+        width: 25%;
+        float: left;
+    }
+
+
+}
+
+/************************************
+    SECTION - ABOUT
+*************************************/
+
+section.about {
+
+    .wrapper {
+        max-width: 1400px;
+        margin: auto;
+        width: 100%;
+        height: 200px;
+    }
+
+    .title {
+        font-size: 3vw;
+        margin: auto;
+        color: #555;
+        
+        h2 {
+            user-select: none;
+        }
+    }
+
+    .content {
+        grid-template-columns: 1.5fr 0.5fr;
+        column-gap: 20px;
+    }    
+
+}
+
+/************************************
+    SECTION - CONTACT
+*************************************/
+
+section.contact {
+
+    .wrapper {
+        color: #000;
+        width: 100vw;
+        margin-left: -3em;
+        height: 200px;
+        background: #fff;
+    }
+
 }
