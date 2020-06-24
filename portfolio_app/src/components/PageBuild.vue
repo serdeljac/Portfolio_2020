@@ -1,17 +1,40 @@
 <template>
     <div class="page-container">
 
-        <div class="navigation">
-            <nav v-if="!smallDevice">
-                <ul>
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">work</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">resume</a></li>
-                    <li><a href="#">contact</a></li>
-                </ul>
+        <div class="navigation" :class="{ active: navOpen }">
+            
 
-            </nav>
+            <div class="menu-button" @click="toggleNav">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="menu" v-if="navOpen">
+                <div class="wrapper">
+                    <nav>
+                        <ul>
+                            <li><a href="#">home</a></li>
+                            <li><a href="#">work</a></li>
+                            <li><a href="#">about</a></li>
+                            <li><a href="#">resume</a></li>
+                            <li><a href="#">contact</a></li>
+                        </ul>
+                        <hr>
+                        <div class="grid social-media">
+                            <a 
+                                v-for="social in socialMedia"
+                                :key="social.name"
+                                v-bind:href="social.link"
+                                target="_blank"
+                            >
+                                <div>{{ social.name }}</div>
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
         </div>
 
         <div class="hero">
@@ -85,16 +108,21 @@
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet officia at fuga qui dolorem alias perferendis ipsum, accusantium eius temporibus earum saepe voluptate minima animi, modi natus quo consectetur ullam?</p>
                                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, dignissimos perspiciatis. Ratione quam in autem, consectetur ab deserunt omnis, reprehenderit perferendis nam voluptatum cupiditate!</p>
                             </div>
+                            <div class="bio-pic-wrapper">
+                                <img src="../img/about-bio.jpg" alt="Stjepan Josip Erdeljac" />
+                            </div>
                             <div>
-
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit doloremque reiciendis ut maiores nulla nihil expedita consectetur earum repellat esse illum neque, dolorum, aperiam maxime minus nemo, laboriosam omnis quia?</p>
+                                <hr />
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <section class="contact">
-                    <div class="wrapper">
-
+                    <div class="wrapper grid">
+                        <div class="contact-info"></div>
+                        <div class="contact-form"></div>
                     </div>
                 </section>
 
@@ -196,6 +224,33 @@ const myCodepen = [
         date: '2313',
     },
 ];
+const mySocialMedia = [
+    {
+        name: 'facebook',
+        imgPos: '0px 0px',
+        link: 'https://www.facebook.com/Stjepan.Erdeljac',
+    },
+    {
+        name: 'twitter',
+        imgPos: '0px 0px',
+        link: 'https://twitter.com/serdeljac',
+    },
+    {
+        name: 'instagram',
+        imgPos: '0px 0px',
+        link: 'https://www.instagram.com/stjepanerdeljac/',
+    },
+    {
+        name: 'github',
+        imgPos: '0px 0px',
+        link: 'https://github.com/serdeljac',
+    },
+    {
+        name: 'codepen',
+        imgPos: '0px 0px',
+        link: 'https://codepen.io/serdeljac/',
+    },
+];
 
     export default {
         name: 'FullBuild',
@@ -205,19 +260,32 @@ const myCodepen = [
                 scrollTop: 0,
                 websites: myWebsites,
                 codepen: myCodepen,
+                navOpen: true,
+                winW: 0,
+                winH: 0,
+                socialMedia: mySocialMedia,
             };
         },
         methods: {
             responsiveCheck() {
                 const w = $('body').width();
+                const h = $('body').height();
                 const mainH = $('main > .container').height();
+                this.winW = w;
+                this.winH = h;
 
                 w <= 1024 ? this.smallDevice = true : this.smallDevice = false;
                 $('.sidebar').height(mainH);
             },
             handleScroll() {
-                this.scrollTop = $(window).scrollTop();
+                const loc = $(window).scrollTop();
+
+                this.scrollTop = loc;
             },
+            toggleNav() {
+              
+                this.navOpen = !this.navOpen;
+            }
         },
         computed: {
             //Sort projects here

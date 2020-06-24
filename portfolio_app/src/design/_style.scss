@@ -1,17 +1,19 @@
-
-
 *, a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
+$backgroundCL: #040202;
+
 body {
-    font-size: 14px;
-    width: 100vw;
     overflow-x: hidden;
+    width: 100vw;
+
+    font-size: 14px;
     color: #fff;
-    background-color: #040202;
+    background-color: $backgroundCL;
 }
 
 .grid {
@@ -27,34 +29,76 @@ body {
 *************************************/
 
 .navigation {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    padding: 7px 2em;
-    z-index: 999;
 
-    ul {
-        float: right;
-        margin-right: 10%;
-    }
+    .menu-button {
+        height: 42px;
+        width: 50px;
+        overflow: hidden;
+        position: fixed;
+        right: 100px;
+        top: 40px;
+        z-index: 999;
+        cursor: pointer;
 
-    li {
-        float: left;
-        list-style-type: none;
-        margin: 5px 8px;
-
-        a {
-            color: #bbb;
-            transition: all .23s ease;
-            font-size: 2em;
-            text-decoration: none;
-
-            &:hover {
-                color: #fff;
+        span {
+            width: 50px;
+            height: 7px;
+            background-color: #fff;
+            position: absolute;
+            transition: all .25s ease;
+            &:nth-of-type(1) {
+                top: 5px;
+            }
+            &:nth-of-type(2),&:nth-of-type(3) {
+                top: 17px;
+            }
+            &:nth-of-type(4) {
+                top: 29px;
             }
         }
     }
+
+    &.active .menu-button span{
+        &:nth-of-type(1) {
+            top: -7px;
+        }
+        &:nth-of-type(2) {
+            transform: rotateZ(45deg);
+            background-color: #000;
+        }
+        &:nth-of-type(3) {
+            transform: rotateZ(-45deg);
+            background-color: #000;
+        }
+        &:nth-of-type(4) {
+            top: 42px;
+        }
+    }
+
+
+    .menu {
+        position: fixed;
+        z-index: 998;
+        width: 100vw;
+        min-height: 100vw;
+        left: 0;
+        top: 0;
+        background-color: #fff;
+        transition: all .23s ease;
+
+        .wrapper {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .social-media a{
+            color: red;
+        }
+    }
+
+
+
+
 }
 
 /************************************
@@ -198,7 +242,6 @@ section.about {
         max-width: 1400px;
         margin: auto;
         width: 100%;
-        height: 200px;
     }
 
     .title {
@@ -212,9 +255,17 @@ section.about {
     }
 
     .content {
-        grid-template-columns: 1.5fr 0.5fr;
+        grid-template-columns: auto auto;
         column-gap: 20px;
-    }    
+        div:last-of-type {
+            grid-column: 1 / span 2;
+        }
+    }
+
+    .bio-pic-wrapper {
+        width: 100%;
+        img {max-height: 300px;}
+    }
 
 }
 
@@ -230,6 +281,7 @@ section.contact {
         margin-left: -3em;
         height: 200px;
         background: #fff;
+        grid-template-columns: 1fr 1fr;
     }
 
 }
