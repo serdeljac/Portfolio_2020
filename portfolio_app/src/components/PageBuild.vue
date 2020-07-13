@@ -38,102 +38,27 @@
         </div>
 
         <div class="hero">
-            <div class="grid grid-column-2">
-                <div class="portfolio">
-                    <!-- Place portfolio image: black and white, svg, animated -->
+           <div class="hero__background">
+               <div class="hero__sun-layer"></div>
+               <div class="hero__sun-reflection"></div>
+               <div class="hero__rain"></div>
+           </div>
+           <div class="hero__content">
+               <div class="hero__wrapper">
+                <h1 class="hero__header">
+                    Hello, I'm <strong>Stjepan Erdeljac</strong>. A <br /><strong>front-end developer and designer</strong><br /> from Vancouver.
+                </h1>
+                    <h3 class="hero__sub-header">
+                        I'm a <strong>wordpress developer, photographer,</strong> and a <strong>goal-oriented</strong> individual. When not coding, I spend my time at the gym, gardening, and researching inspirational UI trends and styles.
+                    </h3>
+                    <div class="hero__buttons">
+                        <button class="btn hero__learn-more">view my projects</button>
+                        <button class="btn hero__contact-me">contact me</button>
+                    </div>
                 </div>
-                <div>
-                    <header class="flex center-content header">
-                        <div>
-                            <h1>Stjepan Josip Erdeljac</h1>
-                            <h3>web designer and developer</h3>
-                            <p>Find out more </p>
-                            <button>Continue</button>
-                            <button>View my work</button>
-                        </div>
-                    </header>
-                </div>
-            </div>
+           </div>
         </div>
 
-        <main class="main">
-
-            <div class="container">
-
-                <section class="introduction">
-                    <div class="wrapper grid">
-                        <div class="content group1">
-                            <h2>My Motivations</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora accusamus enim earum nesciunt cupiditate dicta nulla fugiat ab! Hic suscipit, sapiente necessitatibus sint molestias deleniti deserunt distinctio ut minus repellendus.</p>
-                        </div>
-                        <div class="content group2">
-                            <h2>My Inspirations</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora accusamus enim earum nesciunt cupiditate dicta nulla fugiat ab! Hic suscipit, sapiente necessitatibus sint molestias deleniti deserunt distinctio ut minus repellendus.</p>
-                        </div>
-                        <div class="content group3">
-                            <h2>My Practice</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora accusamus enim earum nesciunt cupiditate dicta nulla fugiat ab! Hic suscipit, sapiente necessitatibus sint molestias deleniti deserunt distinctio ut minus repellendus.</p>
-                        </div>
-                    </div>
-                    <div class="svg">
-                        PLACE SVG HERE
-                    </div>
-                </section>
-
-                <section class="work">
-                    <div class="wrapper">
-                        <div class="title">
-                            <h2>Work</h2>
-                        </div>
-                        <div class="content">
-                            <div v-for="sites in websites" :key="sites.id" class="website">
-                                {{sites.name}}
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div v-for="pens in codepen" :key="pens.id" class="codepen">
-                                {{pens.name}}
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="about">
-                    <div class="wrapper">
-                        <div class="title">
-                            <h2>About</h2>
-                        </div>
-                        <div class="content grid">
-                            <div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet officia at fuga qui dolorem alias perferendis ipsum, accusantium eius temporibus earum saepe voluptate minima animi, modi natus quo consectetur ullam?</p>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente, dignissimos perspiciatis. Ratione quam in autem, consectetur ab deserunt omnis, reprehenderit perferendis nam voluptatum cupiditate!</p>
-                            </div>
-                            <div class="bio-pic-wrapper">
-                                <img src="../img/about-bio.jpg" alt="Stjepan Josip Erdeljac" />
-                            </div>
-                            <div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit doloremque reiciendis ut maiores nulla nihil expedita consectetur earum repellat esse illum neque, dolorum, aperiam maxime minus nemo, laboriosam omnis quia?</p>
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="contact">
-                    <div class="wrapper grid">
-                        <div class="contact-info"></div>
-                        <div class="contact-form"></div>
-                    </div>
-                </section>
-
-
-            </div>
-        </main>
-
-        <footer>
-            <p>Stjepan Erdeljac &copy; 2020</p>
-        </footer>
-        
     </div>
 </template>
 
@@ -260,7 +185,7 @@ const mySocialMedia = [
                 scrollTop: 0,
                 websites: myWebsites,
                 codepen: myCodepen,
-                navOpen: true,
+                navOpen: false,
                 winW: 0,
                 winH: 0,
                 socialMedia: mySocialMedia,

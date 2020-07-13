@@ -1,28 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&display=swap');
+
 *, a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
 
-$backgroundCL: #040202;
+$colorPalet1: #0F000E;
+$colorPalet2: #540032;
+$colorPalet3: #820333;
+$colorPalet4: #0C0F40;
+$colorPalet5: #C9283E;
+
 
 body {
-    overflow-x: hidden;
+    overflow: hidden;
     width: 100vw;
-
-    font-size: 14px;
+    height: 100vh;
     color: #fff;
-    background-color: $backgroundCL;
+    font-family: 'Exo 2', sans-serif;
+    background-color: $colorPalet5;
 }
 
-.grid {
-    display: grid;
+.btn {
+    padding: 0.5em 1em;
+    cursor: pointer;
 }
 
-.flex {
-    display: flex;
+strong {
+    font-weight: 700;
 }
+
 
 /************************************
     NAVIGATION
@@ -106,46 +118,64 @@ body {
 *************************************/
 
 .hero {
-    min-height: 90vh;
+    min-height: 100vh;
+    max-width: 100vw;
     width: 100%;
-    background-color: #000;
-
-    .grid-column-2 {
-        grid-template-columns: 1fr 1fr;
-        
-        & > div {
-            height: 90vh;
-        }
-    }
-
-    .center-content {
-        align-items: center;
+    background-color: $colorPalet1;
+    
+    //Applies to the background animations
+    &__background {
+        width: 100%;
         height: 100%;
+        position: relative;
+        z-index: 10;
     }
 
-    .portfolio {
-        max-width: 800px;
-        background: transparent url('./img/portfolio.jpg') center top/ 100% auto no-repeat;
+
+    //Applies to the foreground content
+    &__content {
+        display: grid;
+        height: 100vh;
+        max-width: 1000px;
+        margin-left: 200px;
+        align-content: center;
     }
 
-    .header {
+    &__wrapper {
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        height: 60vh;
+        align-content: center;
+    }
+
+    &__header {
+        font-weight: 300;
+        font-size: 3.5rem;
+        padding: 0.3em 0;
+    }
+
+    &__sub-header {
+        font-weight: 300;
+        font-size: 2rem;
+        padding: 0.3em 0;
+    }
+
+    &__learn-more {
+        border: 0;
+        background-color: #fff;
+        font-size: 1.7rem;
+        min-width: 300px;
+        margin-right: 50px;
+    }
+
+    &__contact-me {
+        border: 3px solid #fff;
+        background-color: transparent;
         color: #fff;
-        font-size: 2em;
-        h1, h3 {
-            margin-bottom: 20px;
-        }
-        p {
-            margin: 27px 0 35px;
-        }
-        button {
-            background-color: transparent;
-            color: #fff;
-            border: 0;
-            padding: 20px 0;
-            font-size: 25px;
-            cursor: pointer;
-        }
-    }    
+        min-width: 300px;
+        font-size: 1.7rem;
+    }
+ 
 }
 
 /************************************
