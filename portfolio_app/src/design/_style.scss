@@ -18,7 +18,7 @@ $colorPalet5: #C9283E;
 
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
     width: 100vw;
     height: 100vh;
     color: #fff;
@@ -48,7 +48,7 @@ strong {
         overflow: hidden;
         position: fixed;
         right: 100px;
-        top: 40px;
+        top: 50px;
         z-index: 999;
         cursor: pointer;
 
@@ -114,6 +114,21 @@ strong {
 }
 
 /************************************
+    FRAME/SCROLL BAR
+*************************************/
+
+.frame-scroll-bar {
+    position: fixed;
+    width: 94vw;
+    height: 94vh;
+    top: 3vh;
+    left: 3vw;
+    border: 5px solid #fff;
+    z-index: 900;
+}
+
+
+/************************************
     HERO
 *************************************/
 
@@ -131,6 +146,15 @@ strong {
         z-index: 10;
     }
 
+    &__sun-layer {
+        height: 70vh;
+    }
+
+    &__sun-reflection {
+        height: 40vh;
+    }
+
+    
 
     //Applies to the foreground content
     &__content {
@@ -139,6 +163,8 @@ strong {
         max-width: 1000px;
         margin-left: 200px;
         align-content: center;
+        position: relative;
+        z-index: 20;
     }
 
     &__wrapper {

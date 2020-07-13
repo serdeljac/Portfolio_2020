@@ -37,6 +37,8 @@
             </div>
         </div>
 
+        <div class="frame-scroll-bar"></div>
+
         <div class="hero">
            <div class="hero__background">
                <div class="hero__sun-layer"></div>
