@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&display=swap');
 
+.debug-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 99999;
+    background: black;
+    color: #fff;
+    opacity: 0.6
+}
+
 *, a {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -ms-scroll-chaining: none;
+    -ms-content-zooming: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 html {
@@ -15,7 +29,6 @@ $colorPalet2: #540032;
 $colorPalet3: #820333;
 $colorPalet4: #0C0F40;
 $colorPalet5: #C9283E;
-
 
 body {
     overflow-x: hidden;
@@ -34,6 +47,11 @@ body {
 strong {
     font-weight: 700;
 }
+
+.page-content {
+    transition: transform .5s ease-out;
+}
+
 
 
 /************************************
@@ -70,7 +88,7 @@ strong {
         }
     }
 
-    &.active .menu-button span{
+    &.active .menu-button span {
         &:nth-of-type(1) {
             top: -7px;
         }
@@ -119,12 +137,51 @@ strong {
 
 .frame-scroll-bar {
     position: fixed;
-    width: 94vw;
-    height: 94vh;
-    top: 3vh;
-    left: 3vw;
-    border: 5px solid #fff;
-    z-index: 900;
+    z-index: 50;
+}
+
+/************************************
+    PAGE BACKGROUND
+*************************************/
+
+.page-bg {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    z-index: 5;
+    background-color: $colorPalet1;
+    
+    &__sun-layer {
+        width: 100%;
+        height: 85vh;
+        display: grid;
+        justify-content: center;
+    }
+
+    &__sun-reflection {
+        width: 100%;
+        height: 40vh;
+    }
+
+    &__rain {
+        @extend .page-bg;
+        background-color: transparent;
+        z-index: 7;
+    }
+
+
+
+    //DEMO
+
+    .demo-sun {
+        width: 800px;
+        height: 800px;
+        transition: transform .23s ease-out;
+        border-radius: 800px;
+        background: linear-gradient(166.66deg, #0F000E 8.81%, #540032 36.71%, #C9283E 83.28%);
+        box-shadow: 3px 95px 108px rgba(240, 67, 58, 0.1);
+    }
 }
 
 
@@ -136,32 +193,12 @@ strong {
     min-height: 100vh;
     max-width: 100vw;
     width: 100%;
-    background-color: $colorPalet1;
-    
-    //Applies to the background animations
-    &__background {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        z-index: 10;
-    }
 
-    &__sun-layer {
-        height: 70vh;
-    }
-
-    &__sun-reflection {
-        height: 40vh;
-    }
-
-    
-
-    //Applies to the foreground content
     &__content {
         display: grid;
         height: 100vh;
         max-width: 1000px;
-        margin-left: 200px;
+        margin-left: 100px;
         align-content: center;
         position: relative;
         z-index: 20;
@@ -189,7 +226,7 @@ strong {
     &__learn-more {
         border: 0;
         background-color: #fff;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         min-width: 300px;
         margin-right: 50px;
     }
@@ -199,145 +236,30 @@ strong {
         background-color: transparent;
         color: #fff;
         min-width: 300px;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
- 
 }
+
 
 /************************************
     MAIN
 *************************************/
 
-.main {
-    padding-top: 50px;
-
-    .container {
-        width: calc(100% - 4em);
-        margin: auto;
-        position: relative;
-        z-index: 100;
-    }
-
-    section {
-        width: 100%;
-        float: left;
-    }
+main {
+    min-height: 2000px;
+    width: 100%;
 }
 
-/************************************
-    SECTION - INTRODUCTION
-*************************************/
-
-section.introduction {
-
-    .wrapper {
-        grid-template-columns: 1fr 1fr 1fr;
-        max-width: 1400px;
-        margin: auto;
-        column-gap: 20px;
-    }
-
-    .content {
-        padding: 10px;
-        border: 1px solid #fff;
-    }
-
-    .svg {
-        width: 100%;
-        max-width: 1400px;
-        margin: auto;
-        background: rgba(0,0,150,.5);
-        height: 200px;
-    }
-}
 
 /************************************
-    SECTION - WORK
+    WORK
 *************************************/
 
-section.work {
-
-    .wrapper {
-        width: calc(100% - 4em);
-        margin: auto;
-    }
-
-    .title {
-        text-align: center;
-        font-size: 7vw;
-        margin: auto;
-        color: #555;
-        h2 {
-            user-select: none;
-        }
-    }
-
-    .content {
-        max-width: 1400px;
-        margin: auto;
-        margin-bottom: 20px;
-    }
-
-    .website, .codepen {
-        background: grey;
-        min-height: 100px;
-        width: 25%;
-        float: left;
-    }
-
-
-}
-
-/************************************
-    SECTION - ABOUT
-*************************************/
-
-section.about {
-
-    .wrapper {
-        max-width: 1400px;
-        margin: auto;
-        width: 100%;
-    }
-
-    .title {
-        font-size: 3vw;
-        margin: auto;
-        color: #555;
-        
-        h2 {
-            user-select: none;
-        }
-    }
-
-    .content {
-        grid-template-columns: auto auto;
-        column-gap: 20px;
-        div:last-of-type {
-            grid-column: 1 / span 2;
-        }
-    }
-
-    .bio-pic-wrapper {
-        width: 100%;
-        img {max-height: 300px;}
-    }
-
-}
-
-/************************************
-    SECTION - CONTACT
-*************************************/
-
-section.contact {
-
-    .wrapper {
-        color: #000;
-        width: 100vw;
-        margin-left: -3em;
-        height: 200px;
-        background: #fff;
-        grid-template-columns: 1fr 1fr;
-    }
-
+svg {
+    font-weight: 700;
+    // stroke: #fff;
+    // stroke-dasharray: 1000;
+    // stroke-dashoffset: 900;
+    // transition: all 1s ease;
+    cursor: pointer;
 }

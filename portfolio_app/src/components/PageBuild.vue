@@ -1,7 +1,16 @@
 <template>
     <div class="page-container">
 
-        <div class="navigation" :class="{ active: navOpen }">
+        <div class="debug-container">
+            <p>Win Width: {{ winW }}</p>
+            <p>Win Height: {{ winH }}</p>
+            <p>Scroll Loc: {{ scrollTop }}</p>
+            <p>Mouse X: {{ mouseX }}</p>
+            <p>Small Device: <span v-if="smallDevice">True</span> <span v-else>False</span></p>
+            <p>Navigation Open: <span v-if="navOpen">True</span> <span v-else>False</span></p>
+        </div>
+
+        <!-- <div class="navigation" :class="{ active: navOpen }">
             
 
             <div class="menu-button" @click="toggleNav">
@@ -35,37 +44,65 @@
                     </nav>
                 </div>
             </div>
+        </div> -->
+        <div class="page-bg">
+            <div class="page-bg__sun-layer">
+                <div class="demo-sun">
+                </div>
+            </div>
+            <div class="page-bg__sun-reflection"></div>
+            <div class="page-bg__rain"></div>
         </div>
 
-        <div class="frame-scroll-bar"></div>
 
-        <div class="hero">
-           <div class="hero__background">
-               <div class="hero__sun-layer"></div>
-               <div class="hero__sun-reflection"></div>
-               <div class="hero__rain"></div>
-           </div>
-           <div class="hero__content">
-               <div class="hero__wrapper">
-                <h1 class="hero__header">
-                    Hello, I'm <strong>Stjepan Erdeljac</strong>. A <br /><strong>front-end developer and designer</strong><br /> from Vancouver.
-                </h1>
-                    <h3 class="hero__sub-header">
-                        I'm a <strong>wordpress developer, photographer,</strong> and a <strong>goal-oriented</strong> individual. When not coding, I spend my time at the gym, gardening, and researching inspirational UI trends and styles.
-                    </h3>
-                    <div class="hero__buttons">
-                        <button class="btn hero__learn-more">view my projects</button>
-                        <button class="btn hero__contact-me">contact me</button>
+        <div class="frame-scroll-bar">
+            <div class="page-content">
+                <div class="hero">
+                    <div class="hero__content">
+                        <div class="hero__wrapper">
+                            <h1 class="hero__header">
+                                Hello, I'm
+                                <strong>Stjepan Erdeljac</strong>. 
+                                 A <br /><strong>web developer and designer</strong><br /> from Vancouver.
+                            </h1>
+                            <h3 class="hero__sub-header">
+                                I'm a <strong>wordpress developer, photographer,</strong> and a <strong>goal-oriented</strong> individual. When not coding, I spend my time at the gym, gardening, and researching inspirational UI trends and styles.
+                            </h3>
+                            <div class="hero__buttons">
+                                <button class="btn hero__learn-more">view my projects</button>
+                                <button class="btn hero__contact-me">contact me</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-           </div>
+
+                <main>
+                    <section class="work">
+                        <div class="work__wrapper">
+                            <div class="work__name" v-for="site in websites" :key="site.id">
+                                <svg viewBox="0 0 300 20" xmlns="http://www.w3.org/2000/svg">
+                                    <text x="0" y="15">{{ site.name }}</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+
+
+
+
         </div>
 
+
+
+    
     </div>
 </template>
 
 <script>
-import $ from 'jquery'
+import $ from 'jquery';
+
 
 const myWebsites = [
         {
@@ -190,11 +227,13 @@ const mySocialMedia = [
                 navOpen: false,
                 winW: 0,
                 winH: 0,
+                mouseX: 0,
                 socialMedia: mySocialMedia,
             };
         },
         methods: {
             responsiveCheck() {
+                
                 const w = $('body').width();
                 const h = $('body').height();
                 const mainH = $('main > .container').height();
@@ -203,24 +242,49 @@ const mySocialMedia = [
 
                 w <= 1024 ? this.smallDevice = true : this.smallDevice = false;
                 $('.sidebar').height(mainH);
+
             },
             handleScroll() {
-                const loc = $(window).scrollTop();
 
+                const loc = $(window).scrollTop();
                 this.scrollTop = loc;
+
             },
             toggleNav() {
-              
+
                 this.navOpen = !this.navOpen;
-            }
-        },
-        computed: {
-            //Sort projects here
+
+            },
+            scrollWindow(event) {
+
+                const page = $('.page-content');
+                let myScroll = event.deltaY;
+                myScroll > 0 ? myScroll = 60 : myScroll = -60;
+                const scroll = this.scrollTop + myScroll;
+                scroll < 0 ?  this.scrollTop = 0 : this.scrollTop = scroll;
+                page.css('transform', 'translateY( -'+ this.scrollTop +'px)');
+                
+            },
+            mouseMove(e) {
+
+                this.mouseX = e.offsetX;
+                
+                const adjustSun = ((this.mouseX / this.winW) * 100) - 50;
+                const sunX = adjustSun / 2;
+                const sunY = adjustSun / 16;
+                $('.demo-sun').css('transform', 'translate3D('+ sunX +'px, '+ -sunY +'px, 0px)');
+
+            },
+
         },
         mounted() {
+
             window.addEventListener('resize', this.responsiveCheck);
             window.addEventListener('scroll', this.handleScroll);
+            window.addEventListener('wheel', this.scrollWindow);
+            window.addEventListener('mousemove', this.mouseMove);
             this.responsiveCheck();
+            // this.mouseMove();
         },
     };
 
