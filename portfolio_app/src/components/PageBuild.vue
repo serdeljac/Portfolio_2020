@@ -102,6 +102,7 @@
 
 <script>
 import $ from 'jquery';
+import 'jquery.ripples';
 
 
 const myWebsites = [
@@ -263,16 +264,15 @@ const mySocialMedia = [
                 const scroll = this.scrollTop + myScroll;
                 scroll < 0 ?  this.scrollTop = 0 : this.scrollTop = scroll;
                 page.css('transform', 'translateY( -'+ this.scrollTop +'px)');
-                
             },
             mouseMove(e) {
 
-                this.mouseX = e.offsetX;
-                
+                this.mouseX = e.offsetX;                
                 const adjustSun = ((this.mouseX / this.winW) * 100) - 50;
                 const sunX = adjustSun / 2;
                 const sunY = adjustSun / 16;
                 $('.demo-sun').css('transform', 'translate3D('+ sunX +'px, '+ -sunY +'px, 0px)');
+
 
             },
 
@@ -285,7 +285,10 @@ const mySocialMedia = [
             window.addEventListener('mousemove', this.mouseMove);
             this.responsiveCheck();
             // this.mouseMove();
+            
         },
+
+
     };
 
 </script>
