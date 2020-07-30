@@ -45,13 +45,11 @@
                 </div>
             </div>
         </div> -->
-        <div class="page-bg">
-            <div class="page-bg__sun-layer">
-                <div class="demo-sun">
+        <div class="page-bg" id="hero-bg">
+                <div class="sun" data-depth="0.2"></div>
+                <div class="mountain" >
+                    <img src="../assets/mount1l.png" />
                 </div>
-            </div>
-            <div class="page-bg__sun-reflection"></div>
-            <div class="page-bg__rain"></div>
         </div>
 
 
@@ -80,9 +78,9 @@
                     <section class="work">
                         <div class="work__wrapper">
                             <div class="work__name" v-for="site in websites" :key="site.id">
-                                <svg viewBox="0 0 300 20" xmlns="http://www.w3.org/2000/svg">
-                                    <text x="0" y="15">{{ site.name }}</text>
-                                </svg>
+                             <p class="site-name">
+                                 {{ site.name }}
+                             </p>
                             </div>
                         </div>
                     </section>
@@ -102,7 +100,9 @@
 
 <script>
 import $ from 'jquery';
-import 'jquery.ripples';
+import Parallax from 'parallax-js';
+
+import '../store/parallaxCustom.js';
 
 
 const myWebsites = [
@@ -267,11 +267,11 @@ const mySocialMedia = [
             },
             mouseMove(e) {
 
-                this.mouseX = e.offsetX;                
-                const adjustSun = ((this.mouseX / this.winW) * 100) - 50;
-                const sunX = adjustSun / 2;
-                const sunY = adjustSun / 16;
-                $('.demo-sun').css('transform', 'translate3D('+ sunX +'px, '+ -sunY +'px, 0px)');
+                // this.mouseX = e.offsetX;                
+                // const adjustSun = ((this.mouseX / this.winW) * 100) - 50;
+                // const sunX = adjustSun / 2;
+                // const sunY = adjustSun / 16;
+                // $('.sun').css('transform', 'translate3D('+ sunX +'px, '+ -sunY +'px, 0px)');
 
 
             },
@@ -286,6 +286,9 @@ const mySocialMedia = [
             this.responsiveCheck();
             // this.mouseMove();
             
+            const scene = document.getElementById('hero-bg');
+            const parallaxInstance = new Parallax(scene);
+            parallaxInstance.friction(0.2, 0.2);
         },
 
 
