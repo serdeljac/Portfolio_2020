@@ -1,21 +1,33 @@
 <template>
-  <div>
-    <PageBuild />
+  <div class="page">
+    <Backdrop />
+    <div class="page-container">
+      <Hero />
+      <main>
+        <Work />
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
-  import PageBuild from '@/components/PageBuild.vue';
+  import Backdrop from '@/components/Backdrop.vue';
+  import Hero from '@/components/Hero.vue';
+  import Work from '@/components/Work.vue';
   
 
   export default {
     name: 'app',
     components: {
-      PageBuild
+      Backdrop,
+      Hero,
+      Work,
     }
   }
 </script>
 
 <style lang="scss">
     @import "design/index.scss";
+
+    
 </style>
