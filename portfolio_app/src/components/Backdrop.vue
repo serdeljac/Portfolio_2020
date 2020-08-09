@@ -1,19 +1,13 @@
 <template>
-    <div class="page-bg" id="main-background">
-        <div class="sun" data-depth="0.2"></div>
+    <div class="page-bg">
+        <div class="sun"></div>
     </div>
 </template>
 
 <script>
-import Parallax from 'parallax-js';
 
     export default {
         name: "Backdrop",
-        mounted() {            
-            const scene = document.getElementById('main-background');
-            const parallaxInstance = new Parallax(scene);
-            parallaxInstance.friction(0.2, 0.2);
-        },
     }
 </script>
 
