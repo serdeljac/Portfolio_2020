@@ -1,19 +1,26 @@
 <template>
+<<<<<<< HEAD
     <div class="backdrop" id="main-background">
         <div class="backdrop__sun" data-depth="0.2"></div>
+=======
+    <div class="page-bg">
+        <div class="sun"></div>
+>>>>>>> 6f60ad83f5b9e76c583f4dc7a34e221315a5d577
     </div>
 </template>
 
 <script>
-import Parallax from 'parallax-js';
 
     export default {
         name: "Backdrop",
+<<<<<<< HEAD
         mounted() {
             const scene = document.getElementById('main-background');
             const parallaxInstance = new Parallax(scene);
             parallaxInstance.friction(0.2, 0.2);
         },
+=======
+>>>>>>> 6f60ad83f5b9e76c583f4dc7a34e221315a5d577
     }
 </script>
 
