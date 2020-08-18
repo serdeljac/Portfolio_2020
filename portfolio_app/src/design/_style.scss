@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Morganite";
-    src: url("/portfolio_app/fonts/Morganite-Book.ttf") format('truetype');
+    src: url("/portfolio_app/fonts/Morganite-Book.ttf");
 }
 
 *, a {
@@ -13,6 +13,7 @@
     -ms-content-zooming: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    cursor: none !important;
 }
 
 html {
@@ -37,9 +38,40 @@ strong {
     font-weight: 700;
 }
 
+.backdrop {z-index: 1;}
+.page-container {z-index: 10;}
+.work__preview {z-index: 19;}
+.work__title-name, .about {z-index: 20;}
+.footer {z-index: 25;}
+.navigation {z-index: 90;} 
+.navButton {z-index: 95;}
+.cursor__ring {z-index: 998;}
+.cursor__dot {z-index: 999;}
 
-.page-container {
+.hero, section {
     padding: 0 2em;
-    position: relative;
-    z-index: 10;
+}
+
+.cursor {
+    pointer-events: none;
+
+    &__ring, &__dot {
+        position: absolute;
+    }
+    &__ring {
+        border: 1px solid #fff;
+        border-radius: 30px;
+        width: 30px;
+        height: 30px;
+        margin-left: -15px;
+        margin-top: 2px;
+        transition: all .03s linear;
+    }
+    &__dot {
+        background-color: #fff;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        margin: 15px 0 0 -2px;
+    }
 }

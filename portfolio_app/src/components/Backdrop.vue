@@ -1,6 +1,6 @@
 <template>
-    <div class="page-bg" id="main-background">
-        <div class="sun" data-depth="0.2"></div>
+    <div class="backdrop" id="main-background">
+        <div class="backdrop__sun" data-depth="0.2"></div>
     </div>
 </template>
 
@@ -9,7 +9,7 @@ import Parallax from 'parallax-js';
 
     export default {
         name: "Backdrop",
-        mounted() {            
+        mounted() {
             const scene = document.getElementById('main-background');
             const parallaxInstance = new Parallax(scene);
             parallaxInstance.friction(0.2, 0.2);
@@ -21,15 +21,14 @@ import Parallax from 'parallax-js';
 
     @import "@/design/index.scss";
 
-    .page-bg {
+    .backdrop {
         position: fixed;
         width: 100vw;
         height: 100vh;
         top: 0;
-        z-index: 1;
         background-color: $colorPalet1;
 
-        .sun {
+        .backdrop__sun {
             width: 800px;
             height: 800px;
             transition: transform .23s ease-out;

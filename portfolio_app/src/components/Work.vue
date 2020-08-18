@@ -1,18 +1,27 @@
 <template>
-    <div>
-        <section class="work">
-            <div class="work__wrapper">
-                <div class="work__name" v-for="site in websites" :key="site.id">
-                    <p class="site-name">
-                        {{ site.name }}
-                    </p>
-                </div>
+
+    <section class="work">
+        <div class="work__wrapper">
+            <div class="work__preview" v-bind:class="{active : openPreview.active}">
+                <div class="work__img"></div>
             </div>
-        </section>
-    </div>
+            <div class="work__name" 
+                v-for="site in websites"
+                :key="site.id"
+                @mouseover="openPreview.active = true"
+                @mouseleave="openPreview.active = false"
+                >
+                <p class="work__title-name">
+                    {{ site.name }}
+                </p>
+            </div>
+        </div>
+    </section>
+ 
 </template>
 
 <script>
+    import $ from 'jquery';
 
 const myWebsites = [
         {
@@ -72,24 +81,56 @@ const myWebsites = [
         data() {
             return {
                 websites: myWebsites,
+                openPreview: {
+                    active: false,
+                    image: undefined,
+                }
             }
         },
-
+        methods: {
+            openWork: function() {
+                $('.work__name').hide();
+            }
+        },
     }
 </script>
 
 <style lang="scss" scoped>
-    .site-name {
-        font-family: "Morganite";
-        text-transform: uppercase;
-        font-size: 10em;
-        letter-spacing: -0.10em;
-        text-align: right;
-        transform: scale(0.7, 1) translate(0,0) rotate3d(1, 0, -1, 5deg);
-        line-height: 1;
-        transition: transform .23s ease-in-out;
-        &:hover {
-            transform: scale(0.7, 1) translate(0,-50px) rotate3d(0, 0, 0, 0deg);
+    .work {
+        padding: 40px 0 160px;
+        &__name {
+            padding: 20px 0;
+        &hover p {
+            transform: scale(0.7, 1) rotate3d(1, 0, -1, 5deg);
+            }
+        }
+
+        &__title-name {
+            font-family: "Morganite";
+            text-transform: uppercase;
+            position: relative;
+            font-size: 10em;
+            letter-spacing: -0.10em;
+            text-align: center;
+            transform: scale(0.5, 0.8) rotate3d(1, 0, -1, 5deg);
+            line-height: 1;
+            transition: transform .23s ease-in-out;
+        }
+
+        &__preview {
+            position: fixed;
+            max-width: 50vw;
+            width: 500px;
+            height: 100vh;
+            background: red;
+            top: 0;
+            right: 5%;
+            z-index: 19;
+            opacity: 0;
+            transition: all .23s ease;
+            &.active {
+                opacity: 1;
+            }
         }
     }
 </style>
