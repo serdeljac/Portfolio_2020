@@ -6,7 +6,9 @@
         <p>Display = {{ displayView }}</p>
     </div>
     <Hero />
-    <Work />
+    <main>
+      <Work />
+    </main>
   </div>
 </template>
 

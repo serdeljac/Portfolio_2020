@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
+
+@font-face {
+    font-family: "Morganite";
+    src: url("./assets/fonts/Morganite-Book.ttf");
+}
 
 @mixin transform($property) {
     -webkit-transform: $property;
@@ -12,7 +18,7 @@
 }
 
 @keyframes heroButton_2 {
-    0% { box-shadow: 0 0 0 0 #20bf6b; }
+    0% { box-shadow: 0 0 0 0 $green; }
 }
 
 // @mixin respond ($breakpoint) {
@@ -53,6 +59,8 @@ body {
     width: 100vw;
     overflow-X: hidden;
     font-family: 'Montserrat', sans-serif;
+    max-width: 1900px;
+    margin: auto;
 }
 
 .navigation_bar {
@@ -105,6 +113,7 @@ body {
         }
         h3 {
             font-size: 2.4em;
+            margin-bottom: 40px;
         }
         span {
             font-weight: 800;
@@ -131,8 +140,8 @@ body {
             border: 2px solid #000;
             transition: all 0.3s ease 0s;
             &:hover, &:focus {
-                color: #20bf6b;
-                border: 2px solid #20bf6b;
+                color: $green;
+                border: 2px solid $green;
                 border-radius: 7px;
                 animation: heroButton_2 1s;
                 box-shadow: 0 0 0 1em rgba(#fff,0);
@@ -165,3 +174,32 @@ body {
     WORK 
 ******************************************************/
 
+.work {
+    margin-top: 40px;
+    .section__title {
+        position: absolute;
+        right: 10%;
+        h2 {
+            font-family: 'Courgette', cursive;
+            user-select: none;
+            font-size: 12em;
+            color: rgba(0,0,0,0.1);
+        }
+    }
+
+    .work__list {
+        padding-top: 40px;
+    }
+
+    .site__item {
+        font-family: "Morganite", sans-serif;
+        font-size: 10em;
+        background: $colorPalet1;
+        color: #fff;
+        letter-spacing: 0.05em;
+        margin: 10px 0;
+        display: inline-block;
+        padding: 20px 200px 0px 80px;
+        line-height: 90px;
+    }
+}

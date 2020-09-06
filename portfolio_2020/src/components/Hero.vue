@@ -1,5 +1,5 @@
 <template>
-    <section class="hero">
+    <div class="hero">
         <div class="hero__wrapper">
             <div class="hero__header">
                 <header>
@@ -12,7 +12,7 @@
                     </h3>
                 </header>
                 <div class="call_to_action">
-                    <button class="btn view_work">View my Work</button>
+                    <button class="btn view_work">View my work</button>
                     <button class="btn contact_me">Contact me</button>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <script>
