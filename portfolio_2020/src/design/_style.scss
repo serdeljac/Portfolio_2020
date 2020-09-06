@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
+  }
+
+// @mixin respond ($breakpoint) {
+
+//     @if $breakpoint == tablet {
+//         @media only screen and (max-width: $desktop-width) {
+//             @content
+//         }
+//     }
+
+//     @if $breakpoint == mobile {
+//         @media only screen and (max-width: $tablet-width) {
+//             @content
+//         }
+//     }
+// }
+
+*, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    // -ms-scroll-chaining: none;
+    // -ms-content-zooming: none;
+    // -ms-overflow-style: none;
+    // scrollbar-width: none;
+    // cursor: none !important;
+}
+
+html {
+    font-size: 14px;
+    // @include respond(mobile) {
+    //     font-size: 10px;
+    // }
+}
+
+body {
+    width: 100vw;
+    overflow-X: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navigation_bar {
+    width: 100%;
+    position: absolute;
+}
+
+.btn {
+    padding: 0.4em 1em;
+    font-size: 0.7em;
+    border-radius: 50px;
+    border: 0;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.debugValues {
+    position: fixed;
+    z-index: 99999;
+    right: 40px;
+    bottom: 10px;
+    background: rgba(255,255,255,.85)
+}
+
+
+/******************************************************
+    HERO 
+******************************************************/
+
+.hero {
+       
+    &__wrapper {
+        padding: 0 2em;
+        width: 100%;
+    }
+
+    &__header {
+        max-width: 780px;
+        height: 100vh;
+        min-height: 700px;
+        display: grid;
+        align-content: center;
+        margin-left: 80px;
+        h1, h3 {
+            font-weight: 400;
+            font-size: 3.0em;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 2.4em;
+        }
+        span {
+            font-weight: 800;
+        }
+        .call_to_action {
+            font-size: 2.4em;
+            display: flex;
+            justify-items: center;
+        }
+        .view_work {
+            color: #fff;
+            background: linear-gradient(180deg, #820333 0%, #C9283E 100%);
+        }
+        .contact_me {
+            background: #fff;
+            border: 2px solid #000;
+        }
+
+    }
+
+}
