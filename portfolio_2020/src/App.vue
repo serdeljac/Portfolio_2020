@@ -8,6 +8,7 @@
     <Hero />
     <main>
       <Work />
+      <Practice />
     </main>
   </div>
 </template>
@@ -15,11 +16,12 @@
 <script>
 import Hero from './components/Hero.vue';
 import Work from './components/Work.vue';
+import Practice from './components/Practice.vue';
 import $ from 'jquery';
 
 export default {
   name: "Assemble",
-  components: { Hero, Work },
+  components: { Hero, Work, Practice },
   data() {
       return {
           desktopWidth: 1024,
@@ -49,7 +51,7 @@ export default {
                   this.displayView = "mobile";
                   break;
           }
-      }
+      },
   },
   mounted() {
       this.getDimensions();

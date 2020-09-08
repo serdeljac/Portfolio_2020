@@ -16,11 +16,14 @@
                     <button class="btn contact_me">Contact me</button>
                 </div>
             </div>
-            <div class="hero__background">
-                <div class="img-wrapper">
+
+
+
+            <!-- <div class="hero__background">
+                <div class="img-wrapper"> 
                     <img src="../assets/profile-img_1.jpg" alt="Stjepan Erdeljac" />
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
