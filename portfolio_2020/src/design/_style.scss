@@ -238,7 +238,30 @@ body {
     }
 
     .card {
-        
+        width: 400px;
+        min-height: 548px;
+        background-color: $colorPalet1;
+        color: #fff;
+        padding: 20px;
     }
+
+    .card__number {
+        position: absolute;
+        user-select: none;
+        z-index: 10;
+    }
+
+    .card__foreground {
+        position: relative;
+        z-index: 12;
+    }
+
+    .card__logo {
+        // object-fit: contain;
+        height: 250px;
+        img {height: 100%;}
+    }
+
+    
 
 }
