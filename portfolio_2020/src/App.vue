@@ -9,6 +9,7 @@
     <main>
       <Work />
       <Practice />
+      <About />
     </main>
   </div>
 </template>
@@ -17,11 +18,12 @@
 import Hero from './components/Hero.vue';
 import Work from './components/Work.vue';
 import Practice from './components/Practice.vue';
+import About from './components/About.vue';
 import $ from 'jquery';
 
 export default {
   name: "Assemble",
-  components: { Hero, Work, Practice },
+  components: { Hero, Work, Practice, About },
   data() {
       return {
           desktopWidth: 1024,

@@ -71,7 +71,3 @@
         name: "Practice"
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
