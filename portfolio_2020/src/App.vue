@@ -1,11 +1,10 @@
 <template>
-  <div id="app">
+  <div class="site__wrapper">
      <div class="debugValues">
-        <p>Width = {{ winW }}</p>
-        <p>Height = {{ winH }}</p>
-        <p>Display = {{ displayView }}</p>
+        <p>Width = {{ responsive.width }}</p>
+        <p>Height = {{ responsive.height }}</p>
     </div>
-    <Hero />
+    <Hero :responsive='responsive' />
     <main>
       <Work />
       <Practice />
@@ -19,41 +18,34 @@ import Hero from './components/Hero.vue';
 import Work from './components/Work.vue';
 import Practice from './components/Practice.vue';
 import About from './components/About.vue';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 export default {
   name: "Assemble",
   components: { Hero, Work, Practice, About },
   data() {
       return {
-          desktopWidth: 1024,
-          tabletWidth: 768,
-          winW: 0,
-          winH: 0,
-          displayView: undefined,
+          responsive: {
+            xl: 1280,
+            lg: 992,
+            md: 768,
+            sm: 576,
+            width: 0,
+            height: 0,
+          },
+          
       }
   },
   methods: {
       getDimensions: function() {
 
-          const browserWidth = $(window).width();
-          const browserHeight = $(window).height();
-          this.winW = browserWidth;
-          this.winH = browserHeight;
-          
-          switch(true) {
-              
-              case browserWidth >= this.desktopWidth:
-                  this.displayView = "desktop";
-                  break;
-              case browserWidth >= this.tabletWidth:
-                  this.displayView = "tablet";
-                  break;
-              case browserWidth >= 0:
-                  this.displayView = "mobile";
-                  break;
-          }
+          const browserWidth = window.screen.width;
+          const browserHeight = window.screen.height;
+          this.responsive.width = browserWidth;
+          this.responsive.height = browserHeight;
+
       },
+      
   },
   mounted() {
       this.getDimensions();
