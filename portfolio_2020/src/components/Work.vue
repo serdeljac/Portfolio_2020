@@ -5,13 +5,28 @@
         </div>
 
         <div class="work__list">
-            <ul>
+            <!-- 
+                Append Link
+                Append img as background-image
+             -->
+            <div class="site" v-for="site in sites" :key="site.id">
+                <a href="">
+                    <div class="site__title">
+                        <h3>{{ site.name }}</h3>
+                        <span>{{ site.date }}</span>
+                    </div>
+                    <div class="site__background parallax"></div>
+                </a>
+            </div>
+
+
+            <!-- <ul>
                 <li v-for="site in sites" :key="site.id">
                     <div class="site__item">
                         <p>{{ site.name }}</p>
                     </div>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </section>
 </template>

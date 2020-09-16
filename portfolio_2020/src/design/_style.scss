@@ -255,6 +255,33 @@ body {
 
 .work {
     margin-top: 40px;
+
+    .section__title {
+        right: 10%;
+    }
+
+    .site {
+        width: 450px;
+        height: 250px;
+
+        &__title {
+            user-select: none;
+        }
+
+        &__background {
+            width: 450px;
+            height: 250px;
+            background-color: red;
+            position: absolute;
+        }
+
+    }
+
+}
+
+
+.work2 {
+    margin-top: 40px;
     .section__title {
         right: 10%;
     }
