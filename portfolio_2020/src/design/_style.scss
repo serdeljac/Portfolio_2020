@@ -263,19 +263,24 @@ body {
         right: 10%;
     }
 
+    &__list {
+        padding-top: 250px;
+    }
+
     .site {
-        width: 450px;
-        height: 250px;
+
+        &, &__title, &__background {
+            width: 450px;
+            height: 250px;
+            position: absolute;
+        }
 
         &__title {
             user-select: none;
         }
 
         &__background {
-            width: 450px;
-            height: 250px;
             background-color: red;
-            position: absolute;
         }
 
     }
@@ -283,33 +288,6 @@ body {
 }
 
 
-.work2 {
-    margin-top: 40px;
-    .section__title {
-        right: 10%;
-    }
-
-    .work__list {
-        margin-top: 40px;
-        ul {
-            padding-top: 120px;
-        }
-    }
-
-    .site__item {
-        font-family: "Morganite", sans-serif;
-        font-size: 10em;
-        background: $colorPalet2;
-        color: #fff;
-        letter-spacing: 0.05em;
-        margin: 10px 0;
-        display: inline-block;
-        padding: 20px 200px 0px 80px;
-        line-height: 90px;
-        transition: all .23s ease;
-        transform: translateX(-10px);
-    }
-}
 
 
 /******************************************************

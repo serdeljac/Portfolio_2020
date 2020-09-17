@@ -19,14 +19,6 @@
                 </a>
             </div>
 
-
-            <!-- <ul>
-                <li v-for="site in sites" :key="site.id">
-                    <div class="site__item">
-                        <p>{{ site.name }}</p>
-                    </div>
-                </li>
-            </ul> -->
         </div>
     </section>
 </template>
