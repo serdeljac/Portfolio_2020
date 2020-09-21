@@ -4,20 +4,27 @@
             <h2>WORK</h2>
         </div>
 
-        <div class="work__list">
-            <div class="site" v-for="site in sites" :key="site.id">
-                <a v-bind:href="site.href">
-                    <div class="site__background parallax" v-bind:style="{ 'background-image': 'url(' + site.img + ')' }"></div>
+        <!-- <div class="work__list">
+            <div class="site column is-three-quarters">
 
-                    <!-- <div class="site__title">
+                <a v-bind:href="site.href">
+                    <div class="site__background parallax" v-bind:style="{ 'background-image': 'url(' + myWebsites.img + ')' }"></div>
+
+                    <div class="site__title">
                         <h3>{{ site.name }}</h3>
                         <span>{{ site.date }}</span>
-                    </div> -->
+                    </div>
                     
                 </a>
             </div>
 
-        </div>
+        </div> -->
+
+        
+
+
+
+
     </section>
 </template>
 

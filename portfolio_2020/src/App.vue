@@ -1,14 +1,14 @@
 <template>
   <div class="site__wrapper">
      <div class="debugValues">
-        <p>Width = {{ responsive.width }}</p>
-        <p>Height = {{ responsive.height }}</p>
+        <!-- <p>Width = {{ responsive.width }}</p>
+        <p>Height = {{ responsive.height }}</p> -->
     </div>
     <Hero :responsive='responsive' />
     <main>
       <Work />
-      <Practice />
-      <About />
+      <Practice v-if="hideSection"/>
+      <About v-if="hideSection"/>
     </main>
   </div>
 </template>
@@ -33,6 +33,7 @@ export default {
             width: 0,
             height: 0,
           },
+          hideSection: false,
           
       }
   },

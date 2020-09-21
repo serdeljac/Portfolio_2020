@@ -89,11 +89,6 @@ body {
     margin: auto;
 }
 
-.navigation_bar {
-    width: 100%;
-    position: absolute;
-}
-
 .btn {
     padding: 0.4em 1.7em;
     font-size: 0.7em;
@@ -219,7 +214,7 @@ body {
             &:hover, &:focus {
                 color: $green;
                 border: 2px solid $green;
-                border-radius: 7px;
+                //border-radius: 7px;
                 animation: heroButton_2 1s;
                 box-shadow: 0 0 0 1em rgba(#fff,0);
             }
@@ -258,6 +253,7 @@ body {
 
 .work {
     margin-top: 40px;
+    min-height: 50vh;
 
     .section__title {
         right: 10%;
@@ -272,7 +268,6 @@ body {
         &, &__title, &__background {
             width: 450px;
             height: 250px;
-            position: absolute;
         }
 
         &__title {
