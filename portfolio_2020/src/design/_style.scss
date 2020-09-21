@@ -250,7 +250,7 @@ body {
 /******************************************************
     WORK 
 ******************************************************/
-
+//  background: red url(./assets/natalie-miles.jpg);
 .work {
     margin-top: 40px;
     min-height: 50vh;
@@ -260,24 +260,37 @@ body {
     }
 
     &__list {
-        padding-top: 250px;
+        width: 400px;
+        height: 225px;
+        background: red url($website1) no-repeat;
+        transform: perspective(400px) rotateY(10deg);
     }
 
-    .site {
-
-        &, &__title, &__background {
-            width: 450px;
-            height: 250px;
+    &__title {
+        position: relative;
+        z-index: 20;
+        width: 100%;
+        height: 100%;
+        // display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: end;
+        color: #000;
+        transform: translateX(25px);
+        font-size: 2em;
+        text-shadow: 2px 2px 3px rgba(40, 40, 40, .3);
+        p {
+            font-size: 0.7em;
         }
+    }
 
-        &__title {
-            user-select: none;
-        }
-
-        &__background {
-            // background: red url(./assets/natalie-miles.jpg);
-        }
-
+    .glare {
+        width: 400px;
+        height: 225px;
+        background: blue;
+        position: absolute;
+        z-index: 18;
+        transform: translateY(-225px)
     }
 
 }

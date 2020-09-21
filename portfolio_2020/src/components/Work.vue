@@ -20,7 +20,13 @@
 
         </div> -->
 
-        
+        <div class="work__list">
+            <div class="work__title">
+                <h3>Natalie Miles</h3>
+                <p>2019</p>
+            </div>
+            <div class="glare"></div>
+        </div>
 
 
 
@@ -30,8 +36,9 @@
 
 <script>
     import natalieMiles from "../assets/natalie-miles.jpg";
+    import $ from 'jquery';
 
-    const myWebsites = [
+    const sites = [
         {
             id: 1,
             name: 'Natalie Miles',
@@ -88,10 +95,22 @@
         name: "Work",
         data() {
             return {
-                sites: myWebsites,
+                sites,
                 natalieMiles
             }
         },
+        methods: {
+            workMove: function(e) {
+                const rotateY = (e.clientX) / 10;
+
+                $('.work__list').css('transform', 'rotateY(' + rotateY + 'deg)');
+            },
+        },
+        mounted() {
+            
+            const getWork = document.querySelector('.work__list');
+            getWork.addEventListener('mousemove', this.workMove);
+        }
     }
 </script>
 
