@@ -10,6 +10,10 @@
       <Practice v-if="hideSection"/>
       <About v-if="hideSection"/>
     </main>
+    <div id="cursor">
+      <div class="ring"></div>
+      <div class="dot"></div>
+    </div>
   </div>
 </template>
 
@@ -46,6 +50,11 @@ export default {
           this.responsive.height = browserHeight;
 
       },
+      mouseMove: function(e) {
+          // const cursor = document.getElementById('cursor');
+          // cursor.style(e.clientX);
+          console.log(e.clientX);
+      },
       
   },
   mounted() {
@@ -53,7 +62,7 @@ export default {
       window.addEventListener('resize', this.getDimensions);
       // window.addEventListener('scroll', this.handleScroll);
       // window.addEventListener('wheel', this.scrollWindow);
-      // window.addEventListener('mousemove', this.mouseMove);
+      window.addEventListener('mousemove', this.mouseMove);
   },
 }
 

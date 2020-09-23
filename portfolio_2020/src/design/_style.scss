@@ -25,10 +25,7 @@
     MEDIA QUERIES
 ******************************************/
 
-$screen-sm-min: 576px;
-$screen-md-min: 768px;
-$screen-lg-min: 992px;
-$screen-xl-min: 1280px;
+
 
 @mixin sm {
     @media (max-width: #{$screen-sm-min}) {
@@ -121,6 +118,19 @@ body {
 .site__wrapper {
     max-width: 2000px;
     margin: auto;
+}
+
+#cursor {
+    position: absolute;
+    z-index: 99999;
+
+    .ring {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        border: 2px solid #000;
+    }
+
 }
 
 
@@ -262,7 +272,7 @@ body {
     &__list {
         width: 400px;
         height: 225px;
-        background: red url($website1) no-repeat;
+        background: #fff url($website1) center/auto 100% no-repeat;
         transform: perspective(400px) rotateY(10deg);
     }
 
@@ -282,15 +292,6 @@ body {
         p {
             font-size: 0.7em;
         }
-    }
-
-    .glare {
-        width: 400px;
-        height: 225px;
-        background: blue;
-        position: absolute;
-        z-index: 18;
-        transform: translateY(-225px)
     }
 
 }
