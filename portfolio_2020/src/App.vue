@@ -22,7 +22,6 @@ import Hero from './components/Hero.vue';
 import Work from './components/Work.vue';
 import Practice from './components/Practice.vue';
 import About from './components/About.vue';
-// import $ from 'jquery';
 
 export default {
   name: "Assemble",
