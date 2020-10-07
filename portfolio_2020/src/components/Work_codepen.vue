@@ -1,6 +1,6 @@
 <template>
     <div class="work__wrapper websites">
-        Codepen
+        
     </div>
 </template>
 

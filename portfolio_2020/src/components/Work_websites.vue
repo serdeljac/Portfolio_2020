@@ -1,6 +1,15 @@
 <template>
-    <div class="work__wrapper websites">
-        Websites
+    <div class="work__wrapper">
+        
+
+        <div class="post web">
+
+        </div>
+        <div class="post web"></div>
+        <div class="post web"></div>
+        <div class="post web"></div>
+        <div class="post web"></div>
+
     </div>
 </template>
 

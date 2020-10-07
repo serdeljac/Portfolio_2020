@@ -274,11 +274,22 @@ body {
 
     .work__wrapper {
         min-height: 60vh;
-        position: absolute;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 40px;
+        row-gap: 20px;
+        column-gap: 20px;
+        justify-items: center;
     }
-
 }
 
+.websites {
+
+
+    .post {
+        
+    }
+}
 
 
 
