@@ -84,6 +84,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     max-width: 1900px;
     margin: auto;
+    color: #000;
 }
 
 .btn {
@@ -96,7 +97,6 @@ body {
 }
 
 .section__title {
-    position: absolute;
     
     h2 {
         font-family: 'Courgette', cursive;
@@ -249,45 +249,31 @@ body {
     margin-top: 40px;
     min-height: 50vh;
 
-    .section__title {
-        right: 10%;
-    }
-
-    &__wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    &__list {
-        width: 400px;
-        height: 225px;
-        background: red url($website1) no-repeat;
-        box-shadow: 5px 5px 6px -3px #000;
-    }
-
-    &__title {
-        position: relative;
-        z-index: 20;
+    .work__catagories {
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: flex-end;
-        color: #000;
-        font-size: 2em;
-        transform: translateX(50px);
-        text-shadow: 2px 2px 3px rgba(40, 40, 40, .3);
-        p {
-            font-size: 0.7em;
+
+        ul {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        li {
+            margin: 0 10px;
+            padding: 0 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            font-weight: bold;
         }
     }
 
-    .glare {
-        width: 400px;
-        height: 225px;
-        position: absolute;
-        z-index: 18;
+    .work__display {
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    .work__wrapper {
+        min-height: 60vh;
     }
 
 }
