@@ -1,27 +1,36 @@
 <template>
     <section class="work">
-        <div class="section__title">
-            <h2>WORK</h2>
-        </div>
 
-        <div class="work__select">
-            <ul>
-                <li class="cursor-action" 
-                    :class="{active: display=='websites'}"
-                    @click="changeDisplay('websites')">websites</li>
-                <li class="cursor-action"
-                    :class="{active: display=='codepen'}"
-                    @click="changeDisplay('codepen')">codepen</li>
-                <li class="cursor-action"
-                    :class="{active: display=='photography'}"
-                    @click="changeDisplay('photography')">photography</li>
-            </ul>
+        <div class="section__title">
+            <h2>WEB</h2>
         </div>
 
         <div class="work__display">
-            <Websites  />
-            <Codepen />
-            <Photography />
+            <div class="display__sites">
+                <div 
+                    v-for="site in sites"
+                    :key="site.id"
+                    class="website column is-4"
+                    >
+                        <div 
+                            class="item"
+                            :class="'item-'+site.id"
+                            v-bind:style="{backgroundImage: 'url('+site.img+')'}">
+                            <div class="overlay"></div>
+                            <div class="label">
+                                <p>{{ site.name }}</p>
+                                <hr />
+                                <p>{{ site.date }}</p>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="section__title">
+            <h2>PEN</h2>
         </div>
 
     </section>
@@ -29,27 +38,60 @@
 
 <script>
 
-    import Websites from './Work_websites.vue';
-    import Codepen from './Work_codepen.vue';
-    import Photography from './Work_photography.vue';
+import natalieMiles from "../assets/nm_web.jpg";
+import bridesphilly from "../assets/bbp_web.jpg";
+import lyassociates from "../assets/lya_web.jpg";
+import easynoa from "../assets/en_web.jpg";
+import glmortgage from "../assets/glm_web.jpg";
 
-    // import { TimelineLite } from 'gsap';
 
-    export default { 
+    const sites = [
+        {
+            id: 1,
+            name: 'Natalie Miles',
+            href: 'https://natalie-miles.com/',
+            img: natalieMiles,
+            date: '2019',
+        },
+        {
+            id: 2,
+            name: 'Beautiful Brides Philly',
+            href: 'https://beautifulbridesphilly.com/',
+            img: bridesphilly,
+            date: '2019',
+        },
+        {
+            id: 3,
+            name: 'Geoff Lee Mortgage',
+            href: 'https://www.geoffleemortgage.com/',
+            img: glmortgage,
+            date: '2018',
+        },
+        {
+            id: 4,
+            name: 'Ly & Associates',
+            href: 'https://lyandassociatesfg.com/',
+            img: lyassociates,
+            date: '2019',
+        },
+        {
+            id: 5,
+            name: 'Easy NOA',
+            href: 'https://www.easynoa.ca/',
+            img: easynoa,
+            date: '2018',
+        },
+    ];
+
+
+    export default {
         name: "Work",
-        components: { Websites, Codepen, Photography },
         data() {
             return {
-                display: 'websites'
+                sites
             }
         },
-        methods: {
-            changeDisplay: function(e) {
-                this.display = e;
-            },
-        },
     }
-    
 </script>
 
 <style lang="scss" scoped>

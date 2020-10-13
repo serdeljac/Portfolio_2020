@@ -7,8 +7,8 @@
     <Hero :responsive='responsive' />
     <main>
       <Work />
-      <Practice v-if="hideSection"/>
-      <About v-if="hideSection"/>
+      <Practice />
+      <About />
     </main>
     <div id="cursor">
       <div class="ring"></div>
@@ -36,8 +36,6 @@ export default {
             width: 0,
             height: 0,
           },
-          hideSection: false,
-          
       }
   },
   methods: {
