@@ -10,20 +10,15 @@
                 <div 
                     v-for="site in sites"
                     :key="site.id"
-                    class="website column is-4"
+                    class="website"
+                    :class="'item-'+site.id"
+                    v-bind:style="{backgroundImage: 'url('+site.img+')'}"
                     >
-                        <div 
-                            class="item"
-                            :class="'item-'+site.id"
-                            v-bind:style="{backgroundImage: 'url('+site.img+')'}">
-                            <div class="overlay"></div>
-                            <div class="label">
-                                <p>{{ site.name }}</p>
-                                <hr />
-                                <p>{{ site.date }}</p>
-                            </div>
+                        <div class="label">
+                            <p>{{ site.name }}</p>
+                            <hr />
+                            <p>{{ site.date }}</p>
                         </div>
-                    
                 </div>
             </div>
         </div>

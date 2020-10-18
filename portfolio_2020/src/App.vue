@@ -47,10 +47,10 @@ export default {
           this.responsive.height = browserHeight;
 
       },
-      mouseMove: function(e) {
+      mouseMove: function() {
           // const cursor = document.getElementById('cursor');
           // cursor.style(e.clientX);
-          console.log(e.clientX);
+          // console.log(e.clientX);
       },
       
   },

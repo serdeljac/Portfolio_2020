@@ -21,7 +21,12 @@
                         class="trait"
                         v-for="trait in traits"
                         :key="trait.id">
-                            <p>CHECK</p>
+                            <p>
+                                <label class="toggle__container" @click="trickToggle($event, trait.trigger)">
+                                    <input class="switch" type="checkbox" v-bind:checked="trait.trigger" disabled>
+                                    <span class="slider"></span>
+                                </label>
+                            </p>
                             <p>{{ trait.name }}</p>
                     </div>
                 </div>
@@ -78,6 +83,28 @@
                 traits
             }
         },
+        methods: {
+            trickToggle: function(e, trig) {
+
+                const select = e.target.querySelector('.switch');
+                const timeout = 100;
+
+                if (trig == true) {
+                    select.checked = false;
+                    setTimeout(function() {
+                        select.checked = true;
+                    }, timeout);
+                } else {
+                    select.checked = true;
+                    setTimeout(function() {
+                        select.checked = false;
+                    }, timeout);
+                }
+
+                
+            
+            },
+        }
     }
 </script>
 

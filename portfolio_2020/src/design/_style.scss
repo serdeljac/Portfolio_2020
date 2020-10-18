@@ -25,6 +25,16 @@ $font_paragraph: 'Montserrat', sans-serif;
     100% { box-shadow: 0 0 0 1em rgba(#fff,0); }
 }
 
+@mixin dimensions($width, $height) {
+    width: $width;
+    height: $height;
+  }
+
+@mixin transitions($time) {
+    -webkit-transition: $time;
+    transition: $time;
+}
+
 /******************************************
     MEDIA QUERIES
 ******************************************/
@@ -51,6 +61,12 @@ $font_paragraph: 'Montserrat', sans-serif;
     @media (max-width: #{$screen-xl-min}) {
         @content;
     }
+ }
+
+//Website Display
+ @include md {
+    $webWidth: 250px;
+    $webWHeight: 150px;
  }
 
 
@@ -81,7 +97,7 @@ html {
 }
 
 body {
-    width: 100vw;
+    @include dimensions(100%, auto);
     overflow-X: hidden;
     font-family: $font_paragraph;
     max-width: 2500px;
@@ -112,7 +128,7 @@ body {
 .hero {
 
     &__wrapper {
-        width: 100%;
+        @include dimensions(100%, auto);
         display: flex;
         flex-direction: row;
         @include md {
@@ -162,7 +178,7 @@ body {
         
         button {
             max-width: 250px;
-            width: 100%;
+            @include dimensions(100%, auto);
             margin: 20px;
             @include lg {
                 margin: 20px auto;
@@ -210,7 +226,7 @@ body {
 
         .img__wrapper {
             min-height: 700px;
-            height: 100vh;
+            @include dimensions(auto, 100vh);
             img {
                 object-fit: contain;
                 height: 100%;
@@ -236,21 +252,18 @@ body {
         transform: translateX(-10%);
     }
 
+    .display__sites {
+        @include dimensions(85vw, auto);
+        max-width: 1800px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax($webWidth, 1fr));
+        justify-items: center;
+    }
+
     .website {
-        display: inline-flex;
-        justify-content: center;
-    }
-
-    .overlay {
-        width: 410px;
-        height: 230px;
-        position: absolute;
-    }
-
-    .item {
-        width: 410px;
-        height: 230px;
-        background-color: rgb(60, 60, 60);
+        @include dimensions($webWidth, $webWHeight);
+        margin: 1em 2em;
         background-repeat: no-repeat;
         background-size: auto 100%;
         display: grid;
@@ -303,7 +316,7 @@ body {
         display: grid;
         grid-template-columns: 400px auto;
         max-width: 1400px;
-        width: 100%;
+        @include dimensions(100%, auto);
         margin: auto;
         padding: 40px 2em;
         @include lg {
@@ -354,6 +367,56 @@ body {
             .trait {
                 text-align: right;
                 display: inline-flex;
+
+                .toggle__container {
+                    @include dimensions(60px, 35px);
+                    display: block;
+                    position: relative;
+                    cursor: pointer;
+                  }
+                  
+                  .switch {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                    &:checked + .slider:before {
+                      @include transform(translateX(25px));
+                    }
+                  }
+                  
+                  .slider {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 50px;
+                    pointer-events: none;
+                    @include transitions(.4s);
+                    
+                    &:before {
+                      position: absolute;
+                      border-radius: 10%;
+                      content: "";
+                      left: 5px; 
+                      top: 5px;
+                      @include dimensions(25px, 25px);
+                      @include transitions(.4s);
+                    }
+                  }
+                  
+                  
+                  .slider {
+                    background: $disableColor;
+                    &:before {
+                      border-radius: 50%;
+                      background-color: #fff;
+                    }
+                  }
+                  
+                  .switch:checked + .slider {
+                    background: $enableColor;
+                  }
             }
         }
 
