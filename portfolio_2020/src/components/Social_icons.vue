@@ -62,7 +62,7 @@
 
 <script>
     export default {
-        name: 'social_icons',
+        name: 'Social icons',
 
         data() {
             return {

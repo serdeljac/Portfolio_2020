@@ -7,7 +7,7 @@
       <About />
     </main>
     <Contact />
-    <footer>
+    <footer class="footer">
       <p>Made by Stjepan Erdeljac. Circa 2020.</p>
     </footer>
     <div id="cursor">
@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import Hero from './components/Hero.vue';
-import Work from './components/Work.vue';
-import Practice from './components/Practice.vue';
-import About from './components/About.vue';
-import Contact from './components/Contact.vue';
+import Hero from '@/components/Hero.vue';
+import Work from '@/components/Work.vue';
+import Practice from '@/components/Practice.vue';
+import About from '@/components/About.vue';
+import Contact from '@/components/Contact.vue';
 
 export default {
   name: "Assemble",

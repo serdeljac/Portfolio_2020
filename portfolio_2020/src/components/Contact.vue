@@ -33,7 +33,7 @@
 
 <script>
 
-import socialIcons from "@/components/social_icons/social_icons.vue";
+import socialIcons from "@/components/Social_icons.vue";
 
     const social = [
         {

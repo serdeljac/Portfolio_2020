@@ -12,6 +12,7 @@
                     :key="site.id"
                     class="website"
                     :class="'item-'+site.id"
+                    @click="openPreview"
                     v-bind:style="{backgroundImage: 'url('+site.img+')'}"
                     >
                         <div class="label">
@@ -28,16 +29,18 @@
             <h2>PEN</h2>
         </div>
 
+        <SitePreview v-if="preview"/>
+
     </section>
 </template>
 
 <script>
-import natalieMiles from "../assets/nm_web.jpg";
-import bridesphilly from "../assets/bbp_web.jpg";
-import lyassociates from "../assets/lya_web.jpg";
-import easynoa from "../assets/en_web.jpg";
-import glmortgage from "../assets/glm_web.jpg";
-
+import natalieMiles from "@/assets/nm_web.jpg";
+import bridesphilly from "@/assets/bbp_web.jpg";
+import lyassociates from "@/assets/lya_web.jpg";
+import easynoa from "@/assets/en_web.jpg";
+import glmortgage from "@/assets/glm_web.jpg";
+import SitePreview from '@/components/Site_preview.vue';
 
     const sites = [
         {
@@ -80,11 +83,18 @@ import glmortgage from "../assets/glm_web.jpg";
 
     export default {
         name: "Work",
+        components: { SitePreview },
         data() {
             return {
-                sites
+                sites,
+                preview: false
             }
         },
+        methods: {
+            openPreview: function() {
+                this.preview = true;
+            },
+        }
     }
 </script>
 
