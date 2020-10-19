@@ -1,9 +1,5 @@
 <template>
   <div class="site__wrapper">
-     <div class="debugValues">
-        <!-- <p>Width = {{ responsive.width }}</p>
-        <p>Height = {{ responsive.height }}</p> -->
-    </div>
     <Hero :responsive='responsive' />
     <main>
       <Work />
@@ -11,6 +7,9 @@
       <About />
     </main>
     <Contact />
+    <footer>
+      <p>Made by Stjepan Erdeljac. Circa 2020.</p>
+    </footer>
     <div id="cursor">
       <div class="ring"></div>
       <div class="dot"></div>
@@ -70,5 +69,4 @@ export default {
 
 <style lang="scss">
   @import './design/index.scss';
-  
 </style>

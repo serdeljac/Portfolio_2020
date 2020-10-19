@@ -21,13 +21,11 @@
                         class="trait"
                         v-for="trait in traits"
                         :key="trait.id">
-                            <p>
-                                <label class="toggle__container" @click="trickToggle($event, trait.trigger)">
-                                    <input class="switch" type="checkbox" v-bind:checked="trait.trigger" disabled>
-                                    <span class="slider"></span>
-                                </label>
-                            </p>
-                            <p>{{ trait.name }}</p>
+                            <label class="toggle__container" @click="trickToggle($event, trait.trigger)">
+                                <input class="switch" type="checkbox" v-bind:checked="trait.trigger" disabled>
+                                <span class="slider"></span>
+                                {{ trait.name }}
+                            </label>
                     </div>
                 </div>
                 <p class="skills">
@@ -90,19 +88,29 @@
                 const timeout = 100;
 
                 if (trig == true) {
-                    select.checked = false;
-                    setTimeout(function() {
-                        select.checked = true;
-                    }, timeout);
-                } else {
-                    select.checked = true;
-                    setTimeout(function() {
-                        select.checked = false;
-                    }, timeout);
-                }
 
-                
-            
+                    select.checked = false;
+                    e.target.style.pointerEvents = "none";
+
+                    setTimeout(function() {
+
+                        select.checked = true;
+                        e.target.style.pointerEvents = "auto";
+                    }, timeout);
+
+                } else {
+
+                    select.checked = true;
+                    e.target.style.pointerEvents = "none";
+
+                    setTimeout(function() {
+
+                        select.checked = false;
+                        e.target.style.pointerEvents = "auto";
+
+                    }, timeout);
+                    
+                }
             },
         }
     }

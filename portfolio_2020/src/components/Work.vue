@@ -32,7 +32,6 @@
 </template>
 
 <script>
-
 import natalieMiles from "../assets/nm_web.jpg";
 import bridesphilly from "../assets/bbp_web.jpg";
 import lyassociates from "../assets/lya_web.jpg";

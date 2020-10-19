@@ -85,15 +85,15 @@ $font_paragraph: 'Montserrat', sans-serif;
     scrollbar-width: none;
     // cursor: none !important;
 }
+button, a {
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
 
 html {
     font-size: 14px;
-    @include xl {
-        font-size: 10px;
-    }
-    @include sm {
-        font-size: 8px;
-    }
 }
 
 body {
@@ -333,6 +333,7 @@ body {
 
     .section__title {
         color: #373737;
+        text-align: right;
     }
 
     &__img {
@@ -345,46 +346,45 @@ body {
     }
 
     &__info {
-        text-align: right;
+        
         color: #fff;
 
         h3 {
             font-size: 4em;
             font-weight: bold;
+            text-align: right;
         }
 
         & > p {
             font-size: 1.6em;
             margin: 20px 0;
+            text-align: right;
         }
 
         .traits {
             font-size: 1.4em;
             display: grid;
             justify-content: end;
-            p {margin: 5px 0 5px 20px;}
+            transform: translateX(-200px);
 
-            .trait {
-                text-align: right;
+            .toggle__container {
+                @include dimensions(60px, 35px);
                 display: inline-flex;
-
-                .toggle__container {
-                    @include dimensions(60px, 35px);
-                    display: block;
-                    position: relative;
-                    cursor: pointer;
-                  }
-                  
-                  .switch {
+                position: relative;
+                cursor: pointer;
+                }
+                
+                .switch {
                     opacity: 0;
+                    margin-right: 60px;
                     width: 0;
                     height: 0;
                     &:checked + .slider:before {
-                      @include transform(translateX(25px));
+                        @include transform(translateX(25px));
                     }
-                  }
-                  
-                  .slider {
+                }
+                
+                .slider {
                     position: absolute;
                     top: 0;
                     left: 0;
@@ -395,29 +395,28 @@ body {
                     @include transitions(.4s);
                     
                     &:before {
-                      position: absolute;
-                      border-radius: 10%;
-                      content: "";
-                      left: 5px; 
-                      top: 5px;
-                      @include dimensions(25px, 25px);
-                      @include transitions(.4s);
+                        position: absolute;
+                        border-radius: 10%;
+                        content: "";
+                        left: 5px; 
+                        top: 5px;
+                        @include dimensions(25px, 25px);
+                        @include transitions(.4s);
                     }
-                  }
-                  
-                  
-                  .slider {
+                }
+                
+                
+                .slider {
                     background: $disableColor;
                     &:before {
-                      border-radius: 50%;
-                      background-color: #fff;
+                        border-radius: 50%;
+                        background-color: #fff;
                     }
-                  }
-                  
-                  .switch:checked + .slider {
+                }
+                
+                .switch:checked + .slider {
                     background: $enableColor;
-                  }
-            }
+                }
         }
 
         .skills {
@@ -433,9 +432,122 @@ body {
 ******************************************************/
 
 .contact {
+    min-height: 90vh;
+    display: grid;
 
-    .section__title h2 {
-        text-align: center;
+    .wrapper {
+        max-width: 1800px;
+        margin: auto;
+        padding: 0 2em;
+    }
+
+    .contact_header h3 {
+        font-size: 3em;
+        font-weight: bold;
+        width: 100%;
+        @include sm {
+            font-size: 2em;
+        }
+    }
+
+    .social_contacts {
+
+        p {
+            font-weight: bold;
+            font-size: 1.5em;
+            text-transform: lowercase;
+            margin: 40px 0 20px;
+        }
+
+        .social_lists {
+            display: grid;
+            max-width: 900px;
+            width: 100vw;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            line-height: 3;
+            text-indent: 12px;
+        }
+
+        .link {
+            display: inline-flex;
+            margin: 1em 0;
+            color: $colorPalet3;
+            transition: all .23s ease;
+            &:hover, &:focus {
+                color: $colorPalet5;
+                path, rect {
+                    transition: all .23s ease;
+                    fill: $colorPalet5;
+
+                }
+            }
+            @include sm {
+                margin: 0em 0;
+            }
+        }
+    }
+
+    svg {
+        transform: scale(0.8);
+        path, rect {
+            fill: $colorPalet3
+        }
+        polygon {
+            fill: #fff;
+        }
+    }
+
+    .get_in_touch {
+        margin: 40px 0;
+        display: flex;
+        justify-content: center;
+        line-height: 2;
+        font-size: 2em;
+        @include sm {
+            span {display: none;}
+        }
+        .btn {
+            padding: 0.3em 0.7em;
+            font-size: 1em;
+            letter-spacing: 3px;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+            background-size: 300% 100%;
+            color: #fff;
+            box-shadow: 0 0 50px rgba($colorPalet5, .5);
+            background-color: $colorPalet5;
+            background-image: linear-gradient(
+                to right, 
+                $colorPalet5, 
+                $colorPalet6, 
+                $colorPalet6, 
+                $colorPalet5
+            );
+            moz-transition: 
+                background $transitionBGSpeed ease, 
+                box-shadow $transitionShadowSpeed ease,
+                all $transitionShadowSpeed ease;
+            -o-transition: 
+                background $transitionBGSpeed ease, 
+                box-shadow $transitionShadowSpeed ease,
+                all $transitionShadowSpeed ease;
+            -webkit-transition: 
+                background $transitionBGSpeed ease, 
+                box-shadow $transitionShadowSpeed ease,
+                all $transitionShadowSpeed ease;
+            transition: 
+                background $transitionBGSpeed ease, 
+                box-shadow $transitionShadowSpeed ease,
+                all $transitionShadowSpeed ease;
+    
+            &:hover {
+                background-position: 100% 0;
+                box-shadow: 0 10px 30px $colorPalet5;
+                transform: scale(1.1);
+            }
+           
+            
+        }
     }
 
 }
