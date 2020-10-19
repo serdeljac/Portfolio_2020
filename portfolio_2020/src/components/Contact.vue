@@ -1,15 +1,11 @@
 <template>
-    <section class="contact">
+    <div class="contact">
 
         <!-- <div class="section__title">
             <h2>CONTACT</h2>
         </div> -->
 
         <div class="wrapper">
-
-            <div class="contact_header">
-                <h3>Stjepan Josip Erdeljac</h3>
-            </div>
 
             <div class="social_contacts">
                 <p>Find me on:</p>
@@ -32,7 +28,7 @@
                 </div>
 
         </div>
-    </section>
+    </div>
 </template>
 
 <script>

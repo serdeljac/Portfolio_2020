@@ -21,7 +21,7 @@ $font_paragraph: 'Montserrat', sans-serif;
 }
 
 @keyframes heroButton_2 {
-    0% { box-shadow: 0 0 0 0 $green; }
+    0% { box-shadow: 0 0 0 0 $colorPalet5; }
     100% { box-shadow: 0 0 0 1em rgba(#fff,0); }
 }
 
@@ -205,11 +205,11 @@ body {
 
         .contact_me {
             background: #fff;
-            border: 2px solid #000;
+            border: 2px solid $colorPalet5;
+            color: $colorPalet5;
             transition: all 0.3s ease 0s;
             &:hover, &:focus {
-                color: $green;
-                border: 2px solid $green;
+                border: 2px solid $colorPalet5;
                 animation: heroButton_2 1s;
             }
         }
@@ -434,6 +434,11 @@ body {
 .contact {
     min-height: 90vh;
     display: grid;
+    background-color: $colorPalet1;
+    color: #ffe;
+    @include sm {
+        min-height: auto;
+    }
 
     .wrapper {
         max-width: 1800px;
@@ -493,7 +498,7 @@ body {
             fill: $colorPalet3
         }
         polygon {
-            fill: #fff;
+            fill: $colorPalet1;
         }
     }
 
@@ -512,7 +517,7 @@ body {
             letter-spacing: 3px;
             font-weight: bold;
             font-family: "Montserrat", sans-serif;
-            background-size: 300% 100%;
+            background-size: 600% 100%;
             color: #fff;
             box-shadow: 0 0 50px rgba($colorPalet5, .5);
             background-color: $colorPalet5;
@@ -526,23 +531,23 @@ body {
             moz-transition: 
                 background $transitionBGSpeed ease, 
                 box-shadow $transitionShadowSpeed ease,
-                all $transitionShadowSpeed ease;
+                transform $transitionScaleSpeed ease;
             -o-transition: 
                 background $transitionBGSpeed ease, 
                 box-shadow $transitionShadowSpeed ease,
-                all $transitionShadowSpeed ease;
+                transform $transitionScaleSpeed ease;
             -webkit-transition: 
                 background $transitionBGSpeed ease, 
                 box-shadow $transitionShadowSpeed ease,
-                all $transitionShadowSpeed ease;
+                transform $transitionScaleSpeed ease;
             transition: 
                 background $transitionBGSpeed ease, 
                 box-shadow $transitionShadowSpeed ease,
-                all $transitionShadowSpeed ease;
+                transform $transitionScaleSpeed ease;
     
             &:hover {
                 background-position: 100% 0;
-                box-shadow: 0 10px 30px $colorPalet5;
+                box-shadow: 0 5px 50px $colorPalet5;
                 transform: scale(1.1);
             }
            
