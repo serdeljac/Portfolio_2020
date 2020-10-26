@@ -88,7 +88,7 @@ $font_paragraph: 'Montserrat', sans-serif;
     -ms-content-zooming: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    cursor: none !important;
+    // cursor: none !important;
 }
 button, a {
     &:active,
@@ -248,13 +248,11 @@ body {
     PREVIEW 
 ******************************************************/
 
-.preview {
-    @include dimensions(80vw, 90vh);
+.preview, .preview__background {
+    @include dimensions(100%, 100%);
     position: fixed;
-    border-radius: 3px;
-    left: 10vw;
-    top: 5vh;
-    background: green;
+    left: 0;
+    top: 0;
     z-index: 100;
 }
 
@@ -316,8 +314,117 @@ body {
 
 .practice {
 
+    padding-bottom: 60px;
+    height: 600px;
+
     .section__title h2 {
         text-align: center;
+    }
+
+    &__display {
+        width: 1280px;
+        @include xl {
+            width: 992px;
+        }
+        @include md {
+            width: 992px;
+            
+        }
+        margin: -80px auto 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        transform: perspective(900px); 
+        -webkit-transform: perspective(900px); 
+        transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d; 
+        -moz-transform-style: preserve-3d;
+
+        .card {
+            position: absolute;
+            height: 400px;
+            width: 300px;
+            margin: 0 auto;
+            padding: 2.5em 1.5em;
+            border-radius: 1em;
+            background: rgb(84,0,50);
+            color: $textColor;
+            transition:.6s;
+            transition-delay: 1.5s;
+            transform: rotatex(75deg) translatey(-200px) translatez(-100px);
+            background: rgb(84,0,50);
+            background: -moz-linear-gradient(-45deg,  rgb(84,0,50) 0%, rgb(31,81,163) 50%, rgb(0,56,135) 51%, rgb(130,3,51) 100%);
+            background: -webkit-linear-gradient(-45deg,  rgb(84,0,50) 0%,rgb(31,81,163) 50%,rgb(0,56,135) 51%,rgb(130,3,51) 100%);
+            background: linear-gradient(135deg,  rgb(84,0,50) 0%,rgb(31,81,163) 50%,rgb(0,56,135) 51%,rgb(130,3,51) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#540032', endColorstr='#820333',GradientType=1 );
+            &:hover {
+                transform: rotatez(0deg) rotatex(0deg);
+                transition:.6s;
+                box-shadow: 0px 20px 40px 10px rgba(0, 0, 0, 0.1);
+              }
+
+              &:nth-of-type(1) {
+                left: calc(15% - 150px);
+              }
+        
+               &:nth-of-type(2) {
+                left: calc(50% - 150px);
+              }
+        
+               &:nth-of-type(3) {
+                left: calc(85% - 150px);
+              }
+
+
+            .logo {
+                display: flex;
+                justify-content: center;
+                img {
+                    width: 80px;
+                    position: relative;
+                    filter: drop-shadow(2px 2px 4px #000);
+                }
+            }
+
+            &_header {
+                font-weight: bold;
+                font-size: 1.2em;
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            p {
+                text-align: center;
+            }
+
+            &-1 .logo {
+                img {
+                    filter: invert(100%) drop-shadow(2px 2px 4px #000);
+                }
+            }
+
+            &-2 .logo {
+                img:nth-of-type(1) {
+                    transform: translateX(35px);
+                    z-index: 50;
+                }
+                img:nth-of-type(2) {
+                    transform: translateY(25px);
+                    z-index: 49;
+                }
+                img:nth-of-type(3) {
+                    transform: translateX(-35px);
+                    z-index: 48;
+                }
+            }
+
+            &-3 .logo {
+                flex-direction: column;
+                img {
+                    width: 160px;
+                    margin: 5px auto;
+                }
+            }
+        }
     }
 
 }
@@ -328,7 +435,7 @@ body {
 ******************************************************/
 
 .about {
-    background-color: #000;
+    // background-color: #000;
     
     .wrapper {
         display: grid;
@@ -350,7 +457,6 @@ body {
     }
 
     .section__title {
-        color: #373737;
         text-align: right;
     }
 
@@ -627,6 +733,7 @@ body {
                 stroke-width: 1;
                 stroke-dasharray: 10;
                 transform-origin: 50% 50%;
+                opacity: .5;
             }
         }
     }

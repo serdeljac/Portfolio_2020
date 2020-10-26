@@ -15,7 +15,7 @@
                         :key="links.id"
                         v-bind:href="links.href"
                         target="_blank"
-                        class="link"
+                        class="link clickable"
                     >
                         <socialIcons :nameOfSocial="links.icon" />
                         <span>{{ links.name }}</span>
@@ -24,7 +24,7 @@
                 
             </div>
             <div class="get_in_touch">
-                    <span>Ready to </span><button class="btn">GET IN TOUCH</button><span>?</span>
+                    <span>Ready to </span><button class="btn clickable">GET IN TOUCH</button><span>?</span>
                 </div>
 
         </div>

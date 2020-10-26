@@ -10,7 +10,7 @@
                 <div 
                     v-for="site in sites"
                     :key="site.id"
-                    class="website"
+                    class="website clickable"
                     :class="'item-'+site.id"
                     @click="openPreview"
                     v-bind:style="{backgroundImage: 'url('+site.img+')'}"

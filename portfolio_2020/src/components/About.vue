@@ -18,7 +18,7 @@
                 <p>In the past few years, I have taken an intrest in the creative minds of designers and artists that have helped me find a calling in web development. The mindset of a developer and designer pushed me into a mindset where one can create quality and inspirational work that I found helped inspire others to also take part.</p>
                 <div class="traits">
                     <div
-                        class="trait"
+                        class="trait clickable"
                         v-for="trait in traits"
                         :key="trait.id">
                             <label class="toggle__container" @click="trickToggle($event, trait.trigger)">

@@ -25,7 +25,6 @@ import Work from '@/components/Work.vue';
 import Practice from '@/components/Practice.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
-// import { gsap } from 'gsap';
 import $ from 'jquery';
 
 export default {
@@ -71,7 +70,7 @@ export default {
       this.getDimensions();
       window.addEventListener('resize', this.getDimensions);
       // window.addEventListener('scroll', this.mouseMove);
-      // window.addEventListener('wheel', this.scrollWindow);
+      // window.addEventListener('wheel', this.mouseMove);
       window.addEventListener('mousemove', this.mouseMove);
       
       $('.clickable').hover(
