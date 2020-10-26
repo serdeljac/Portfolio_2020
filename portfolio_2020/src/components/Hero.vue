@@ -12,8 +12,8 @@
                     </h3>
                 </header>
                 <div class="call_to_action">
-                    <button class="btn view_work">View my work</button>
-                    <button class="btn contact_me">Contact me</button>
+                    <button class="btn view_work clickable">View my work</button>
+                    <button class="btn contact_me clickable">Contact me</button>
                 </div>
             </div>
             <div class="hero__profile">

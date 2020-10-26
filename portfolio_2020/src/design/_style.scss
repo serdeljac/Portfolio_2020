@@ -25,6 +25,11 @@ $font_paragraph: 'Montserrat', sans-serif;
     100% { box-shadow: 0 0 0 1em rgba(#fff,0); }
 }
 
+@keyframes cursor_spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 @mixin dimensions($width, $height) {
     width: $width;
     height: $height;
@@ -83,7 +88,7 @@ $font_paragraph: 'Montserrat', sans-serif;
     -ms-content-zooming: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    // cursor: none !important;
+    cursor: none !important;
 }
 button, a {
     &:active,
@@ -102,7 +107,9 @@ body {
     font-family: $font_paragraph;
     max-width: 2500px;
     margin: auto;
-    color: #000;
+    color: #ffe;
+    height: 100%;
+    background-color: $colorPalet1;
 }
 
 .btn {
@@ -117,7 +124,7 @@ body {
 .section__title {
     font-family: $font_title;
     user-select: none;
-    color: rgba(0,0,0,0.1);
+    color: rgba(255,255,255,0.1);
     font-size: 15em;
 }
 
@@ -203,7 +210,7 @@ body {
         }
 
         .contact_me {
-            background: #fff;
+            background: $colorPalet1;
             border: 2px solid $colorPalet5;
             color: $colorPalet5;
             transition: all 0.3s ease 0s;
@@ -443,7 +450,7 @@ body {
 ******************************************************/
 
 .contact {
-    min-height: 90vh;
+    height: calc(100vh - 50px);
     display: grid;
     background-color: $colorPalet1;
     color: #ffe;
@@ -485,10 +492,12 @@ body {
         }
 
         .link {
-            display: inline-flex;
+            display: flex;
+            align-items: center;
             margin: 1em 0;
             color: $colorPalet3;
             transition: all .23s ease;
+            font-size: 1.5em;
             &:hover, &:focus {
                 color: $colorPalet5;
                 path, rect {
@@ -573,7 +582,58 @@ body {
 ******************************************************/
 
 .footer {
-    background-color: $colorPalet1;
-    color: #ffe;
+    padding: 0 5em;
+    color: $textColor;
+    background-color: transparent;
     font-size: 1.2em;
+    height: 50px;
+    font-size: 0.95em;
 }
+
+
+/******************************************************
+    Cursor 
+******************************************************/
+
+
+
+    .dot {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        left: 0;
+        top: 0;
+        background-color: $textColor;
+        border-radius: 5px;
+        transition: all .001s linear;
+        z-index: 9999;
+        pointer-events: none;
+    }
+
+    .cursor_animate {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 9998;
+        transition: all .1s ease-out;
+        pointer-events: none;
+
+        &.active--clickable {
+
+            transform: scale(2);
+    
+            .cursor_circle {
+                animation: cursor_spin 2s linear infinite;
+                stroke-width: 1;
+                stroke-dasharray: 10;
+                transform-origin: 50% 50%;
+            }
+        }
+    }
+
+    .cursor_circle {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 4;
+        stroke-dasharray: 0;
+    }

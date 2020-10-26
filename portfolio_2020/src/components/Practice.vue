@@ -5,6 +5,10 @@
             <h2>PRACTICE</h2>
         </div>
 
+        <div class="practice__display">
+            
+        </div>
+
 
     </section>
 </template>
