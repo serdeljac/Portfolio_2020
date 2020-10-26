@@ -248,12 +248,73 @@ body {
     PREVIEW 
 ******************************************************/
 
-.preview, .preview__background {
+.preview,
+.preview__background,
+.preview__content {
     @include dimensions(100%, 100%);
     position: fixed;
     left: 0;
     top: 0;
+}
+
+.preview {
     z-index: 100;
+
+    &__background {
+        z-index: 101;
+        
+        
+    }
+
+    &__content {
+        z-index: 102;
+        display: inline-flex;
+
+        .display {
+            width: 60%;
+            background: red;
+        }
+
+        .details {
+            width: 40%;
+            background: green;
+
+
+
+
+            .navigation {
+                position: absolute;
+                bottom: 20px;
+                left: calc(50% - 125px);
+                border-radius: 2em;
+                background-color: rgba(50,50,50,.6);
+                z-index: 203;
+                display: grid;
+                grid-template-columns: 100px 50px 100px;
+                justify-items: center;
+                align-items: center;
+                .arrow, span {
+                    background-color: rgba(250, 250, 250, .6);
+                    border-radius: 10px;
+                }
+                .arrow {
+                    padding: 3px;
+                    margin: 5px;
+                    width: 50px;
+                    height: 50px;
+                     border-radius: 25px;
+                }
+                span {
+                    content: "";
+                    width: 15px;
+                    height: 15px;
+                    opacity: 0.6;
+                }
+            }
+
+
+        }
+    }
 }
 
 
@@ -305,8 +366,6 @@ body {
     }
 
 }
-
-
 
 /******************************************************
     PRACTICE 
@@ -428,7 +487,6 @@ body {
     }
 
 }
-
 
 /******************************************************
     ABOUT 
