@@ -2,7 +2,7 @@
     <div class="preview">
 
         <div class="preview__background">
-            
+
         </div>
 
         <div class="preview__content">
@@ -13,9 +13,9 @@
                 <div class="description"></div>
                 <div class="site_link"></div>
                 <div class="navigation">
-                    <div class="arrow left">Left</div>
-                    <span></span>
-                    <div class="arrow right">Right</div>
+                    <div class="arrow left">←</div>
+                    <span>|</span>
+                    <div class="arrow right">→</div>
                 </div>
             </div>
         </div>

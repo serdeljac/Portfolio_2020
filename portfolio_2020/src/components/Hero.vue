@@ -4,11 +4,10 @@
             <div class="hero__header">
                 <header>
                     <h1>
-                        This is <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
+                        Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
                     </h1>
-
                     <h3>
-                        He's a <span>wordpress developer, photographer,</span> and a <span>goal-oriented</span> individual. When not coding, he spends his time at the gym, gardening, and researching inspirational UI trends and styles.
+                        I'm a <span>wordpress developer, photographer,</span> and a <span>goal-oriented</span> individual, spending my time at the gym, gardening, and researching inspirational UI trends and styles.
                     </h3>
                 </header>
                 <div class="call_to_action">
@@ -16,20 +15,8 @@
                     <button class="btn contact_me clickable">Contact me</button>
                 </div>
             </div>
-            <div class="hero__profile">
-                <div class="img__wrapper"> 
-                    <img 
-                        src="../assets/hero_img_1.jpg" 
-                        alt="Stjepan Erdeljac" 
-                        v-if="responsive.width >= responsive.md"/>
-                    <img 
-                        src="../assets/hero_img_2.jpg" 
-                        alt="Stjepan Erdeljac"
-                        class="img__profile-mobile" 
-                        v-if="responsive.width < responsive.md"/>
-                </div>
-            </div>
         </div>
+        <div class="hero__gradient"></div>
     </div>
 </template>
 

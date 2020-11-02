@@ -1,14 +1,26 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+@font-face {
+    font-family: "Morganite";
+    src: url("./assets/fonts/Morganite-Book.ttf");
+}
+
+$font_title: 'Oswald', sans-serif;
+$font_paragraph: 'Montserrat', sans-serif;
+$fontColor: #ffe;
+
+//COLOR PALET
+
 $colorPalet1: #150215; //Primary for backgrounds
 $colorPalet2: #540032;
 $colorPalet3: #820333;
 $colorPalet4: #0C0F40;
 $colorPalet5: #C9283E;
 $colorPalet6: #F0433A;
-$green: #20bf6b;
-$textColor: #ffe;
 
-$tablet-width: 768px;
-$desktop-width: 1024px;
+//MEDIA SIZES
 
 $screen-sm-min: 576px;
 $screen-md-min: 768px;
@@ -18,8 +30,8 @@ $screen-xl-min: 1280px;
 $webWidth: 410px;
 $webWHeight: 230px;
 
-$disableColor: #c62d1f;
-$enableColor: #74ad5a;
+$disableColor: #ff2929;
+$enableColor: #50af24;
 
 $transitionBGSpeed: 3s;
 $transitionScaleSpeed: .5s;

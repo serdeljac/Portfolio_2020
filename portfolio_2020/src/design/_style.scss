@@ -1,19 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
 
-$font_title: 'Oswald', sans-serif;
-$font_paragraph: 'Montserrat', sans-serif;
 
-@font-face {
-    font-family: "Morganite";
-    src: url("./assets/fonts/Morganite-Book.ttf");
-}
 
-@mixin transform($property) { 
-    -webkit-transform: $property;
-    -ms-transform: $property;
-    transform: $property;
-  }
 
 @keyframes heroButton_1 {
     0% { box-shadow: 0 0 0 0 $colorPalet5; }
@@ -26,18 +13,29 @@ $font_paragraph: 'Montserrat', sans-serif;
 }
 
 @keyframes cursor_spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: scale(1.5) rotate(0deg); }
+    100% { transform: scale(1.5) rotate(360deg); }
 }
 
-@mixin dimensions($width, $height) {
-    width: $width;
-    height: $height;
+// CSS: transform
+@mixin transform($property) { 
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    transform: $property;
   }
 
+
+// CSS: transition
 @mixin transitions($time) {
     -webkit-transition: $time;
     transition: $time;
+}
+
+
+// CSS width and height
+@mixin dimensions($width, $height) {
+    width: $width;
+    height: $height;
 }
 
 /******************************************
@@ -99,17 +97,25 @@ button, a {
 
 html {
     font-size: 14px;
+    @include lg {
+        font-size: 12px;
+    }
+    @include sm {
+        font-size: 10px;
+    }
 }
 
 body {
-    @include dimensions(100%, auto);
     overflow-X: hidden;
     font-family: $font_paragraph;
-    max-width: 2500px;
-    margin: auto;
     color: #ffe;
-    height: 100%;
     background-color: $colorPalet1;
+}
+
+.site__wrapper {
+    max-width: 2200px;
+    margin: auto;
+    width: 100%;
 }
 
 .btn {
@@ -124,7 +130,7 @@ body {
 .section__title {
     font-family: $font_title;
     user-select: none;
-    color: rgba(255,255,255,0.1);
+    opacity: 0.1;
     font-size: 15em;
 }
 
@@ -134,24 +140,33 @@ body {
 
 .hero {
 
+    background: $colorPalet2;
+    background: -moz-linear-gradient(top,  $colorPalet2 0%, $colorPalet1 100%);
+    background: -webkit-linear-gradient(top,  $colorPalet2 0%, $colorPalet1 100%);
+    background: linear-gradient(to bottom, $colorPalet2 0%, $colorPalet1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$colorPalet2, endColorstr=$colorPalet1, GradientType=0 );
+
     &__wrapper {
-        @include dimensions(100%, auto);
-        display: flex;
-        flex-direction: row;
-        @include md {
-            flex-direction: column-reverse;
+        @include dimensions(100%, 100%);
+        min-height: 100vh;
+        max-height: 1000px;
+        display: grid;
+        align-items: center;
+        background:  url('./assets/hero_img_v3.png') right bottom/auto 100% no-repeat;
+        @include lg {
+            background: url('./assets/hero_img_v3--mobile.jpg') center top/cover no-repeat;
         }
     }
 
     &__header {
-        display: grid;
-        align-content: center;
-        margin: 0 5%;
+        margin: 2em 6em;
         z-index: 10;
-        max-width: 900px;
-        @include md {
-            justify-items: center;
+        width: calc(100% - 500px);
+        max-width: 850px;
+        @include lg {
+            max-width: none;
             text-align: center;
+            width: auto;
         }
         h1, h3 {
             font-weight: 400;
@@ -170,78 +185,51 @@ body {
     .call_to_action {
         font-size: 2.4em;
         justify-content: center;
-        @include xl {
-            display: flex;
-        }
         @include lg {
-            flex-direction: column;
-        }
-        @include md {
-            flex-direction: row;
-            button {margin: 20px !important;}
-        }
-        
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            justify-items: center;
+        }        
         
         button {
             max-width: 250px;
-            @include dimensions(100%, auto);
+            min-width: 200px;
             margin: 20px;
-            @include lg {
-                margin: 20px auto;
-                max-width: none;
-                width: auto;
-                min-width: 200px;
-            }
-            @include md {
-                margin: 20px;
-            }
-            @include sm {
-                margin: 0px;
-                min-width: 0;
-            }
+            @include dimensions(100%, auto);
         }
 
         .view_work {
-            color: #fff;
-            background: linear-gradient(150deg, #820333 0%, #C9283E 100%);
+            color: $fontColor;
+            background: -moz-linear-gradient(150deg, $colorPalet3 0%, $colorPalet5 100%);
+            background: -webkit-linear-gradient(150deg, $colorPalet3 0%, $colorPalet5 100%);
+            background: linear-gradient(150deg, $colorPalet3 0%, $colorPalet5 100%);
             &:hover, &:focus {
                 animation: heroButton_1 1s;
             }
         }
 
         .contact_me {
-            background: $colorPalet1;
-            border: 2px solid $colorPalet5;
             color: $colorPalet5;
-            transition: all 0.3s ease 0s;
+            background: transparent;
+            border: 2px solid $colorPalet5;
             &:hover, &:focus {
-                border: 2px solid $colorPalet5;
                 animation: heroButton_2 1s;
             }
         }
     }
 
-    &__profile {
-        display: grid;
-        justify-content: center;
+    &__gradient {
         width: 100%;
-        @include md {
-            margin-top: 40px;
-            height: 250px;
-        }
-
-        .img__wrapper {
-            min-height: 700px;
-            @include dimensions(auto, 100vh);
-            img {
-                object-fit: contain;
-                height: 100%;
-            }
-            .img__profile-mobile {
-                height: 200px;
-            }
-        }
+        height: 10px;
+        transform: translateY(-5px);
+        position: relative;
+        z-index: 100;
+        background: -moz-linear-gradient(top,  rgba(84,0,50,0) 0%, rgba(21,2,21,1) 100%);
+        background: -webkit-linear-gradient(top,  rgba(84,0,50,0) 0%,rgba(21,2,21,1) 100%);
+        background: linear-gradient(to bottom,  rgba(84,0,50,0) 0%,rgba(21,2,21,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00540032', endColorstr='#150215',GradientType=0 );
     }
+
 }
 
 /******************************************************
@@ -293,21 +281,13 @@ body {
                 grid-template-columns: 100px 50px 100px;
                 justify-items: center;
                 align-items: center;
-                .arrow, span {
-                    background-color: rgba(250, 250, 250, .6);
-                    border-radius: 10px;
-                }
+                line-height: 1;
                 .arrow {
-                    padding: 3px;
-                    margin: 5px;
-                    width: 50px;
-                    height: 50px;
-                     border-radius: 25px;
+                    font-size: 50px;
                 }
                 span {
-                    content: "";
-                    width: 15px;
-                    height: 15px;
+                    border-radius: 10px;
+                    background-color: white;
                     opacity: 0.6;
                 }
             }
@@ -324,18 +304,34 @@ body {
 
 .work {
 
-    .section__title h2 {
-        text-align: right;
-        transform: translateX(-10%);
+    .section__title {
+        transform: translateX(12%);
     }
 
-    .display__sites {
-        @include dimensions(85vw, auto);
-        max-width: 1800px;
+    &__display {
+        max-width: 1600px;
         margin: auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax($webWidth, 1fr));
         justify-items: center;
+        @include xl {
+            transform: scale(0.7);
+        }
+    }
+
+    .display__grid {
+        min-height: 400px;
+        display: grid;
+        @include xl {
+            display: block;
+            min-height: auto;
+        }
+        &.center {
+            align-content: center;   
+        }
+        &.end {
+            align-content: end;
+        }
     }
 
     .website {
@@ -343,22 +339,28 @@ body {
         margin: 1em 2em;
         background-repeat: no-repeat;
         background-size: auto 100%;
-        display: grid;
-        justify-content: start;
-        align-content: end;
-        cursor: pointer;
         box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
         0 2px 2px rgba(0,0,0,0.15), 
         0 4px 4px rgba(0,0,0,0.15), 
         0 8px 8px rgba(0,0,0,0.15);
+        @include transitions(transform .4s ease);
+        &:hover {
+            transform: translateY(50px);
+            .label {
+                transform: translateY(-50px);
+                opacity: 1;
+            }
+        }
 
         .label {
-            transform: translateX(-10px);
-            text-align: right;
+            text-align: center;
+            opacity: 0;
             color: #fff;
-            font-size: 1.5em;
+            font-size: 2em;
+            text-transform: uppercase;
             font-weight: bold;
             text-shadow: 2px 2px 3px #444;
+            @include transitions(transform .4s ease);
             hr {
                 margin: 3px;
             }
@@ -406,7 +408,7 @@ body {
             padding: 2.5em 1.5em;
             border-radius: 1em;
             background: rgb(84,0,50);
-            color: $textColor;
+            color: $fontColor;
             transition:.6s;
             transition-delay: 1.5s;
             transform: rotatex(75deg) translatey(-200px) translatez(-100px);
@@ -747,7 +749,7 @@ body {
 
 .footer {
     padding: 0 5em;
-    color: $textColor;
+    color: $fontColor;
     background-color: transparent;
     font-size: 1.2em;
     height: 50px;
@@ -759,46 +761,41 @@ body {
     Cursor 
 ******************************************************/
 
+    .cursor {       
+        
+        &__dot, &__circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            pointer-events: none;
+        }
 
+        &__dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: $fontColor;
+            transition: all .001s linear;
+        }
 
-    .dot {
-        position: absolute;
-        width: 7px;
-        height: 7px;
-        left: 0;
-        top: 0;
-        background-color: $textColor;
-        border-radius: 5px;
-        transition: all .001s linear;
-        z-index: 9999;
-        pointer-events: none;
-    }
+        &__circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            border: 2px solid $fontColor;
+            transition: all .1s ease-out;
+        }
 
-    .cursor_animate {
-        position: absolute;
-        left: 0;
-        top: 0;
-        z-index: 9998;
-        transition: all .1s ease-out;
-        pointer-events: none;
+        &.active {
 
-        &.active--clickable {
-
-            transform: scale(2);
-    
-            .cursor_circle {
-                animation: cursor_spin 2s linear infinite;
-                stroke-width: 1;
-                stroke-dasharray: 10;
+            .cursor__circle {
                 transform-origin: 50% 50%;
-                opacity: .5;
+                border: 1px dashed $fontColor;
+                animation: cursor_spin 2s linear infinite;                
             }
         }
-    }
 
-    .cursor_circle {
-        fill: none;
-        stroke: #fff;
-        stroke-width: 4;
-        stroke-dasharray: 0;
+
     }

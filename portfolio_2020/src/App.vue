@@ -10,11 +10,9 @@
     <footer class="footer">
       <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
     </footer>
-    <div class="dot"></div>
-    <div class="cursor_animate">
-      <svg id="svg_cursor" width="50" height="50" data-name="Cursor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.38 97.38">
-        <circle class="cursor_circle" cx="48.69" cy="48.69" r="42.5"/>
-      </svg>
+    <div class="cursor">
+      <div class="cursor__dot"></div>
+      <div class="cursor__circle"></div>
     </div>
   </div>
 </template>
@@ -52,16 +50,18 @@ export default {
 
       },
       mouseMove: function(e) {
-          const cursorDot = document.querySelector('.dot');
-          const cursorSvg = document.querySelector('.cursor_animate');
+
+          const cursorDot = document.querySelector('.cursor__dot');
+          const cursorCircle = document.querySelector('.cursor__circle');
+
           const x = e.pageX;
           const y = e.pageY;
 
           cursorDot.style.left = `${(x-2)}px`;
           cursorDot.style.top =  `${(y-2)}px`;
 
-          cursorSvg.style.left = `${(x-24)}px`;
-          cursorSvg.style.top =  `${(y-24)}px`;
+          cursorCircle.style.left = `${(x-22)}px`;
+          cursorCircle.style.top =  `${(y-22)}px`;
           
       }
       
@@ -75,10 +75,10 @@ export default {
       
       $('.clickable').hover(
         function() {
-          $('.cursor_animate').addClass('active--clickable');
+          $('.cursor').addClass('active');
         },
         function() {
-          $('.cursor_animate').removeClass('active--clickable');
+          $('.cursor').removeClass('active');
         }
       );
 
