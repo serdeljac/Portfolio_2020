@@ -7,7 +7,7 @@
 
         <div class="practice__display">
 
-            <div class="card card-1 clickable">
+            <div class="card card-1 clickable" @mouseenter="liftCard" @mouseleave="hideCard">
                 <div class="logo">
                     <img src="@/assets/wp_logo.png" class="logo_square" alt="Wordpress" />
                 </div>
@@ -17,7 +17,7 @@
                     site that’s easy for users to maintain and update.</p>
             </div>
 
-            <div class="card card-2 clickable">
+            <div class="card card-2 clickable" @mouseenter="liftCard" @mouseleave="hideCard">
                 <div class="logo">
                     <img src="@/assets/vue_logo.png" class="logo_square" alt="Vue" />
                     <img src="@/assets/adobe_logo.png" class="logo_square" alt="Adobe" />
@@ -29,7 +29,7 @@
                     other web technologies to get the project done right.</p>
             </div>
 
-            <div class="card card-3 clickable">
+            <div class="card card-3 clickable" @mouseenter="liftCard" @mouseleave="hideCard">
                 <div class="logo">
                     <img src="@/assets/asana_logo.png" alt="Asana" />
                     <img src="@/assets/slack_logo.png" alt="Slack" />
@@ -39,15 +39,34 @@
                     applications, there’s no hesitation when being asked to use or learn 
                     other web technologies to get the project done right.</p>
             </div>
-            
         </div>
-
-
     </section>
 </template>
 
 <script>
+    // import $ from 'jquery';
+    import gsap from 'gsap';
+
     export default {
-        name: "Practice"
+        name: "Practice",
+        methods: {
+            liftCard: function(e) {
+                // e.target.classList.add("active");
+                const card = e.target;
+                const tl = gsap.to(card, {transformStyle:"preserve-3d", rotateZ: 0, rotateX: 0}, 'linear');
+                tl.play();
+            },
+            hideCard: function(e) {
+                const card = e.target;
+                const tl = gsap.to(card, {transformStyle:"preserve-3d", rotateX: 75}, 'linear');
+                tl.play();
+                setTimeout(
+                    // function() {
+                    //     e.target.classList.remove("active");
+                    // }, 1600
+                );
+                
+            }
+        }
     }
 </script>

@@ -1,8 +1,13 @@
 <template>
     <div class="hero">
+    
         <div class="hero__wrapper">
+
             <div class="hero__header">
                 <header>
+
+
+
                     <h1>
                         Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
                     </h1>
@@ -15,15 +20,25 @@
                     <button class="btn contact_me clickable">Contact me</button>
                 </div>
             </div>
+
+            <div class="hero__aside">
+
+            </div>
+
         </div>
-        <div class="hero__gradient"></div>
     </div>
 </template>
 
 <script>
+    import titleImg from '@/assets/title_img.jpg';
+
     export default {
         name: "Hero",
-        props: ['responsive'],
+        data() {
+            return {
+                titleImg
+            }
+        },
     }
 </script>
 

@@ -5,7 +5,7 @@
             <h2>WEB</h2>
         </div>
 
-        <div class="work__display">
+        <div class="work__web-display">
             <div 
                 v-for="site in sites"
                 :key="site.id"
@@ -24,13 +24,18 @@
             <h2>PEN</h2>
         </div>
 
-        <div class="pens__display"> 
+        <div class="work__pen-display"> 
             <div 
-                class="pens__list"
+                class="pen"
                 v-for="pen in pens"
                 :key="pen.id"
                 >
-                <p>{{ pen.name }}</p>
+                <p>
+                    <a 
+                        v-bind:href="pen.href"
+                        target="_blank"
+                        class="pen__link clickable">{{ pen.name }}</a>
+                </p>
             </div>
         </div>
 
@@ -44,8 +49,6 @@ import bridesphilly from "@/assets/bbp_web.jpg";
 import lyassociates from "@/assets/lya_web.jpg";
 import easynoa from "@/assets/en_web.jpg";
 import glmortgage from "@/assets/glm_web.jpg";
-import gsap from 'gsap';
-import $ from 'jquery';
 
 const sites = [
     {
@@ -108,22 +111,6 @@ const pens = [
                 pens
             }
         },
-        mounted() {
-            const website = $('.website');
-            const tl = gsap.timeline({repeat: 0, defaults: {duration: 2}});
-            tl.to(website, {y: 50});
-            tl.pause();
-            
-            $('.website').hover(
-                function() {
-                    tl.play();
-                },
-                function() {
-                    tl.reverse();
-                }
-            );
-
-        }
     }
 </script>
 

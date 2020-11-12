@@ -1,9 +1,9 @@
 <template>
   <div class="site__wrapper">
-    <Hero :responsive='responsive' />
+    <Hero />
     <main>
       <Work />
-      <Practice />
+      
       <About />
     </main>
     <Contact />
@@ -20,35 +20,15 @@
 <script>
 import Hero from '@/components/Hero.vue';
 import Work from '@/components/Work.vue';
-import Practice from '@/components/Practice.vue';
+// import Practice from '@/components/Practice.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
 import $ from 'jquery';
 
 export default {
   name: "Assemble",
-  components: { Hero, Work, Practice, About, Contact },
-  data() {
-      return {
-          responsive: {
-            xl: 1280,
-            lg: 992,
-            md: 768,
-            sm: 576,
-            width: 0,
-            height: 0,
-          },
-      }
-  },
+  components: { Hero, Work, About, Contact },
   methods: {
-      getDimensions: function() {
-
-          const browserWidth = window.screen.width;
-          const browserHeight = window.screen.height;
-          this.responsive.width = browserWidth;
-          this.responsive.height = browserHeight;
-
-      },
       mouseMove: function(e) {
 
           const cursorDot = document.querySelector('.cursor__dot');
@@ -67,10 +47,6 @@ export default {
       
   },
   mounted() {
-      this.getDimensions();
-      window.addEventListener('resize', this.getDimensions);
-      // window.addEventListener('scroll', this.mouseMove);
-      // window.addEventListener('wheel', this.mouseMove);
       window.addEventListener('mousemove', this.mouseMove);
       
       $('.clickable').hover(

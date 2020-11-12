@@ -5,7 +5,7 @@
 
 
             <div class="about__img">
-                <img v-bind:src="aboutPic" alt="Stjepan Erdeljac" />
+                <!-- <img v-bind:src="aboutPic" alt="Stjepan Erdeljac" /> -->
             </div>
 
 
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-    import aboutPic from '../assets/portfolio_about.jpg';
+    
     
     const traits = [
         {
@@ -77,7 +77,7 @@
     export default {
         data() {
             return {
-                aboutPic,
+                
                 traits
             }
         },
