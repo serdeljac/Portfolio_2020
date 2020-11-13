@@ -151,9 +151,12 @@ body {
 
     &__wrapper {
         display: grid;
-        grid-template-columns: auto 500px;
+        grid-template-columns: auto 500px 100px;
         align-items: center; 
         margin: auto;
+        &::after {
+            content: ' ';
+        }
         @include lg {
             padding: 0 2em;
             display: flex;
@@ -380,9 +383,6 @@ body {
                 content: '';
                 &:hover {
                     color: $colorPalet6;
-                    &::before {
-                        content: 'test'
-                    }
                 }
             }
         }

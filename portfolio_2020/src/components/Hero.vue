@@ -5,9 +5,6 @@
 
             <div class="hero__header">
                 <header>
-
-
-
                     <h1>
                         Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
                     </h1>
@@ -21,9 +18,7 @@
                 </div>
             </div>
 
-            <div class="hero__aside">
-
-            </div>
+            <div class="hero__aside"></div>
 
         </div>
     </div>
