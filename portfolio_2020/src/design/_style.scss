@@ -1,10 +1,12 @@
-@keyframes heroButton_1 {
-    0% { box-shadow: 0 0 0 0 $colorPalet5; }
+
+//Animations
+@keyframes hero_btn-work {
+    0% { box-shadow: 0 0 0 0 $paletColor4; }
     100% { box-shadow: 0 0 0 1em rgba(#fff,0); }
 }
 
-@keyframes heroButton_2 {
-    0% { box-shadow: 0 0 0 0 $colorPalet5; }
+@keyframes hero_btn-contact {
+    0% { box-shadow: 0 0 0 0 $paletColor4; }
     100% { box-shadow: 0 0 0 1em rgba(#fff,0); }
 }
 
@@ -20,13 +22,11 @@
     transform: $property;
   }
 
-
 // CSS: transition
 @mixin transitions($time) {
     -webkit-transition: $time;
     transition: $time;
 }
-
 
 // CSS width and height
 @mixin dimensions($width, $height) {
@@ -103,15 +103,17 @@ html {
 
 body {
     overflow-X: hidden;
-    font-family: $font_paragraph;
-    color: #ffe;
-    background-color: $colorPalet1;
+    font-family: $font_default;
+    color: $fontColor;
+    background-color: $paletColor1;
 }
 
 .site__wrapper {
-    max-width: 2200px;
+    max-width: 2000px;
+    box-shadow: 0px 0px 50px 50px $paletColor2;
     margin: auto;
     width: 100%;
+    background-color: $paletColor2;
 }
 
 .btn {
@@ -120,7 +122,6 @@ body {
     border-radius: 50px;
     border: 0;
     margin: 0 20px;
-    cursor: pointer;
 }
 
 .section__title {
@@ -136,54 +137,51 @@ body {
 
 .hero {
 
-    min-height: 100vh;
-    max-height: 1000px;
-    background: $colorPalet2;
-    // background: -moz-linear-gradient(top,  $colorPalet2 0%, $colorPalet1 100%);
-    // background: -webkit-linear-gradient(top,  $colorPalet2 0%, $colorPalet1 100%);
-    // background: linear-gradient(to bottom, $colorPalet2 0%, $colorPalet1 100%);
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$colorPalet2, endColorstr=$colorPalet1, GradientType=0 );
-    background: radial-gradient(37.37% 39.85% at 33.1% 42.28%, $colorPalet2 0%, #070105 100%);
-
-    @include lg {
-        background: url('./assets/hero_img--mobile.jpg') center top/cover no-repeat;
-    }
-
     &__wrapper {
-        display: grid;
-        grid-template-columns: auto 500px 100px;
-        align-items: center; 
-        margin: auto;
-        &::after {
-            content: ' ';
-        }
+        min-height: 800px;
+        height: 100vh;
+        max-height: 1000px;
+        background: $paletColor1 url('./assets/hero_img_v4.jpg') bottom right/2000px auto no-repeat;
+    
         @include lg {
-            padding: 0 2em;
-            display: flex;
+            background-image: none;
         }
     }
 
     &__header {
-        padding: 0 10%;
-        text-align: center;
-        @include lg {
-            padding: 0;
-           
+        font-size: 1.7em;
+        display: grid;
+        align-content: center;
+        grid-template-columns: 100px minmax(500px, 900px) 800px;
+        height: 100vh;
+        &::before, &::after {
+            content: ' ';
         }
+
+        @include lg {
+            margin: auto;
+            padding: 0 2em;
+            display: flex;
+            align-items: center;
+        }
+        
         h1, h3 {
             font-weight: 400;
-            font-size: 2.5em;
             margin-bottom: 20px;
         }
+        h1 {
+            font-size: 1.8em;
+            @include sm {
+                font-size: 1.4em;
+            }
+        }
         h3 {
-            font-size: 1.5em;
             margin-bottom: 40px;
         }
         span {
             font-weight: 800;
         }
         .call_to_action {
-            font-size: 1.5em;
             justify-content: center;
             @include lg {
                 display: grid;
@@ -200,40 +198,32 @@ body {
     
             .view_work {
                 color: $fontColor;
-                background: -moz-linear-gradient(150deg, $colorPalet3 0%, $colorPalet5 100%);
-                background: -webkit-linear-gradient(150deg, $colorPalet3 0%, $colorPalet5 100%);
-                background: linear-gradient(150deg, $colorPalet3 0%, $colorPalet5 100%);
+                background: -moz-linear-gradient(150deg, $paletColor3 0%, $paletColor4 100%);
+                background: -webkit-linear-gradient(150deg, $paletColor3 0%, $paletColor4 100%);
+                background: linear-gradient(150deg, $paletColor3 0%, $paletColor4 100%);
                 &:hover, &:focus {
-                    animation: heroButton_1 1s;
+                    animation: hero_btn-work 1s;
                 }
             }
     
             .contact_me {
-                color: $colorPalet5;
+                color: $paletColor4;
                 background: transparent;
-                border: 2px solid $colorPalet5;
+                border: 2px solid $paletColor4;
                 &:hover, &:focus {
-                    animation: heroButton_2 1s;
+                    animation: hero_btn-contact 1s;
                 }
             }
         }
     }
 
-    &__aside {
-        height: 100vh;
-        background-color: $fontColor;
-        box-shadow: inset 10px -10px 4em 1px rgba(0,0,0,.3), 
-                    inset 12px -12px 4em 1px rgba(0,0,0,.2);
-                    background: url('./assets/hero_img_v1.jpg') center top/cover no-repeat;
-        // box-shadow: inset 0 2px 1px rgba(0,0,0,0.09), 
-        //       0 4px 2px rgba(0,0,0,0.09), 
-        //       0 8px 4px rgba(0,0,0,0.09), 
-        //       0 16px 8px rgba(0,0,0,0.09),
-        //       0 32px 16px rgba(0,0,0,0.09);
+    &__transition {
+        transform: translateY(-1px) scaleX(1.2);
+        .cls-1 {
+            fill: $paletColor1; 
+            filter: drop-shadow(20px 0px 25px $paletColor1);
+        }
     }
-
-  
-
 }
 
 /******************************************************
@@ -378,11 +368,11 @@ body {
 
         .pen {
             &__link {
-                color: $colorPalet5;
+                color: $paletColor4;
                 @include transitions(all .23s ease);
                 content: '';
                 &:hover {
-                    color: $colorPalet6;
+                    color: $paletColor4;
                 }
             }
         }
@@ -639,7 +629,7 @@ body {
 .contact {
     height: calc(100vh - 50px);
     display: grid;
-    background-color: $colorPalet1;
+    background-color: $paletColor2;
     color: #ffe;
     @include sm {
         min-height: auto;
@@ -682,14 +672,14 @@ body {
             display: flex;
             align-items: center;
             margin: 1em 0;
-            color: $colorPalet3;
+            color: $paletColor3;
             transition: all .23s ease;
             font-size: 1.5em;
             &:hover, &:focus {
-                color: $colorPalet5;
+                color: $paletColor4;
                 path, rect {
                     transition: all .23s ease;
-                    fill: $colorPalet5;
+                    fill: $paletColor4;
 
                 }
             }
@@ -702,10 +692,10 @@ body {
     svg {
         transform: scale(0.8);
         path, rect {
-            fill: $colorPalet3
+            fill: $paletColor3
         }
         polygon {
-            fill: $colorPalet1;
+            fill: $paletColor2;
         }
     }
 
@@ -726,14 +716,14 @@ body {
             font-family: "Montserrat", sans-serif;
             background-size: 600% 100%;
             color: #fff;
-            box-shadow: 0 0 50px rgba($colorPalet5, .5);
-            background-color: $colorPalet5;
+            box-shadow: 0 0 50px rgba($paletColor4, .5);
+            background-color: $paletColor4;
             background-image: linear-gradient(
                 to right, 
-                $colorPalet5, 
-                $colorPalet6, 
-                $colorPalet6, 
-                $colorPalet5
+                $paletColor4, 
+                $paletColor4, 
+                $paletColor4, 
+                $paletColor4
             );
             -o-transition: 
                 background $transitionBGSpeed ease, 
@@ -750,7 +740,7 @@ body {
     
             &:hover {
                 background-position: 100% 0;
-                box-shadow: 0 5px 50px $colorPalet5;
+                box-shadow: 0 5px 50px $paletColor4;
                 transform: scale(1.1);
             }
            

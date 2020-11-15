@@ -1,5 +1,7 @@
 <template>
-    <section class="work">
+    <section class="work"> 
+
+        
 
         <div class="section__title">
             <h2>WEB</h2>
