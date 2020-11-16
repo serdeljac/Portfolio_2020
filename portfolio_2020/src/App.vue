@@ -11,7 +11,7 @@
       <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
     </footer>
     <div class="cursor">
-      <div class="cursor__dot"></div>
+      <div class="cursor__dot" id="test"></div>
       <div class="cursor__circle"></div>
     </div>
   </div>
@@ -28,25 +28,39 @@ import $ from 'jquery';
 export default {
   name: "Assemble",
   components: { Hero, Work, About, Contact },
+  data() {
+    return {
+      xDot: 0,
+      yDot: 0,
+      xCircle: 0,
+      yCircle: 0
+    }
+  },
   methods: {
       mouseMove: function(e) {
 
           const cursorDot = document.querySelector('.cursor__dot');
           const cursorCircle = document.querySelector('.cursor__circle');
-
-          const x = e.pageX;
-          const y = e.pageY;
-
-          cursorDot.style.left = `${(x-2)}px`;
-          cursorDot.style.top =  `${(y-2)}px`;
-
-          cursorCircle.style.left = `${(x-22)}px`;
-          cursorCircle.style.top =  `${(y-22)}px`;
           
-      }
-      
+          if (e) {
+            this.xDot = e.pageX - 2;
+            this.yDot = e.pageY - 2;
+
+            this.xCircle = e.pageX - 22;
+            this.yCircle = e.pageY - 22;
+
+            cursorDot.style.left = `${(this.xDot)}px`;
+            cursorDot.style.top =  `${(this.yDot)}px`;
+
+            cursorCircle.style.left = `${(this.xCircle)}px`;
+            cursorCircle.style.top =  `${(this.yCircle)}px`;
+          }
+          
+      },      
   },
+
   mounted() {
+      
       window.addEventListener('mousemove', this.mouseMove);
       
       $('.clickable').hover(

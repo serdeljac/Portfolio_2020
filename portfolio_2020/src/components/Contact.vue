@@ -87,8 +87,7 @@ import socialIcons from "@/components/Social_icons.vue";
             return {
                 social,
             }
-        },
-        
+        }
     }
 </script>
 

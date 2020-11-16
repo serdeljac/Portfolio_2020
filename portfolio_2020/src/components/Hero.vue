@@ -1,37 +1,54 @@
 <template>
     <div class="hero">
+
+        <div class="hero__background">
   
         <div class="hero__wrapper">
 
-            <div class="hero__header">
-                <div>
-                    <header>
-                        <h1>
-                            Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
-                        </h1>
-                        <h3>
-                            I'm a <span>wordpress developer, photographer,</span> and a <span>goal-oriented</span> individual, spending my time at the gym, gardening, and researching inspirational UI trends and styles.
-                        </h3>
-                    </header>
-                    <div class="call_to_action">
-                        <button class="btn view_work clickable">View my work</button>
-                        <button class="btn contact_me clickable">Contact me</button>
+                <div class="hero__header">
+                    <div>
+                        <header>
+                            <h1 class="hero__header-h1">
+                                Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
+                            </h1>
+                            <h3 class="hero__header-h3">
+                                I'm a <span>wordpress developer, photographer,</span> and a <span>goal-oriented</span> individual, spending my time at the gym, gardening, and researching inspirational UI trends and styles.
+                            </h3>
+                        </header>
+                        <div class="call_to_action">
+                            <button class="btn view_work clickable">View my work</button>
+                            <button class="btn contact_me clickable">Contact me</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+        </div>
 
         </div>
 
-        <svg class="hero__transition" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1960 167.52">
-            <path class="cls-1" d="M1960,0V167.52s-94-2.87-139.65-27.52S1649.7,78.39,1593.17,75.13,1408.39,77.3,1379,82.74s-185.81,34-218.47,39.13c-52.66,8.29-191.31-5.44-241.31-10.87s-97.83-10.87-172.83-26.09S610.57,52.3,506.22,69.7s-232.61,33.69-287,33.69-138,0-173.91-3.26S0,94.57,0,94.57V0Z"/>
+        <svg class="hero__transition" data-name="Hero Transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1961 74">
+            <path class="cls-1" d="M1960,0V57.52S1890.64,73.31,1820.35,60c-51-9.65-170.65-21.61-227.18-24.87S1408.39,37.3,1379,42.74s-185.81,14-218.47,19.13C1109.12,70,969.09,76.42,919.26,71c-50-5.43-97.83-3.87-172.83-19.09S610.57,29.3,506.22,46.7s-232.61,19.69-287,19.69-138-3-173.91-6.26S0,54.57,0,54.57V0Z" transform="translate(0.5 0.5)"/>
         </svg>
 
     </div>
 </template>
 
 <script>
+    import gsap from 'gsap';
+
     export default {
         name: "Hero",
+        methods: {
+            animateSection: function() {
+                const tl = gsap.timeline({duration: 0.4});
+                tl.to('.hero__wrapper', {duration: 0.8, x: 0, opacity: 1, ease: "ease-out"})
+                  .to('.hero__header-h1', {duration: 0.4, opacity: 1, ease: "ease-out"})
+                  .to('.hero__header-h3', {duration: 0.4, opacity: 1, ease: "ease-out"})
+                  .to('.call_to_action', {duration: 0.4, opacity: 1, ease: "ease-out"});
+            }
+        },
+        mounted() {
+            this.animateSection();
+        },
     }
 </script>
 

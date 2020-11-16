@@ -82,7 +82,7 @@
     -ms-content-zooming: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    // cursor: none !important;
+    cursor: none !important;
 }
 button, a {
     &:active,
@@ -105,7 +105,8 @@ body {
     overflow-X: hidden;
     font-family: $font_default;
     color: $fontColor;
-    background-color: $paletColor1;
+    background: $paletColor2 url('') center / cover repeat;
+    
 }
 
 .site__wrapper {
@@ -113,7 +114,6 @@ body {
     box-shadow: 0px 0px 50px 50px $paletColor2;
     margin: auto;
     width: 100%;
-    background-color: $paletColor2;
 }
 
 .btn {
@@ -127,8 +127,16 @@ body {
 .section__title {
     font-family: $font_title;
     user-select: none;
-    opacity: 0.1;
-    font-size: 15em;
+    margin-top: 80px;
+    h2 {
+        opacity: 0.1;
+        font-size: 15em;
+        line-height: 1;
+    }
+    p {
+        font-size: 3em;
+        text-indent: 20px;
+    }
 }
 
 /******************************************************
@@ -137,12 +145,20 @@ body {
 
 .hero {
 
+    &__background {
+        min-height: 800px;
+        max-height: 1000px;
+        background: $paletColor1 url('./assets/hero_img_v5-bg.jpg') bottom right/2000px auto no-repeat;
+    }
+    
+
     &__wrapper {
         min-height: 800px;
-        height: 100vh;
         max-height: 1000px;
-        background: $paletColor1 url('./assets/hero_img_v4.jpg') bottom right/2000px auto no-repeat;
-    
+        @include dimensions(auto, 100vh);
+        @include transform(translateX(-10px));
+        opacity: 0;
+        background: $paletColor1 url('./assets/hero_img_v5.jpg') bottom right/2000px auto no-repeat;
         @include lg {
             background-image: none;
         }
@@ -153,11 +169,10 @@ body {
         display: grid;
         align-content: center;
         grid-template-columns: 100px minmax(500px, 900px) 800px;
-        height: 100vh;
+        @include dimensions(auto, 100%);
         &::before, &::after {
             content: ' ';
         }
-
         @include lg {
             margin: auto;
             padding: 0 2em;
@@ -168,6 +183,7 @@ body {
         h1, h3 {
             font-weight: 400;
             margin-bottom: 20px;
+            opacity: 0;
         }
         h1 {
             font-size: 1.8em;
@@ -183,6 +199,7 @@ body {
         }
         .call_to_action {
             justify-content: center;
+            opacity: 0;
             @include lg {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -208,7 +225,7 @@ body {
     
             .contact_me {
                 color: $paletColor4;
-                background: transparent;
+                background-color: transparent;
                 border: 2px solid $paletColor4;
                 &:hover, &:focus {
                     animation: hero_btn-contact 1s;
@@ -218,10 +235,11 @@ body {
     }
 
     &__transition {
-        transform: translateY(-1px) scaleX(1.2);
+        @include transform(translateY(-1px));
+        -webkit-filter: drop-shadow(20px 0px 25px $paletColor1);
+        filter: drop-shadow(20px 0px 25px $paletColor1);
         .cls-1 {
             fill: $paletColor1; 
-            filter: drop-shadow(20px 0px 25px $paletColor1);
         }
     }
 }
@@ -296,7 +314,7 @@ body {
     WORK 
 ******************************************************/
 
-.work {
+.work2 {
 
     .section__title {
         transform: translateX(12%);
@@ -328,10 +346,11 @@ body {
         }
 
         .website {
-            @include dimensions($webWidth, $webWHeight);
+            @include dimensions($webWidth, $webHeight);
             margin: 1em 2em;
             background-repeat: no-repeat;
             background-size: auto 100%;
+            transform: scale(0.85);
             box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
             0 2px 2px rgba(0,0,0,0.15), 
             0 4px 4px rgba(0,0,0,0.15), 
@@ -379,6 +398,136 @@ body {
     }
 
     
+
+}
+
+.work {
+    .section__title {
+        transform: translateX(12%);
+    }
+
+
+
+    &__display {
+        margin-top: 40px;
+        margin-bottom: 80px;
+
+        .website, .meta__data {
+            @include dimensions($webWidth, $webHeight);
+            margin: auto;
+        }
+
+        .meta__data {
+            position: absolute;
+            top: 0;
+            font-size: 2em;
+            text-align: center;
+            z-index: 1;
+            padding-top: 30px;
+            hr {
+                margin: 14px auto;
+                width: 70%;
+            }
+        }
+
+        .website { 
+            perspective: 1000px;
+            will-change: transform;
+            margin-top: 100px;
+            background-size: 0, 0;
+            
+
+            &:hover {
+                .website__cover {
+                    @include transform(rotateX(80deg));
+                    
+                    background-size: 0, cover;
+                    transform-origin: bottom;
+                    box-shadow: inset 0em -3em 60px 2px rgba(0,0,0,0.6);
+                    .view_more {
+                        color: rgba(255,255,255,1);
+                    }
+                    &::before {
+                        box-shadow: 0 0 25px 25px rgba(0,0,0,0.5);
+                        transform: rotateX(0) translateZ(-60px) scale(0.85);
+                    }
+                }
+            }
+
+            &__cover { 
+                @include dimensions(100%, 100%);
+                background-size: 0, cover;
+                background-position: center;
+                box-shadow: inset 0em -3em 10px 10px rgba(0,0,0,0.0);
+                transform-style: preserve-3d;
+                position: relative;
+                z-index: 3;
+                @include transitions(all 0.5s);
+                pointer-events: none;
+
+                .view_more {
+                    color: rgba(255,255,255,0);
+                    text-transform: uppercase;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    transform: rotateX(-80deg);
+                    transform-origin: bottom;
+                    z-index: 1;
+                    text-align: center;
+                    transition: all 1s ease;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.5);
+                    box-shadow: 0 0 100px 50px rgba(0,0,0,0.5);
+                    transition: all 0.5s;
+                    opacity: 0.75;
+                    transform: rotateX(95deg) translateZ(-80px) scale(0.75);
+                    transform-origin: bottom;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 36px;
+                    background: inherit;
+                    background-size: cover;
+                    background-position: bottom;
+                    transform: rotateX(90deg);
+                    transform-origin: bottom;
+                }
+            }
+
+        }
+
+    }
+
+    .pen {
+        max-width: 1200px;
+        padding: 2em;
+        margin: 40px auto;
+        text-align: right;
+        &__name a {
+            font-size: 3em;
+            color: $paletColor4;
+            @include transitions(all .23s ease);
+            
+            &:hover {
+                color: $paletColor5
+            }
+        }
+    }
 
 }
 
@@ -768,15 +917,18 @@ body {
     Cursor 
 ******************************************************/
 
-    .cursor {       
+    .cursor {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
         
         &__dot, &__circle {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -100px;
+            left: -100px;
             z-index: 9999;
             mix-blend-mode: difference;
             pointer-events: none;
+
         }
 
         &__dot {
