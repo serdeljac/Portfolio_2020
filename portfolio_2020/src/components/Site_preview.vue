@@ -1,24 +1,25 @@
 <template>
-    <div class="preview">
+    <div class="preview columns is-half-desktop">
 
-        <div class="preview__background">
+        <div class="preview__content column is-one-third">
 
-        </div>
+            <div class="navigation"></div>
 
-        <div class="preview__content">
-            <div class="display"></div>
-            <div class="details">
-                <div class="close"></div>
-                <div class="title"></div>
-                <div class="description"></div>
-                <div class="site_link"></div>
-                <div class="navigation">
-                    <div class="arrow left">←</div>
-                    <span>|</span>
-                    <div class="arrow right">→</div>
-                </div>
+            <div class="title">
+                <h2>TITLE HERE</h2>
             </div>
+
+            <div class="description">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum 
+                    molestias, exercitationem atque cumque perspiciatis placeat error 
+                    ad quaerat inventore totam beatae, amet, quibusdam doloribus 
+                    explicabo tempora ex cum sapiente perferendis?
+                </p>
+            </div>
+            
         </div>
+        <div class="preview__display column is-two-third"></div>
 
     </div>
 </template>
@@ -28,11 +29,6 @@
 
     export default {
         name: "Site Preview",
-        methods: {
-            openTransition: function() {
-                console.log('test');
-            }
-        }
     }
 </script>
 

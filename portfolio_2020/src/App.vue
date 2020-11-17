@@ -3,13 +3,14 @@
     <Hero />
     <main>
       <Work />
-      
+      <Practice v-if="!hide"/>
       <About />
     </main>
     <Contact />
     <footer class="footer">
       <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
     </footer>
+    <Preview v-if="!hide"/>
     <div class="cursor">
       <div class="cursor__dot" id="test"></div>
       <div class="cursor__circle"></div>
@@ -20,16 +21,18 @@
 <script>
 import Hero from '@/components/Hero.vue';
 import Work from '@/components/Work.vue';
-// import Practice from '@/components/Practice.vue';
+import Practice from '@/components/Practice.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
+import Preview from '@/components/Site_preview.vue';
 import $ from 'jquery';
 
 export default {
   name: "Assemble",
-  components: { Hero, Work, About, Contact },
+  components: { Hero, Work, Practice, About, Contact, Preview },
   data() {
     return {
+      hide: true,
       xDot: 0,
       yDot: 0,
       xCircle: 0,

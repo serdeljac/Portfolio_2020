@@ -24,7 +24,7 @@
     <section class="work">
         <div class="section__title">
             <h2>WEB</h2>
-            <p>Selected projects built for clients...</p>
+            <p>selected projects built for clients...</p>
         </div>
 
         <div class="work__wrapper columns is-multiline is-half-desktop">

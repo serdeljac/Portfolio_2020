@@ -3,11 +3,7 @@
 
         <div class="wrapper">
 
-
-            <div class="about__img">
-                <!-- <img v-bind:src="aboutPic" alt="Stjepan Erdeljac" /> -->
-            </div>
-
+            <div class="about__img"></div>
 
             <div class="about__info">
 

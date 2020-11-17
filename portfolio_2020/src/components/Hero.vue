@@ -12,7 +12,7 @@
                                 Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
                             </h1>
                             <h3 class="hero__header-h3">
-                                I'm a <span>wordpress developer, photographer,</span> and a <span>goal-oriented</span> individual, spending my time at the gym, gardening, and researching inspirational UI trends and styles.
+                                I'm a <span>web developer, photographer,</span> and a <span>goal-oriented</span> individual, spending my time at the gym, gardening, and researching inspirational UI trends and styles.
                             </h3>
                         </header>
                         <div class="call_to_action">

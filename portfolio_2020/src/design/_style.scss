@@ -248,64 +248,18 @@ body {
     PREVIEW 
 ******************************************************/
 
-.preview,
-.preview__background,
-.preview__content {
-    @include dimensions(100%, 100%);
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
 .preview {
-    z-index: 100;
-
-    &__background {
-        z-index: 101;
-        
-        
-    }
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: $paletColor2;
+    top: 0;
+    left: 0;
+    margin: 0;
 
     &__content {
-        z-index: 102;
-        display: inline-flex;
-
-        .display {
-            width: 60%;
-            background: red;
-        }
-
-        .details {
-            width: 40%;
-            background: green;
-
-
-
-
-            .navigation {
-                position: absolute;
-                bottom: 20px;
-                left: calc(50% - 125px);
-                border-radius: 2em;
-                background-color: rgba(50,50,50,.6);
-                z-index: 203;
-                display: grid;
-                grid-template-columns: 100px 50px 100px;
-                justify-items: center;
-                align-items: center;
-                line-height: 1;
-                .arrow {
-                    font-size: 50px;
-                }
-                span {
-                    border-radius: 10px;
-                    background-color: white;
-                    opacity: 0.6;
-                }
-            }
-
-
-        }
+        background-color: $paletColor1;
+        min-height: 40vh;
     }
 }
 
@@ -314,99 +268,10 @@ body {
     WORK 
 ******************************************************/
 
-.work2 {
-
-    .section__title {
-        transform: translateX(12%);
-    }
-
-    &__web-display {
-        max-width: 1600px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax($webWidth, 1fr));
-        justify-items: center;
-        @include xl {
-            transform: scale(0.7);
-        }
-
-        .display__grid {
-            min-height: 400px;
-            display: grid;
-            @include xl {
-                display: block;
-                min-height: auto;
-            }
-            &.center {
-                align-content: center;   
-            }
-            &.end {
-                align-content: end;
-            }
-        }
-
-        .website {
-            @include dimensions($webWidth, $webHeight);
-            margin: 1em 2em;
-            background-repeat: no-repeat;
-            background-size: auto 100%;
-            transform: scale(0.85);
-            box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
-            0 2px 2px rgba(0,0,0,0.15), 
-            0 4px 4px rgba(0,0,0,0.15), 
-            0 8px 8px rgba(0,0,0,0.15);
-            @include transitions(all .4s ease);
-            &:hover {
-                transform: translateY(50px);
-                .label {
-                    transform: translateY(-50px);
-                    opacity: 1;
-                }
-            }
-    
-            .label {
-                text-align: center;
-                color: $fontColor;
-                font-size: 2em;
-                text-transform: uppercase;
-                font-weight: bold;
-                text-shadow: 2px 2px 3px #444;
-                @include transitions(transform .4s ease);
-                hr {
-                    margin: 3px;
-                }
-            }
-        }
-    }
-
-    &__pen-display {
-        max-width: 1200px;
-        width: 100%;
-        margin: auto;
-        font-size: 2em;
-
-        .pen {
-            &__link {
-                color: $paletColor4;
-                @include transitions(all .23s ease);
-                content: '';
-                &:hover {
-                    color: $paletColor4;
-                }
-            }
-        }
-    }
-
-    
-
-}
-
 .work {
     .section__title {
         transform: translateX(12%);
     }
-
-
 
     &__display {
         margin-top: 40px;
@@ -464,6 +329,7 @@ body {
                 z-index: 3;
                 @include transitions(all 0.5s);
                 pointer-events: none;
+                border-radius: 9px;
 
                 .view_more {
                     color: rgba(255,255,255,0);
@@ -681,15 +547,15 @@ body {
     }
 
     &__img {
-        display: grid;
-        align-content: center;
-        img {width: 100%;}
-        @include sm {
+        margin-top: 100px;
+        background: url('./assets/about_img_v2.jpg') top center/auto 100% no-repeat;
+        @include lg {
             display: none;
         }
     }
 
     &__info {
+        
         
         color: #fff;
 
