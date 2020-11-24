@@ -1,12 +1,7 @@
 // FONTS
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
-
-@font-face {
-    font-family: "Morganite";
-    src: url("./assets/fonts/Morganite-Book.ttf");
-}
 
 $font_title: 'Oswald', sans-serif;
 $font_default: 'Montserrat', sans-serif;
@@ -14,11 +9,14 @@ $fontColor: #ffe;
 
 //COLOR PALET
 
-$paletColor1: #070105; //Secondary for backgrounds (hero section)
-$paletColor2: #150215; //Primary for backgrounds
-$paletColor3: #820333;
-$paletColor4: #C9283E;
-$paletColor5: #F0433A;
+$paletColor1: #F2059F;
+$paletColor2: #48038C; //Primary for backgrounds
+$paletColor3: #5204BF;
+$paletColor4: #100126;
+$paletColor5: #0F0140;
+
+$contactHover: #31D1EB;
+
 
 //MEDIA SIZES
 

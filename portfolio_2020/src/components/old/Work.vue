@@ -4,21 +4,8 @@
         <div class="section__title">
             <h2>PEN</h2>
         </div>
+ 
 
-        <div class="work__pen-display"> 
-            <div 
-                class="pen"
-                v-for="pen in pens"
-                :key="pen.id"
-                >
-                <p>
-                    <a 
-                        v-bind:href="pen.href"
-                        target="_blank"
-                        class="pen__link clickable">{{ pen.name }}</a>
-                </p>
-            </div>
-        </div>
 
     </section> -->
     <section class="work">
