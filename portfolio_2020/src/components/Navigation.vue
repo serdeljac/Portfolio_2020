@@ -1,5 +1,5 @@
 <template>
-    <div class="navigation" v-bind:class="{active: !menu}">
+    <div class="navigation" v-bind:class="{active: menu}">
 
         <div class="brand clickable">
             <a href="#">
@@ -20,15 +20,15 @@
             </div>
         </div>
 
-        <div class="main_nav" v-if="!menu">
+        <div class="main_nav" v-if="menu">
 
                 <nav>
                     <ul>
-                        <li><a href="/" item-num="01">Home</a></li>
-                        <li><a href="/" item-num="02">Web</a></li>
-                        <li><a href="/" item-num="03">Pens</a></li>
-                        <li><a href="/" item-num="04">About</a></li>
-                        <li><a href="/" item-num="05">Contact</a></li>
+                        <li><a @click="closeMenu" href="#" item-num="01">Home</a></li>
+                        <li><a @click="closeMenu" href="#web" item-num="02">Web</a></li>
+                        <li><a @click="closeMenu" href="#pens" item-num="03">Pens</a></li>
+                        <li><a @click="closeMenu" href="#about" item-num="04">About</a></li>
+                        <li><a @click="closeMenu" href="#contact" item-num="05">Contact</a></li>
                     </ul>
                 </nav>
 
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import gsap from 'gsap';
+
     export default {
         name: 'Navigation',
         data() {
@@ -47,6 +49,13 @@
         },
         methods: {
             openMenu: function() {
+                // const tl = gsap.timeline({onComplete: myFunction, repeat: 2, repeatDelay: 1, yoyo: true});
+                this.menu = !this.menu;
+            },
+            closeMenu: function() {
+                this.menu = !this.menu;
+            },
+            changeState: function() {
                 this.menu = !this.menu;
             }
         }

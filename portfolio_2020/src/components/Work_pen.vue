@@ -1,5 +1,5 @@
 <template>
-    <section class="pens">
+    <section id="pens" class="pens">
         <div class="section__title">
             <h2>PEN</h2>
             <p>personally developed pens on Codepen...</p>

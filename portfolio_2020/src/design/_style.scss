@@ -171,9 +171,9 @@ body {
         mix-blend-mode: difference;
 
         &:hover {
-            .bar-2, .bar-3 {
-                width: 100%;
-                left: 0%;
+            .bar-3 {
+                width: 70%;
+                left: 30%;
             }
         }
 
@@ -184,6 +184,10 @@ body {
             margin: 12px 0;
             position: relative;
             @include transitions(all .23s ease);
+        }
+        .bar-1 {
+            width: 100%;
+            left: 0%;
         }
         .bar-2 {
             width: 70%;
@@ -435,6 +439,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
         display: grid;
         grid-template-columns: 100px auto 0;
         margin: 60px auto 0;
+        max-width: 1600px;
         padding-top: 400px;
         @include md {
             display: block;
@@ -501,7 +506,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
     background-size: 1600px auto;
     background-repeat: no-repeat, no-repeat;
 
-    &__wrapper {
+    &__container {
         display: grid;
         margin: 200px auto 0;
         padding-top: 200px;
@@ -599,12 +604,14 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
     height: calc(100vh - 50px);
     display: grid;
     background-color: $paletColor4;
-    color: #ffe;
+    color: $fontColor;
+    margin-top: 150px;
     @include sm {
         min-height: auto;
     }
 
-    &__wrapper {
+    &__container {
+        @include transform(translateY(100px));
         max-width: 1800px;
         margin: auto;
         padding: 0 2em;
@@ -642,12 +649,12 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
             align-items: center;
             margin: 1em 0;
             color: $paletColor1;
-            transition: all .23s ease;
+            @include transitions(all .4s ease);
             font-size: 1.5em;
             &:hover, &:focus {
                 color: $contactHover;
                 path, rect {
-                    transition: all .23s ease;
+                    @include transitions(all .4s ease);
                     fill: $contactHover;
 
                 }
@@ -730,6 +737,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
     font-size: 1.2em;
     height: 50px;
     font-size: 0.95em;
+    text-align: center;
 }
 
 /******************************************************

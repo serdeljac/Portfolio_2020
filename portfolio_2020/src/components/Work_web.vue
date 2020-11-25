@@ -1,5 +1,5 @@
 <template>
-    <section class="web">
+    <section id="web" class="web">
         <div class="section__title">
             <h2>WEB</h2>
             <p>selected projects built for clients...</p>

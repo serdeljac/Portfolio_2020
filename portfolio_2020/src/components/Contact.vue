@@ -1,11 +1,11 @@
 <template>
-    <section class="contact">
+    <section id="contact" class="contact">
 
         <div class="section__title">
             <h2>CONTACT</h2>
         </div>
 
-        <div class="contact__wrapper">
+        <div class="contact__container">
 
             <div class="social_contacts">
                 <p>Find me on:</p>

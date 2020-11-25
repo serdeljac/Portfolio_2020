@@ -1,11 +1,11 @@
 <template>
-    <section class="about">
+    <section id="about" class="about">
 
         <div class="section__title">
             <h2>ABOUT</h2>
         </div>
 
-        <div class="about__wrapper">
+        <div class="about__container">
             <div class="about__content">
                 <h3>Get to know me</h3>
 
