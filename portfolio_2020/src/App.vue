@@ -23,17 +23,18 @@
     <transition name="navTransition">
       <Navigation v-if="menu" @closeMenu="menu = !menu"/>
     </transition>
-    <Hero />
+    <Hero @closeMenu="contactForm = !contactForm" />
     <main>
       <WorkWeb />
       <WorkPen />
       <About />
-      <Contact />
+      <Contact @closeMenu="contactForm = !contactForm" />
       <footer class="footer">
         <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
       </footer>
     </main>
-    <Preview v-if="!hide"/>
+    <ContactForm v-if="!contactForm" />
+    <Preview v-if="!hide" />
     <div class="cursor">
       <div class="cursor__dot"></div>
       <div class="cursor__circle"></div>
@@ -50,12 +51,13 @@ import WorkPen from '@/components/Work_pen.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
 import Preview from '@/components/Site_preview.vue';
+import ContactForm from '@/components/Contact_form.vue';
 import $ from 'jquery';
 // import gsap from 'gsap';
 
 export default {
   name: "Assemble",
-  components: { Navigation, Hero, WorkWeb, WorkPen, About, Contact, Preview },
+  components: { Navigation, Hero, WorkWeb, WorkPen, About, Contact, ContactForm, Preview },
   data() {
     return {
       hide: true,
@@ -64,6 +66,7 @@ export default {
       xCircle: 0,
       yCircle: 0,
       menu: false,
+      contactForm: true
     }
   },
   methods: {
@@ -90,12 +93,12 @@ export default {
                 // const tl = gsap.timeline({onComplete: myFunction, repeat: 2, repeatDelay: 1, yoyo: true});
                 this.menu = !this.menu;
             },
-            closeMenu: function() {
-                this.menu = !this.menu;
-            },
-            changeState: function() {
-                this.menu = !this.menu;
-            }   
+      closeMenu: function() {
+          this.menu = !this.menu;
+      },
+      changeState: function() {
+          this.menu = !this.menu;
+      }   
   },
 
   mounted() {

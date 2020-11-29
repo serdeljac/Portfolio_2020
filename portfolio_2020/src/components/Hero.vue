@@ -13,7 +13,7 @@
                 </header>
                 <div class="call_to_action">
                     <a href="#web"><button class="btn view_work clickable">View my work</button></a>
-                    <button class="btn contact_me clickable">Contact me</button>
+                    <button @click="openContact" class="btn contact_me clickable">Contact me</button>
                 </div>
             </div>
         </div>
@@ -33,6 +33,9 @@
                   .to('.hero__header-h1', {duration: 0.4, opacity: 1, ease: "ease-out"})
                   .to('.hero__header-h3', {duration: 0.4, opacity: 1, ease: "ease-out"})
                   .to('.call_to_action', {duration: 0.4, opacity: 1, ease: "ease-out"});
+            },
+            openContact: function() {
+                this.$emit('closeMenu');
             }
         },
         mounted() {
