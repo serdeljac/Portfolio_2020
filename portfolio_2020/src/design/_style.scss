@@ -1,4 +1,3 @@
-
 //Animations
 @keyframes hero_btn-work {
     0% { box-shadow: 0 0 0 0 $paletColor1; }
@@ -62,11 +61,6 @@
     }
  }
 
-//Website Display
- @include md {
-    $webWidth: 250px;
-    $webWHeight: 150px;
- }
 
 
 ::-webkit-scrollbar {
@@ -84,6 +78,7 @@
     scrollbar-width: none;
     // cursor: none !important;
 }
+
 button, a {
     &:active,
     &:focus {
@@ -103,7 +98,7 @@ html {
 
 body {
     overflow-X: hidden;
-    width: 100%;
+    width: 100vw;
     min-height: 2000px;
     font-family: $font_default;
     color: $fontColor;
@@ -114,6 +109,54 @@ body {
     max-width: 2000px;
     margin: auto;
     width: 100%;
+}
+
+.brand {
+    position: fixed;
+    z-index: 100;
+    width: 70px;
+    left: 40px;
+    top: 20px;
+}
+
+.menu {
+    position: fixed;
+    z-index: 100;
+    width: 70px;
+    height: 60px;
+    right: 40px;
+    top: 20px;
+
+    &:hover {
+        .bar-3 {
+            width: 70%;
+            left: 30%;
+        }
+    }
+
+    div {
+        width: 100%;
+        height: 3px;
+        background-color: #fff;
+        margin: 12px 0;
+        position: relative;
+        @include transitions(all .23s ease);
+    }
+
+    .bar-1 {
+        width: 100%;
+        left: 0%;
+    }
+
+    .bar-2 {
+        width: 70%;
+        left: 30%;
+    }
+
+    .bar-3 {
+        width: 50%;
+        left: 50%;
+    }
 }
 
 .btn {
@@ -129,10 +172,16 @@ body {
     user-select: none;
     position: absolute;
     margin-top: 100px;
+    width: calc(100% - 4em);
+
+        
     @include transform(translateX(15%));
     @include md {
-        @include transform(translateX(2em));
-        h2::after {display: none;}
+        @include transform(none);
+        font-size: 0.7em;
+        text-align: center;
+        position: static;
+        width: 100%;
     }
     h2 {
         opacity: 0.1;
@@ -143,115 +192,81 @@ body {
         margin-top: 120px;
         font-size: 3em;
         text-indent: 20px;
+        @include md {
+            margin-top: 60px;
+        }
     }
 }
+
 
 /******************************************************
     NAVIGATION 
 ******************************************************/
 
+.navTransition-enter-active,
+.navTransition-leave-active {
+    transition: opacity .23s;
+}
+
+.navTransition-enter,
+.navTransition-leave-to
+    {
+    opacity: 0;
+}
+
 .navigation {
 
-    .brand {
-        position: fixed;
-        z-index: 100;
-        width: 70px;
-        left: 40px;
-        top: 20px;
-        mix-blend-mode: difference;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    background: url('./assets/menu_bg.jpg') center/cover no-repeat;
+    display: grid;
+    align-content: center;
+    justify-content: end;
+    @include md {
+        justify-content: center;
     }
 
-    .menu {
-        position: fixed;
-        z-index: 100;
-        width: 70px;
-        height: 60px;
-        right: 40px;
-        top: 20px;
-        mix-blend-mode: difference;
+    &__container {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        margin-right: 200px;
+        text-align: right;
+        @include md {
+            margin: 0;
+        }
+
+        &:hover a {
+            color: transparent;
+            text-shadow: 0px 0px 10px #eee
+        }
+    }
+
+    a {
+        font-size: 9vh;
+        font-family: $font_title;
+        text-decoration: none;
+        position: relative;
+        z-index: 1001;
+        color: $fontColor;
+        filter: blur(0px) ;
+        @include transitions(all .23s ease);
+
+        &::before {
+            font-size: 0.4em;
+            content: attr(item-num) '/ ';
+        }
 
         &:hover {
-            .bar-3 {
-                width: 70%;
-                left: 30%;
-            }
-        }
-
-        div {
-            width: 100%;
-            height: 3px;
-            background-color: #fff;
-            margin: 12px 0;
-            position: relative;
-            @include transitions(all .23s ease);
-        }
-        .bar-1 {
-            width: 100%;
-            left: 0%;
-        }
-        .bar-2 {
-            width: 70%;
-            left: 30%;
-        }
-        .bar-3 {
-            width: 50%;
-            left: 50%;
-        }
-    }
-
-
-    &.active {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        z-index: 1000;
-        background: url('./assets/menu_bg.jpg') center/cover no-repeat;
-
-        .brand, .menu {
-            mix-blend-mode: normal;
-        }
-
-        .main_nav {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            display: grid;
-            align-content: center;
-            grid-template-columns: 50% auto 200px;
+            color: $fontColor !important;
             
-            &::before, &::after {
-                content: '';
-            }
-    
-            ul {
-                float: right;
-                &:hover a {
-                    color: #888;
-                 }
-            }
-            li {
-                text-align: right;
-                
-                
-            }
-    
-            a {
-                font-size: 4em;
-                font-family: $font_title;
-                color: #fff;
-                @include transitions(all .23s ease);
-                &::before {
-                    font-size: 0.4em;
-                    content: attr(item-num) '/ ';
-                }
-                &:hover {
-                    color: $fontColor !important;
-                }
-            }
         }
     }
+    
 
     
 }
@@ -260,19 +275,19 @@ body {
     HERO 
 ******************************************************/
 
-$hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1, 64, 0.05) 39.15%, #48038C 97.5%);
+$hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 0, 0.05) 2.15%, #000 47.5%);
 
 .hero {
 
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background: transparent right bottom/cover no-repeat;
     background-image: $hero_gradient, url('./assets/hero_profile.png');
     background-blend-mode: lighten, screen;
     filter: opacity(0);
     @include transform(translateX(20px) scaleX(1.05));
     @include md {
-        background-image: $hero_gradient, url('./assets/hero_profile-mobile.png');
+        background-image: $hero_gradient, none;
     }
 
     &__header {
@@ -280,6 +295,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
         align-content: center;
         grid-template-columns: minmax(auto, 900px);
         height: 100vh;
+        min-height: 600px;
         padding: 0 150px 0;
         font-size: 1.7em;
         @include md {
@@ -352,15 +368,19 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
 ******************************************************/
 
 .web {
-    padding: 0 2em;
+
 
     &__container {
         margin: 60px auto 0;
         padding-top: 400px;
-        max-width: 1600px;
+        max-width: 1400px;
         display: grid;
         grid-template-columns: repeat(3, 33%);
         justify-items: center;
+        @include md {
+            grid-template-columns: 1fr;
+            padding: 0;
+        }
     }
 
     .item {
@@ -380,6 +400,10 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
         &__wrapper {
             min-height: 500px;
             width: $webWidth;
+                    @include md {
+                        min-height: 0;
+                        @include transform(scale(0.8) !important);
+                    }
             
             &.item-1 {
                 @include transform(translateY(0px));
@@ -433,7 +457,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
 ******************************************************/
 
 .pens {
-    padding: 0 2em;
+    
 
     &__container {
         display: grid;
@@ -443,6 +467,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
         padding-top: 400px;
         @include md {
             display: block;
+            padding: 0 0 0 2em;
         }
         &::before {
             content: '';
@@ -462,6 +487,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
             margin: 5px;
             position: relative;
             z-index: 10;
+            text-decoration: none;
             @include transitions(all .23s ease);
 
             &:hover {
@@ -505,6 +531,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
     background-position: 0 -15%;
     background-size: 1600px auto;
     background-repeat: no-repeat, no-repeat;
+    @include md {
+        background-image: none;
+    }
 
     &__container {
         display: grid;
@@ -512,6 +541,10 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
         padding-top: 200px;
         grid-template-columns: minmax(auto, 700px);
         justify-content: end;
+            @include md {
+                padding: 0;
+                margin: 100px auto 0;
+            }
     }
 
     &__content {
@@ -606,8 +639,11 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
     background-color: $paletColor4;
     color: $fontColor;
     margin-top: 150px;
-    @include sm {
+
+    @include md {
         min-height: auto;
+        margin-top: 0;
+       
     }
 
     &__container {
@@ -615,6 +651,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
         max-width: 1800px;
         margin: auto;
         padding: 0 2em;
+        @include md {
+            @include transform(none)
+        }
     }
 
     .contact_header h3 {
@@ -642,6 +681,10 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             line-height: 3;
             text-indent: 12px;
+            @include md {
+                display: block;
+                max-width: 100%;
+            }
         }
 
         .link {
@@ -650,6 +693,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
             margin: 1em 0;
             color: $paletColor1;
             @include transitions(all .4s ease);
+            text-decoration: none;
             font-size: 1.5em;
             &:hover, &:focus {
                 color: $contactHover;
@@ -738,6 +782,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
     height: 50px;
     font-size: 0.95em;
     text-align: center;
+    width: 100%;
 }
 
 /******************************************************
@@ -750,8 +795,8 @@ $hero_gradient: linear-gradient(259.94deg, rgba(15,1,64, 0.5) 1.09%, rgba(15, 1,
     
     &__dot, &__circle {
         position: absolute;
-        top: -100px;
-        left: -100px;
+        top: 0px;
+        left: 0px;
         z-index: 9999;
         mix-blend-mode: difference;
         pointer-events: none;

@@ -1,6 +1,28 @@
 <template>
   <div class="site__wrapper">
-    <Navigation />
+
+    <div class="brand clickable">
+        <a href="/">
+            <svg data-name="Brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81.7 81.7">
+                <text transform="translate(40.9 61.23)" style="font-size: 60px;fill: #fff;font-family: MongolianBaiti, Mongolian Baiti">3</text>
+                <text transform="translate(10.38 60.46)" style="font-size: 60px;fill: #fff;font-family: MongolianBaiti, Mongolian Baiti">S</text>
+                <path d="M40.85,81.2A40.35,40.35,0,0,1,.5,40.85" style="fill: none;stroke: #fff;stroke-miterlimit: 10"/>
+                <path d="M14.16,10.59A40.35,40.35,0,0,1,75.25,62" style="fill: none;stroke: #fff;stroke-miterlimit: 10"/>
+            </svg>
+        </a>
+    </div>
+
+    <div class="menu open-nav clickable" @click="openMenu">
+        <div class="hamburger">
+            <div class="bar-1"></div>
+            <div class="bar-2"></div>
+            <div class="bar-3"></div>
+        </div>
+    </div>
+
+    <transition name="navTransition">
+      <Navigation v-if="menu" @closeMenu="menu = !menu"/>
+    </transition>
     <Hero />
     <main>
       <WorkWeb />
@@ -16,6 +38,7 @@
       <div class="cursor__dot"></div>
       <div class="cursor__circle"></div>
     </div>
+    
   </div>
 </template>
 
@@ -28,6 +51,7 @@ import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
 import Preview from '@/components/Site_preview.vue';
 import $ from 'jquery';
+// import gsap from 'gsap';
 
 export default {
   name: "Assemble",
@@ -38,7 +62,8 @@ export default {
       xDot: 0,
       yDot: 0,
       xCircle: 0,
-      yCircle: 0
+      yCircle: 0,
+      menu: false,
     }
   },
   methods: {
@@ -60,11 +85,22 @@ export default {
             cursorCircle.style.left = `${(this.xCircle)}px`;
             cursorCircle.style.top =  `${(this.yCircle)}px`;
           }
-          
-      },      
+      },
+      openMenu: function() {
+                // const tl = gsap.timeline({onComplete: myFunction, repeat: 2, repeatDelay: 1, yoyo: true});
+                this.menu = !this.menu;
+            },
+            closeMenu: function() {
+                this.menu = !this.menu;
+            },
+            changeState: function() {
+                this.menu = !this.menu;
+            }   
   },
 
   mounted() {
+
+    
       
       window.addEventListener('mousemove', this.mouseMove);
       

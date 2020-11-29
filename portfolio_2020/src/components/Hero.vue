@@ -12,7 +12,7 @@
                     </h3>
                 </header>
                 <div class="call_to_action">
-                    <button class="btn view_work clickable">View my work</button>
+                    <a href="#web"><button class="btn view_work clickable">View my work</button></a>
                     <button class="btn contact_me clickable">Contact me</button>
                 </div>
             </div>
