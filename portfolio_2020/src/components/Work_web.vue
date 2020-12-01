@@ -12,6 +12,7 @@
                 v-for="site in sites"
                 :key="site.id"
                 >
+                <router-link :to="{ name: 'web-details', params: { id: site.id, link: site.link }}">
                     <div class="item clickable">
                         <div 
                             class="item__display" 
@@ -23,6 +24,7 @@
                             <p class="view_more">0{{ site.id }} | view more 🡢</p>
                         </div>
                     </div>
+                </router-link>
             </div>
         </div>
 
@@ -40,35 +42,40 @@ const sites = [
     {
         id: 1,
         name: 'Natalie Miles',
-        href: 'https://natalie-miles.com/',
+        // href: 'https://natalie-miles.com/',
+        link: 'nataliemiles',
         img: natalieMiles,
         date: '2019',
     },
     {
         id: 2,
         name: 'Beautiful Brides Philly',
-        href: 'https://beautifulbridesphilly.com/',
+        // href: 'https://beautifulbridesphilly.com/',
+        link: 'beautifulbridesphilly',
         img: bridesphilly,
         date: '2019',
     },
     {
         id: 3,
         name: 'Geoff Lee Mortgage',
-        href: 'https://www.geoffleemortgage.com/',
+        // href: 'https://www.geoffleemortgage.com/',
+        link: 'geoffleemortgage',
         img: glmortgage,
         date: '2018',
     },
     {
         id: 4,
         name: 'Ly & Associates',
-        href: 'https://lyandassociatesfg.com/',
+        // href: 'https://lyandassociatesfg.com/',
+        link: 'lyassociates',
         img: lyassociates,
         date: '2019',
     },
     {
         id: 5,
         name: 'Easy NOA',
-        href: 'https://www.easynoa.ca/',
+        // href: 'https://www.easynoa.ca/',
+        link: 'easynoa',
         img: easynoa,
         date: '2018',
     },

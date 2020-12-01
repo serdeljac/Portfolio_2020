@@ -24,7 +24,9 @@
                 
             </div>
             <div class="get_in_touch">
-                    <span>Ready to </span><button class="btn clickable">GET IN TOUCH</button><span>?</span>
+                    <span>Ready to </span>
+                    <button @click="triggerContact" class="btn clickable">GET IN TOUCH</button>
+                    <span>?</span>
                 </div>
 
         </div>
@@ -88,7 +90,12 @@ import socialIcons from "@/components/Social_icons.vue";
             return {
                 social,
             }
-        }
+        },
+        methods: {
+            triggerContact: function() {
+                this.$emit('triggerContact');
+            }
+        },
     }
 </script>
 

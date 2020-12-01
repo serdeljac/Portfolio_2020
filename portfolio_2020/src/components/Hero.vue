@@ -13,7 +13,7 @@
                 </header>
                 <div class="call_to_action">
                     <a href="#web"><button class="btn view_work clickable">View my work</button></a>
-                    <button @click="openContact" class="btn contact_me clickable">Contact me</button>
+                    <button @click="triggerContact" class="btn contact_me clickable">Contact me</button>
                 </div>
             </div>
         </div>
@@ -36,6 +36,9 @@
             },
             openContact: function() {
                 this.$emit('closeMenu');
+            },
+            triggerContact: function() {
+                this.$emit('triggerContact');
             }
         },
         mounted() {

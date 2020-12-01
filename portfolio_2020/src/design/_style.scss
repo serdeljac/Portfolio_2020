@@ -99,7 +99,6 @@ html {
 body {
     overflow-X: hidden;
     width: 100vw;
-    min-height: 2000px;
     font-family: $font_default;
     color: $fontColor;
     background-color: $paletColor4;
@@ -202,17 +201,6 @@ body {
 /******************************************************
     NAVIGATION 
 ******************************************************/
-
-.navTransition-enter-active,
-.navTransition-leave-active {
-    transition: opacity .23s;
-}
-
-.navTransition-enter,
-.navTransition-leave-to
-    {
-    opacity: 0;
-}
 
 .navigation {
 
@@ -450,6 +438,20 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             
         }
     }
+}
+
+/******************************************************
+    PREVIEW - Web 
+******************************************************/
+
+.preview {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    background: green;
 }
 
 /******************************************************
@@ -771,6 +773,21 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 }
 
 /******************************************************
+    CONTACT FORM 
+******************************************************/
+
+.contact_form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: red;
+
+}
+
+/******************************************************
     FOOTER 
 ******************************************************/
 
@@ -784,12 +801,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     text-align: center;
     width: 100%;
 }
-
-/******************************************************
-    CONTACT FORM 
-******************************************************/
-
-
 
 /******************************************************
     Cursor 
