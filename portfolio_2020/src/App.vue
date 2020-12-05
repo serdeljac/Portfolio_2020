@@ -61,8 +61,7 @@ export default {
   mounted() {
       
       window.addEventListener('mousemove', this.mouseMove);
-    document.getElementsByTagName('body')[0].onscroll = () => {     this.mouseMove; };\
-      // window.onscroll = this.mouseMove;
+
       
       $('.clickable').hover(
         function() {

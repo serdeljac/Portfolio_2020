@@ -776,14 +776,59 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     CONTACT FORM 
 ******************************************************/
 
-.contact_form {
+.quick_contact {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
     width: 100%;
     height: 100%;
-    background: red;
+    background: #060744;
+
+    &__wrapper {
+        display: grid;
+        width: 100%;
+        align-content: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    &__title {
+        font-family: $font_title;
+        color: $fontColor;
+        font-size: 4em;
+        display: flex;
+        span {
+            font-size: 0.4em;
+            color: #aaa;
+            align-self: end;
+            @include transform(translateX(100px) translateY(-22px));
+        }
+    }
+
+    &__form {
+        font-size: 2.5em;
+        label {
+            display: none;
+        }
+    }
+
+    input {
+        background-color: transparent;
+        border: 0;
+        border-bottom: 2px solid #aaa;
+        padding: 0;
+        margin: 0 2px 0 10px; 
+        color: $fontColor;
+    }
+
+    .page-1 {
+        display: inline-grid;
+    }
+
+    .form-group {
+        display: inline-flex;
+    }
 
 }
 
