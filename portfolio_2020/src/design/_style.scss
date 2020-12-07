@@ -414,7 +414,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             &.item-5 {
                 @include transform(translateY(200px));
             }
-    
+            a:visited {
+                color: $fontColor
+            }
         }
 
         &__display {

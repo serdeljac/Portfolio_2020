@@ -3,8 +3,11 @@ import fullNatalieMiles from "@/assets/website_img/nm_web_full.jpg";
 import imgBridesphilly from "@/assets/bbp_web.jpg";
 import fullBridesphilly from "@/assets/website_img/bbp_web_full.jpg";
 import imgLyassociates from "@/assets/lya_web.jpg";
+import fullLyassociates from "@/assets/website_img/lya_web_full.jpg";
 import imgEasynoa from "@/assets/en_web.jpg";
+import fullEasynoa from "@/assets/website_img/en_web_full.jpg";
 import imgGlmortgage from "@/assets/glm_web.jpg";
+import fullGlmortgage from "@/assets/website_img/glm_web_full.jpg";
  
 const sites = [{
     1: {
@@ -37,8 +40,9 @@ const sites = [{
         href: 'https://www.geoffleemortgage.com/',
         link: 'geoffleemortgage',
         img: imgGlmortgage,
-        desc: '',
-        tags: '',
+        full: fullGlmortgage,
+        desc: 'Mortgage brokers in Vancouver who respond in 90 minutes to find you the best rates! Were the best mortgage broker company because of our response time.',
+        tags: 'Wordpress, Javascript, Design',
         date: '2018'
     },
     4: {
@@ -47,8 +51,9 @@ const sites = [{
         href: 'https://lyandassociatesfg.com/',
         link: 'lyassociates',
         img: imgLyassociates,
-        desc: '',
-        tags: '',
+        full: fullLyassociates,
+        desc: 'Ly & Associates Financial Group is a full-service firm focused on wealth management, preservation, and succession. Our comprehensive process is principled in the identification, development, revision, selection and execution of personal and corporate planning solutions. ',
+        tags: 'UI/UX, Wordpress, Design',
         date: '2019'
     },
     5: {
@@ -57,8 +62,9 @@ const sites = [{
         href: 'https://www.easynoa.ca/',
         link: 'easynoa',
         img: imgEasynoa,
-        desc: '',
-        tags: '',
+        full: fullEasynoa,
+        desc: 'You dont have to be an accountant or financial wizard to get your CRA Documents! Our Goal at EasyNOA is to make access to all your necessary documents a breeze',
+        tags: 'Wordpress',
         date: '2018'
     },
 }];

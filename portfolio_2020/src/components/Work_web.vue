@@ -8,7 +8,7 @@
             <div 
                 class="item__wrapper"
                 :class="`item-${site.id}`"
-                v-for="site in websites[0]"
+                v-for="site in websites"
                 :key="site.id"
                 >
                 <router-link
@@ -45,7 +45,7 @@ import websites from '@/shared/websites_info.js';
         name: "Work_web",
         data() {
             return {
-                websites
+                websites: websites[0]
             }
         },
     }
