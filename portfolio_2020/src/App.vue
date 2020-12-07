@@ -1,12 +1,7 @@
 <template>
   <div class="site__wrapper">
 
-
-
-    
     <router-view />
-    
-    <Preview v-if="!hide"/>
 
     <div class="cursor">
       <div class="cursor__dot"></div>
@@ -17,17 +12,12 @@
 </template>
 
 <script>
-
-import Preview from '@/components/Site_preview.vue';
-
 import $ from 'jquery';
 
 export default {
   name: "Assemble",
-  components: { Preview },
   data() {
     return {
-      hide: true,
       xDot: 0,
       yDot: 0,
       xCircle: 0,
@@ -54,14 +44,10 @@ export default {
             cursorCircle.style.top =  `${this.yCircle}px`;
           }
       },
-
-      
   },
-
   mounted() {
       
       window.addEventListener('mousemove', this.mouseMove);
-
       
       $('.clickable').hover(
         function() {

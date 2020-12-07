@@ -12,14 +12,22 @@ Vue.use(VueRouter)
   {
     path: '/Welcome',
     name: 'Welcome',
-    component: Landing
+    component: Landing,
   },
   {
     path: '/:link',
     name: 'web-details',
-    props: true,
     component: () =>
-      import(/* webpackChunkName: "bundle.heroes" */ '@/views/webDetails.vue'), 
+      import(/* webpackChunckName: "bundle-details" */'@/views/webDetails.vue'),
+    props: true,
+    
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () =>
+      import(/* webpackChunckName: "bundle-error" */'@/views/404.vue'), 
+      
   }
 
 ]
@@ -27,8 +35,9 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-
   routes
 })
+
+
 
 export default router

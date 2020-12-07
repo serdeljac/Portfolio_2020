@@ -27,6 +27,12 @@
     transition: $time;
 }
 
+@mixin transitionsMulti($args1, $args2, $args3) {
+    -webkit-transition: $args1, $args2, $args3;
+    -o-transition: $args1, $args2, $args3;
+    transition: $args1, $args2, $args3;
+};
+
 // CSS width and height
 @mixin dimensions($width, $height) {
     width: $width;
@@ -441,17 +447,175 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 }
 
 /******************************************************
-    PREVIEW - Web 
+    WEB DETAILS
 ******************************************************/
 
-.preview {
+.web-details {
     width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    background: green;
+    overflow-X: hidden;
+
+    &__meta {
+        position: fixed;
+        min-height: 100%;
+        top: 0;
+        left: 0;
+        width: 45%;
+        min-width: 768px;
+        padding: 0.7em 3.8em 4.2em;
+        display: grid;
+        grid-template-rows: 170px calc(100% - 240px) 70px;
+        @include lg {
+            min-width: 0;
+            width: 100%;
+        }
+    }
+
+    &__header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        background-color: $paletColor4;
+
+        .id-tag {
+            font-size: 120px;
+            font-family: $font_title;
+            mix-blend-mode: overlay;
+        }
+
+        .go-back {
+            background: transparent;
+            color: $fontColor;
+            font-size: 40px;
+            padding: 0;
+            margin: 0;
+            justify-self: end;
+            align-self: start;
+            font-family: $font_title;
+            font-weight: 200;
+            display: flex;
+            flex-direction: column;
+            @include transform(scaleX(1.5));
+            @include transitions(all .23s ease);
+            &:hover {
+                @include transform(scale(1.1, 1.1));
+            }
+            &::after {
+                content: 'Back';
+                font-size: 15px;
+                line-height: 0.2;
+            }
+        }
+    }
+
+    &__details {
+
+        text-align: right;
+
+        .btn-view-site {
+            margin-top: 40px;
+            font-size: 1.6em;
+            background-size: 600% 100%;
+            color: #fff;
+            box-shadow: 0 0 50px rgba($paletColor1, .5);
+            background-color: $paletColor1;
+            background-image: linear-gradient(to right,
+                $paletColor1,
+                $paletColor2,
+                $paletColor2,
+                $paletColor1);
+            @include transitionsMulti (
+                background 3s ease,
+                box-shadow .3s ease,
+                transform .5s ease
+            );
+            
+
+            &:hover {
+                background-position: 100% 0;
+                box-shadow: 0 5px 50px $paletColor1;
+            }
+        }
+    }
+
+    &__navigation {
+        display: grid;
+        grid-template-columns: 1fr 5px 1fr;
+        column-gap: 40px;
+        align-items: center;
+
+        .disabled {
+            color: $paletColor4;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+    }
+
+    .meta {
+
+        &__title {
+            font-family: $font_title;
+            font-size: 4em;
+        }
+
+        &__description {
+            font-size: 1.4em;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        &__tags {
+            font-size: 1.9em;
+            line-height: 1.6;
+            margin: 20px 0;
+            font-family: $font_title;
+        }
+
+        &__prev button, &__next button, span {
+            background: transparent;
+            color: $fontColor;
+            font-family: $font-title;
+            font-weight: 300;
+            font-size: 3em;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-content: center;
+            
+        }
+        &__prev:active, &__prev:focus {
+            outline: none;
+        }
+
+        span {
+            font-size: 4em;
+        }
+
+        &__prev {
+            justify-self: end;
+            text-decoration: none;
+        }
+
+        &__next {
+            text-decoration: none;
+        }
+    
+    }
+
+    &__preview {
+        overflow: scroll;
+        position: absolute;
+        width: calc(100% - 768px);
+        max-width: 55%;
+        right: 0;
+        img {
+            width: 100%;
+        }
+        @include lg {
+            display: none;
+        }
+    }
+
+
 }
 
 /******************************************************
@@ -747,18 +911,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
                 $paletColor2, 
                 $paletColor1
             );
-            -o-transition: 
-                background $transitionBGSpeed ease, 
-                box-shadow $transitionShadowSpeed ease,
-                transform $transitionScaleSpeed ease;
-            -webkit-transition: 
-                background $transitionBGSpeed ease, 
-                box-shadow $transitionShadowSpeed ease,
-                transform $transitionScaleSpeed ease;
-            transition: 
-                background $transitionBGSpeed ease, 
-                box-shadow $transitionShadowSpeed ease,
-                transform $transitionScaleSpeed ease;
+            @include transitionsMulti (background 3s ease,
+                box-shadow .3s ease,
+                transform .5s ease);
     
             &:hover {
                 background-position: 100% 0;
@@ -857,8 +1012,8 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     
     &__dot, &__circle {
         position: absolute;
-        top: 0px;
-        left: 0px;
+        top: -200px;
+        left: -200px;
         z-index: 9999;
         mix-blend-mode: difference;
         pointer-events: none;

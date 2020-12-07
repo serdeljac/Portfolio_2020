@@ -1,7 +1,7 @@
 // FONTS
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;500&display=swap');
 
 $font_title: 'Oswald', sans-serif;
 $font_default: 'Montserrat', sans-serif;
@@ -30,7 +30,3 @@ $webHeight: 230px;
 
 $disableColor: #ff2929;
 $enableColor: #50af24;
-
-$transitionBGSpeed: 3s;
-$transitionScaleSpeed: .5s;
-$transitionShadowSpeed: .3s;

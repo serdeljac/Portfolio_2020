@@ -3,7 +3,7 @@
         <nav>
             <ul class="navigation__container">
                 <li><a class="clickable" @click="closeMenu" href="#" item-num="01">Home</a></li>
-                <li><router-link to="{}" class="clickable" @click="closeMenu"  item-num="02">Web</router-link></li>
+                <li @click="closeMenu"><router-link to="#web" class="clickable"   item-num="02">Web</router-link></li>
                 <li><a class="clickable" @click="closeMenu" href="#web" item-num="02">Web</a></li>
                 <li><a class="clickable" @click="closeMenu" href="#pens" item-num="03">Pens</a></li>
                 <li><a class="clickable" @click="closeMenu" href="#about" item-num="04">About</a></li>
