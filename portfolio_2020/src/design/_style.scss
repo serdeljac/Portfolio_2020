@@ -953,13 +953,24 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     &__title {
         font-family: $font_title;
         color: $fontColor;
-        font-size: 4em;
         display: flex;
-        span {
-            font-size: 0.4em;
+
+        &-h2 {
+            font-size: 6em;
+            border-bottom: 2px solid #fff;
+            padding-right: 60px;
+        }
+        &-pagenation {
+            font-size: 2em;
             color: #aaa;
+            border-bottom: 2px solid #fff;
+        }
+        &-review {
+            font-size: 6em;
+            color: grey;
+            display: flex;
             align-self: end;
-            @include transform(translateX(100px) translateY(-22px));
+            line-height: 1;
         }
     }
 

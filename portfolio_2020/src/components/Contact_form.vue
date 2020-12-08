@@ -3,9 +3,9 @@
 
         <div class="quick_contact__wrapper">
             <div class="quick_contact__title">
-                <h2>Quick Contact</h2>
-                <span>Page {{ pageNum }}/4</span>
-                <h2 v-if="lastPage">Review</h2>
+                <h2 class="quick_contact__title-h2">Quick Contact</h2>
+                <span class="quick_contact__title-pagenation">Page {{ pageNum }}/4</span>
+                <p class="quick_contact__title-review" :class="{active: lastPage }">Review</p>
             </div>
             <form class="quick_contact__form" action="" method="post">
 
