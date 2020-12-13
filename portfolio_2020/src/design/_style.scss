@@ -946,24 +946,27 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         display: grid;
         width: 100%;
         align-content: center;
-        justify-content: center;
         height: 100%;
+        max-width: 1200px;
+        margin: auto;
+        grid-template-columns: 50% 10% 40%;
     }
 
     &__title {
-        font-family: $font_title;
-        color: $fontColor;
-        display: flex;
+        
 
         &-h2 {
             font-size: 6em;
             border-bottom: 2px solid #fff;
             padding-right: 60px;
+            font-family: $font_title;
+            color: $fontColor;
         }
         &-pagenation {
             font-size: 2em;
             color: #aaa;
             border-bottom: 2px solid #fff;
+            font-family: $font_title;
         }
         &-review {
             font-size: 6em;
@@ -971,11 +974,13 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             display: flex;
             align-self: end;
             line-height: 1;
+            font-family: $font_title;
         }
     }
 
     &__form {
         font-size: 2.5em;
+        grid-column: 1 / span 3;
         label {
             display: none;
         }
@@ -996,6 +1001,10 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
     .form-group {
         display: inline-flex;
+    }
+
+    &__navigation {
+        display: flex;
     }
 
 }

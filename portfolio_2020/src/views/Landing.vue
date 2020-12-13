@@ -1,5 +1,5 @@
 <template>
-    <div class="landing">
+    <div class="landing" v-if="!contactForm">
             <div class="brand clickable">
                 <a href="/">
                     <svg data-name="Brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81.7 81.7">
@@ -28,7 +28,7 @@
             <footer class="footer">
                 <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
             </footer>
-            <ContactForm v-if="contactForm" />
+            
         </main>
     </div>
 </template>
@@ -40,15 +40,15 @@ import WorkWeb from '@/components/Work_web.vue';
 import WorkPen from '@/components/Work_pen.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
-import ContactForm from '@/components/Contact_form.vue';
+
 
 export default {
   name: "Landing",
-  components: { Navigation, Hero, WorkWeb, WorkPen, About, Contact, ContactForm},
+  components: { Navigation, Hero, WorkWeb, WorkPen, About, Contact},
   data() {
       return {
           navigation: false,
-          contactForm: true
+          contactForm: false
       }
   },
   methods: {
@@ -57,8 +57,11 @@ export default {
       },
       triggerContact: function() {
         this.contactForm = !this.contactForm;
+        this.triggerContactApp();
       },
-
+      triggerContactApp: function() {
+            this.$emit('triggerContactApp');
+        }
   }
 }
 </script>
