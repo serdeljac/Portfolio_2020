@@ -4,6 +4,7 @@
         <div class="close_quick-contact clickable" @click="triggerContact">X</div>
 
         <div class="quick_contact__wrapper">
+<<<<<<< HEAD
 
             <div class="quick_contact__title">
                 <h2 class="quick_contact__title-h2">Quick Contact</h2>
@@ -11,10 +12,16 @@
                 <p class="quick_contact__title-review" :class="{active: pageNum == 4 }">Review</p>
             </div>
 
+=======
+            <h2 class="quick_contact__title-h2">Quick Contact</h2>
+            <span class="quick_contact__title-pagenation">Page {{ pageNum }}/4</span>
+            <p class="quick_contact__title-review" :class="{active: lastPage }">Review</p>
+>>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
             <form class="quick_contact__form" action="" method="post">
 
                 <div class="page page-1">
                     <div class="form-group">
+<<<<<<< HEAD
                         <span>Greetings, my name is </span>
                         <input id="name" type="text" class="form_name clickable" v-model="formName"/>,
                         <label for="name" class="clickable">YOUR NAME</label>
@@ -23,6 +30,16 @@
                         <span>you can email me at </span>
                         <input id="email" type="email" class="form_email clickable" v-model="formEmail">
                         <label for="email" class="clickable">EMAIL</label>
+=======
+                        <p>Greetings, my name is </p>
+                        <label for="name">YOUR NAME</label>
+                        <input id="name" type="text" class="form_name" placeholder="first name" />,
+                    </div>
+                    <div class="form-group">
+                        <p>you can email me at</p>
+                        <label for="email">EMAIL</label>
+                        <input id="email" type="email" class="form_email">
+>>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
                     </div>
                 </div>
 

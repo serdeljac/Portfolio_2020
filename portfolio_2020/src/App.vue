@@ -3,25 +3,32 @@
 
     <router-view />
 
+    <ContactForm v-if="contactForm" @triggerContactApp="contactForm = !contactForm" />
+
     <div class="cursor">
       <div class="cursor__dot"></div>
       <div class="cursor__circle"></div>
     </div>
+
+    
     
   </div>
 </template>
 
 <script>
+import ContactForm from '@/components/Contact_form.vue';
 import $ from 'jquery';
 
 export default {
   name: "Assemble",
+  components: { ContactForm },
   data() {
     return {
       xDot: 0,
       yDot: 0,
       xCircle: 0,
       yCircle: 0,
+      contactForm: false
     }
   },
   methods: {
@@ -44,6 +51,9 @@ export default {
             cursorCircle.style.top =  `${this.yCircle}px`;
           }
       },
+      triggerContactApp: function() {
+        this.contactForm = !this.contactForm;
+      }
   },
   mounted() {
       
