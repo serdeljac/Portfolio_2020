@@ -3,75 +3,63 @@
 
     <router-view />
 
-    <ContactForm v-if="contactForm" @triggerContactApp="contactForm = !contactForm" />
-
     <div class="cursor">
       <div class="cursor__dot"></div>
       <div class="cursor__circle"></div>
     </div>
 
-    
-    
   </div>
 </template>
 
 <script>
-import ContactForm from '@/components/Contact_form.vue';
-import $ from 'jquery';
+  import $ from 'jquery';
+  import gsap from 'gsap';
 
-export default {
-  name: "Assemble",
-  components: { ContactForm },
-  data() {
-    return {
-      xDot: 0,
-      yDot: 0,
-      xCircle: 0,
-      yCircle: 0,
-      contactForm: false
-    }
-  },
-  methods: {
-      mouseMove: function(e) {
+  export default {
+    name: "Assemble",
+    mounted() {
 
-          const cursorDot = document.querySelector('.cursor__dot');
-          const cursorCircle = document.querySelector('.cursor__circle');
+        gsap.set(".cursor__circle", {xPercent: 0, yPercent: 0});
+        gsap.set(".cursor__dot", {xPercent: 0, yPercent: 0});
+
+        const circle = document.querySelector(".cursor__circle");
+        const ball = document.querySelector(".cursor__dot");
+        const pos = { x: document.body.clientWidth / 2, y: document.body.clientHeight / 2 };
+        const mouse = { x: pos.x, y: pos.y };
+        const speed = 0.7;
+
+        const xSet = gsap.quickSetter(circle, "x", "px");
+        const ySet = gsap.quickSetter(circle, "y", "px");
+        const ballxSet = gsap.quickSetter(ball, "x", "px");
+        const ballySet = gsap.quickSetter(ball, "y", "px");
+
+        window.addEventListener("mousemove", e => {    
+          mouse.x = e.x;
+          mouse.y = e.y;  
+        });
+
+        gsap.ticker.add(() => {
+          const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio()); 
           
-          if (e) {
-            this.xDot = e.pageX - 2;
-            this.yDot = e.pageY - 2;
+          pos.x += (mouse.x - pos.x) * dt;
+          pos.y += (mouse.y - pos.y) * dt;
+          xSet(pos.x);
+          ySet(pos.y);
+          ballxSet(pos.x);
+          ballySet(pos.y);
+        });
 
-            this.xCircle = e.pageX - 22;
-            this.yCircle = e.pageY - 22;
-
-            cursorDot.style.left = `${this.xDot}px`;
-            cursorDot.style.top =  `${this.yDot}px`;
-
-            cursorCircle.style.left = `${this.xCircle}px`;
-            cursorCircle.style.top =  `${this.yCircle}px`;
+      
+        $('.clickable').hover(
+          function() {
+            $('.cursor').addClass('active');
+          },
+          function() {
+            $('.cursor').removeClass('active');
           }
-      },
-      triggerContactApp: function() {
-        this.contactForm = !this.contactForm;
-      }
-  },
-  mounted() {
-      
-      window.addEventListener('mousemove', this.mouseMove);
-      
-      $('.clickable').hover(
-        function() {
-          $('.cursor').addClass('active');
-        },
-        function() {
-          $('.cursor').removeClass('active');
-        }
-      );
-
+        );
+    }
   }
-}
-
-
 </script>
 
 <style lang="scss">

@@ -82,7 +82,7 @@
     -ms-content-zooming: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    // cursor: none !important;
+    cursor: none !important;
 }
 
 button, a {
@@ -1253,18 +1253,17 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     backface-visibility: hidden;
     
     &__dot, &__circle {
-        position: absolute;
-        top: -200px;
-        left: -200px;
+        position: fixed;
         z-index: 9999;
         mix-blend-mode: difference;
         pointer-events: none;
-
     }
 
     &__dot {
         width: 10px;
         height: 10px;
+        top: 0px;
+        left: 0px;
         border-radius: 5px;
         background-color: $fontColor;
         transition: all .001s linear;
@@ -1273,7 +1272,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     &__circle {
         width: 50px;
         height: 50px;
-        border-radius: 25px;
+        top: -20px;
+        left: -20px;
+        border-radius: 50px;
         border: 2px solid $fontColor;
         transition: all .1s ease-out;
     }
@@ -1281,9 +1282,12 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     &.active {
 
         .cursor__circle {
-            transform-origin: 50% 50%;
-            border: 1px dashed $fontColor;
-            animation: cursor_spin 2s linear infinite;                
+            background-color: #fff;
+            width: 70px;
+            height: 70px;
+            top: -30px;
+            left: -30px;
+            filter: blur(1px)
         }
     }
 }

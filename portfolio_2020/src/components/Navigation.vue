@@ -16,6 +16,8 @@
 import SmoothScroll from 'smooth-scroll';
 const scroll = new SmoothScroll('a[href*="#"]', {
     updateURL: false,
+    speed: 300,
+    easing: 'easeOutCubic'
 });
 
 
