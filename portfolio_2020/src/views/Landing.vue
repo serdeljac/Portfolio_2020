@@ -21,7 +21,7 @@
                     X
                 </div>
             </div>
-        <Navigation v-if="navigation" @triggerNavigation="navigation = !navigation"/>
+        <Navigation v-if="navigation" @triggerNavigation="triggerNavigation"/>
         <Hero  @triggerContact="contactForm = !contactForm" />
         <main>
             <WorkWeb />

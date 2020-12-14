@@ -9,11 +9,6 @@
     100% { box-shadow: 0 0 0 1em rgba(#fff,0); }
 }
 
-@keyframes cursor_spin {
-    0% { transform: scale(1.5) rotate(0deg); }
-    100% { transform: scale(1.5) rotate(360deg); }
-}
-
 // CSS: transform
 @mixin transform($property) { 
     -webkit-transform: $property;
