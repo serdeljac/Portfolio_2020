@@ -28,7 +28,7 @@
             <footer class="footer">
                 <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
             </footer>
-            <ContactForm v-if="contactForm" />
+            <ContactForm v-if="contactForm" @triggerContact="contactForm = !contactForm"/>
         </main>
     </div>
 </template>
@@ -48,7 +48,7 @@ export default {
   data() {
       return {
           navigation: false,
-          contactForm: true
+          contactForm: false
       }
   },
   methods: {
@@ -58,7 +58,16 @@ export default {
       triggerContact: function() {
         this.contactForm = !this.contactForm;
       },
+  },
+  updated() {
 
+      const landing = document.querySelector('body');
+
+      if (this.contactForm == true) {
+          landing.classList.add('form_add');
+      }else {
+          landing.classList.remove('form_add');
+      }
   }
 }
 </script>

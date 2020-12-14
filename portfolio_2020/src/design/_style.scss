@@ -922,8 +922,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
                 box-shadow: 0 5px 50px $paletColor1;
                 transform: scale(1.1);
             }
-           
-            
         }
     }
 
@@ -933,6 +931,19 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     CONTACT FORM 
 ******************************************************/
 
+.form_add {
+    overflow: hidden;
+}
+
+.close_quick-contact {
+    position: absolute;
+    z-index: 999;
+    right: 5%;
+    top: 5%;
+    font-size: 60px;
+    user-select: none;
+}
+
 .quick_contact {
     position: fixed;
     top: 0;
@@ -941,62 +952,214 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     width: 100%;
     height: 100%;
     background: #060744;
+    background: url('./assets/quick_contact.jpg') center / cover no-repeat;
 
     &__wrapper {
         display: grid;
-        width: 100%;
         align-content: center;
-        justify-content: center;
         height: 100%;
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 60%;
     }
 
     &__title {
         font-family: $font_title;
         color: $fontColor;
         display: flex;
+        justify-self: center;
+        align-self: end;
+        margin-bottom: 60px;
 
         &-h2 {
             font-size: 6em;
             border-bottom: 2px solid #fff;
             padding-right: 60px;
         }
+
         &-pagenation {
             font-size: 2em;
             color: #aaa;
             border-bottom: 2px solid #fff;
+            align-self: end;
+            padding-bottom: 15px;
         }
+
         &-review {
-            font-size: 6em;
-            color: grey;
-            display: flex;
+            font-size: 8em;
+            font-weight: normal;
+            padding-left: 40px;
+            color: rgba(111, 111, 111, 0.29);
             align-self: end;
             line-height: 1;
+            opacity: 0;
+            @include transitions(opacity .13s linear);
+            &.active {
+                opacity: 1;
+            }
         }
     }
 
     &__form {
-        font-size: 2.5em;
+        font-size: 1.7em;
+        padding-top: 40px;
+        justify-self: center;
+
+        .page {
+            display: inline-grid;
+            position: absolute;
+            @include transform(translateX(100vw));
+            @include transitions(transform .4s ease);
+        }
+
+        .form-group {
+            height: 50px;
+            margin-bottom: 40px;
+            display: inline-flex;
+            justify-content: end;
+            width: 100%;
+        }
+
+        label, input {
+            width: 250px;
+        }
+
+        input {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px solid #aaa;
+            padding: 0 0 0 10px;
+            margin-left: 10px;
+            font-size: 0.8em;
+            color: $fontColor;
+            @include transform(translateY(-7px));
+
+            &:focus {
+                outline: none;
+            }
+
+            &:invalid {
+                outline: none;
+                border: 0;
+                border-bottom: 2px solid red;
+            }
+        }
+
         label {
-            display: none;
+            font-size: 0.8em;
+            position: relative;
+            z-index: 100;
+            color: #515151;
+            text-align: center;
+            margin-left: -260px;
+            @include transitions(all .23s ease);
+            user-select: none;
+        }
+
+        input:focus+label {
+            font-size: 0.4em;
+            @include transform(translate(-80px, -15px));
+        }
+
+        input:invalid {
+            outline: none;
+        }
+
+        textarea {
+            background: transparent;
+            border: 0;
+        }
+
+    }
+    
+    .page-2, .page-3 {
+        text-align: center;
+        .form-group {
+            justify-content: center;
+        }
+        label, input {
+            width: 400px;
+        }
+        label {
+            margin-left: -400px;
+        }
+        input:focus+label {
+            @include transform(translate(-140px, -15px));
         }
     }
 
-    input {
-        background-color: transparent;
-        border: 0;
-        border-bottom: 2px solid #aaa;
-        padding: 0;
-        margin: 0 2px 0 10px; 
-        color: $fontColor;
+    .page-4 {
+        p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+        span {
+            font-weight: bold;
+            color: $fontColor
+        }
+    }
+         
+    .invalid {
+        border-bottom: 2px solid red;
     }
 
-    .page-1 {
-        display: inline-grid;
+    .pg1-filled {
+        font-size: 0.4em !important;
+        @include transform(translate(-80px, -15px) !important);
     }
 
-    .form-group {
-        display: inline-flex;
+    .pg2-filled {
+        font-size: 0.4em;
+        @include transform(translate(-140px, -15px));
     }
+
+    &__navigation {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+
+        @include transform(translateY(300px));
+
+        & > div:first-of-type {
+            justify-self: end;
+        }
+
+        .btn {
+            padding: 0.5em 1.7em;
+            font-size: 0.7em;
+            letter-spacing: 3px;
+            font-weight: bold;
+            font-family: "Montserrat", sans-serif;
+            color: $fontColor;
+        }
+
+        .btn_back {
+            background: transparent;
+            @include transitions(transform .5s ease);
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        .btn_next {
+            background-size: 600% 100%;
+            box-shadow: 0 0 30px rgba($paletColor3, .5);
+            background-color: $paletColor1;
+            background-image: linear-gradient(to right,
+                    $paletColor3,
+                    $paletColor1);
+            @include transitionsMulti (background 0.5s ease,
+                box-shadow .7s ease,
+                transform .5s ease);
+            &:hover {
+                background-position: 100% 0;
+                box-shadow: 0 0px 10px $paletColor1;
+                transform: scale(1.1);
+            }
+        }
+    }
+
+
+
 
 }
 

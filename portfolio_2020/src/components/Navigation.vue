@@ -3,7 +3,6 @@
         <nav>
             <ul class="navigation__container">
                 <li><a class="clickable" @click="closeMenu" href="#" item-num="01">Home</a></li>
-                <li @click="closeMenu"><router-link to="#web" class="clickable"   item-num="02">Web</router-link></li>
                 <li><a class="clickable" @click="closeMenu" href="#web" item-num="02">Web</a></li>
                 <li><a class="clickable" @click="closeMenu" href="#pens" item-num="03">Pens</a></li>
                 <li><a class="clickable" @click="closeMenu" href="#about" item-num="04">About</a></li>
@@ -15,7 +14,9 @@
 
 <script>
 import SmoothScroll from 'smooth-scroll';
-const scroll = new SmoothScroll('a[href*="#"]');
+const scroll = new SmoothScroll('a[href*="#"]', {
+    updateURL: false,
+});
 
 
     export default {
@@ -28,8 +29,7 @@ const scroll = new SmoothScroll('a[href*="#"]');
         methods: {
             closeMenu: function() {
                 this.$emit('triggerNavigation');
-            }
+            },
         },
-        
     }
 </script>
