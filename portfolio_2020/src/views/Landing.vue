@@ -11,11 +11,14 @@
                 </a>
             </div>
 
-            <div class="menu open-nav clickable" @click="triggerNavigation">
-                <div class="hamburger">
+            <div class="menu open-nav clickable" :class="{close: closeNav}" @click="triggerNavigation">
+                <div class="openMenu">
                     <div class="bar-1"></div>
                     <div class="bar-2"></div>
                     <div class="bar-3"></div>
+                </div>
+                <div class="closeMenu">
+                    X
                 </div>
             </div>
         <Navigation v-if="navigation" @triggerNavigation="navigation = !navigation"/>
@@ -48,12 +51,14 @@ export default {
   data() {
       return {
           navigation: false,
-          contactForm: true
+          contactForm: false,
+          closeNav: false
       }
   },
   methods: {
       triggerNavigation: function() {
           this.navigation = !this.navigation;
+          this.closeNav = !this.closeNav;
       },
   },
   updated() {
