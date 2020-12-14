@@ -28,11 +28,7 @@
             <footer class="footer">
                 <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
             </footer>
-<<<<<<< HEAD
             <ContactForm v-if="contactForm" @triggerContact="contactForm = !contactForm"/>
-=======
-            
->>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
         </main>
     </div>
 </template>
@@ -63,7 +59,6 @@ export default {
         this.contactForm = !this.contactForm;
         this.triggerContactApp();
       },
-<<<<<<< HEAD
   },
   updated() {
 
@@ -74,11 +69,6 @@ export default {
       }else {
           landing.classList.remove('form_add');
       }
-=======
-      triggerContactApp: function() {
-            this.$emit('triggerContactApp');
-        }
->>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
   }
 }
 </script>

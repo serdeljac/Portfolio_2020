@@ -958,7 +958,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         display: grid;
         align-content: center;
         height: 100%;
-<<<<<<< HEAD
         grid-template-columns: 100%;
         grid-template-rows: 40% 60%;
     }
@@ -970,15 +969,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         justify-self: center;
         align-self: end;
         margin-bottom: 60px;
-=======
-        max-width: 1200px;
-        margin: auto;
-        grid-template-columns: 50% 10% 40%;
-    }
-
-    &__title {
-        
->>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
 
         &-h2 {
             font-size: 6em;
@@ -992,12 +982,8 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             font-size: 2em;
             color: #aaa;
             border-bottom: 2px solid #fff;
-<<<<<<< HEAD
             align-self: end;
             padding-bottom: 15px;
-=======
-            font-family: $font_title;
->>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
         }
 
         &-review {
@@ -1007,20 +993,15 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             color: rgba(111, 111, 111, 0.29);
             align-self: end;
             line-height: 1;
-<<<<<<< HEAD
             opacity: 0;
             @include transitions(opacity .13s linear);
             &.active {
                 opacity: 1;
             }
-=======
-            font-family: $font_title;
->>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
         }
     }
 
     &__form {
-<<<<<<< HEAD
         font-size: 1.7em;
         padding-top: 40px;
         justify-self: center;
@@ -1065,10 +1046,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             }
         }
 
-=======
-        font-size: 2.5em;
-        grid-column: 1 / span 3;
->>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
         label {
             font-size: 0.8em;
             position: relative;
@@ -1138,7 +1115,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     }
 
     &__navigation {
-<<<<<<< HEAD
         display: grid;
         grid-template-columns: 1fr 1fr;
 
@@ -1187,11 +1163,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
 
 
-=======
-        display: flex;
-    }
-
->>>>>>> 8680597f45905a3e8a2bf4cfcf14634c0673fc14
 }
 
 /******************************************************
