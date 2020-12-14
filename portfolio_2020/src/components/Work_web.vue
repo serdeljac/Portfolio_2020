@@ -1,6 +1,6 @@
 <template>
     <section id="web" class="web">
-        <div class="section__title">
+        <div class="section__title title-web">
             <h2>WEB</h2>
             <p>selected projects built for clients...</p>
         </div>
@@ -39,7 +39,8 @@
 
 <script>
 import websites from '@/shared/websites_info.js';
-
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
     export default {
         name: "Work_web",
@@ -47,6 +48,18 @@ import websites from '@/shared/websites_info.js';
             return {
                 websites: websites[0]
             }
+        },
+        mounted() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.to('.item__wrapper', {
+                scrollTrigger: {
+                    trigger: '.title-web',
+                    markers: true,
+                    start: "top center"
+                }, 
+                opacity: 1, 
+                duration: 3})
         },
     }
 </script>

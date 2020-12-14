@@ -275,7 +275,14 @@ body {
         }
     }
     
-
+    //Initial for GSAP
+    & {
+        opacity: 0;
+        filter: blur(100px);
+        &__container {
+            opacity: 0;
+        }
+    }
     
 }
 
@@ -459,6 +466,11 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             @include transitions(all .23s ease);
             
         }
+    }
+
+    // Initial for GSAP
+    .item__wrapper {
+        opacity: 0;
     }
 }
 

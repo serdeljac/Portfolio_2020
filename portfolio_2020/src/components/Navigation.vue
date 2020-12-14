@@ -14,6 +14,10 @@
 
 <script>
 import SmoothScroll from 'smooth-scroll';
+import gsap from 'gsap';
+const openTl = gsap.timeline({});
+
+
 const scroll = new SmoothScroll('a[href*="#"]', {
     updateURL: false,
     speed: 300,
@@ -30,8 +34,15 @@ const scroll = new SmoothScroll('a[href*="#"]', {
         },
         methods: {
             closeMenu: function() {
-                this.$emit('triggerNavigation');
+                const closeTl = gsap.timeline({onComplete: this.trigClose});
+                closeTl.to('.navigation', {duration: 0.5, opacity: 0, filter: 'blur(100px)', ease: "ease-out"});
             },
+            trigClose: () => this.$emit('triggerNavigation'),
+            
+        },
+        mounted() {
+            openTl.to('.navigation', {duration: 0.5, opacity: 1, filter: 'blur(0px)', ease: "ease-out"});
+            openTl.to('.navigation__container', {duration: 0.8, opacity: 1, ease: "ease-out"})
         },
     }
 </script>
