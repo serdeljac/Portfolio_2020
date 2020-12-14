@@ -216,7 +216,7 @@ body {
     left: 0;
     top: 0;
     z-index: 99;
-    background: url('./assets/menu_bg.jpg') center/cover no-repeat;
+    background: url('./assets/navigation.jpg') center/cover no-repeat;
     display: grid;
     align-content: center;
     justify-content: end;
@@ -228,7 +228,7 @@ body {
         list-style-type: none;
         display: flex;
         flex-direction: column;
-        margin-right: 200px;
+        margin-right: 400px;
         text-align: right;
         @include md {
             margin: 0;
@@ -958,6 +958,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         display: grid;
         align-content: center;
         height: 100%;
+        padding: 2em;
         grid-template-columns: 100%;
         grid-template-rows: 40% 60%;
     }
@@ -969,13 +970,16 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         justify-self: center;
         align-self: end;
         margin-bottom: 60px;
+        @include lg {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            width: 100%;
+        }
 
         &-h2 {
             font-size: 6em;
             border-bottom: 2px solid #fff;
             padding-right: 60px;
-            font-family: $font_title;
-            color: $fontColor;
         }
 
         &-pagenation {
@@ -998,6 +1002,12 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             &.active {
                 opacity: 1;
             }
+            @include lg {
+                grid-column: 1 / span 2;
+                text-align: center;
+                padding: 0;
+                margin: 20px 0 0;
+            }
         }
     }
 
@@ -1005,24 +1015,45 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         font-size: 1.7em;
         padding-top: 40px;
         justify-self: center;
+        @include lg {
+            width: 100%;
+            padding: 0;
+        }
 
         .page {
             display: inline-grid;
             position: absolute;
-            @include transform(translateX(100vw));
+            @include transform(translateX(200vw));
             @include transitions(transform .4s ease);
+            @include lg {
+                display: block;
+                width: calc(100% - 2em);
+            }
         }
 
         .form-group {
             height: 50px;
             margin-bottom: 40px;
-            display: inline-flex;
-            justify-content: end;
-            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            @include lg {
+                margin: 0;
+                flex-direction: column;
+                height: auto;
+                text-align: center;
+                font-size: 1.4em;
+                span {margin-bottom: 20px;}
+            }
         }
 
         label, input {
             width: 250px;
+           
+            @include lg {
+                height: 50px;
+                text-align: center;
+                margin: auto !important;
+            }
         }
 
         input {
@@ -1044,6 +1075,20 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
                 border: 0;
                 border-bottom: 2px solid red;
             }
+
+            &:focus+label {
+                font-size: 0.4em;
+                @include transform(translate(-80px, -15px));
+                @include lg {
+                    @include transform(translateY(0px));
+                }
+            }
+
+        }
+
+        textarea {
+            background: transparent;
+            border: 0;
         }
 
         label {
@@ -1055,20 +1100,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             margin-left: -260px;
             @include transitions(all .23s ease);
             user-select: none;
-        }
-
-        input:focus+label {
-            font-size: 0.4em;
-            @include transform(translate(-80px, -15px));
-        }
-
-        input:invalid {
-            outline: none;
-        }
-
-        textarea {
-            background: transparent;
-            border: 0;
+            @include lg {
+                @include transform(translateY(-45px));
+            }
         }
 
     }
@@ -1086,6 +1120,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         }
         input:focus+label {
             @include transform(translate(-140px, -15px));
+            @include lg {
+                @include transform(none);
+            }
         }
     }
 
@@ -1099,19 +1136,27 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             color: $fontColor
         }
     }
+
+
          
     .invalid {
         border-bottom: 2px solid red;
     }
 
     .pg1-filled {
-        font-size: 0.4em !important;
-        @include transform(translate(-80px, -15px) !important);
+        font-size: 0.4em;
+        @include transform(translate(-80px, -15px));
+        @include lg {
+            @include transform(none);
+        }
     }
 
     .pg2-filled {
         font-size: 0.4em;
         @include transform(translate(-140px, -15px));
+        @include lg {
+            @include transform(none);
+        }
     }
 
     &__navigation {

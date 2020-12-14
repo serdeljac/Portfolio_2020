@@ -16,7 +16,7 @@
                 <div class="page page-1">
                     <div class="form-group">
                         <span>Greetings, my name is </span>
-                        <input id="name" type="text" class="form_name clickable" v-model="formName"/>,
+                        <input id="name" type="text" class="form_name clickable" v-model="formName"/>
                         <label for="name" class="clickable">YOUR NAME</label>
                     </div>
                     <div class="form-group">
@@ -79,7 +79,6 @@
         name: 'ContactForm',
         data() {
             return {
-                lastPage: false,
                 pageNum: 1,
                 formName: '',
                 formEmail: '',
@@ -107,7 +106,7 @@
                         this.pageNum = this.pageNum + num
                     }
 
-                }else if (this.pageNum === 2) {
+                } else if (this.pageNum === 2) {
 
                     if (this.formProject.length == 0) {
                         $('.form_project').addClass('invalid');
@@ -180,14 +179,10 @@
             }
 
             if (this.pageNum) {
-                $('.page-' + (this.pageNum - 1)).css('transform', 'translateX(-100vw)');
+                $('.page-' + (this.pageNum - 1)).css('transform', 'translateX(-200vw)');
                 $('.page-' + this.pageNum).css('transform', 'translateX(0vw)');
                 $('.page-' + (this.pageNum + 1)).removeAttr('style');
             } 
         },
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

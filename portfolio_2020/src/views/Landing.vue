@@ -1,5 +1,5 @@
 <template>
-    <div class="landing" v-if="!contactForm">
+    <div class="landing" >
             <div class="brand clickable">
                 <a href="/">
                     <svg data-name="Brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81.7 81.7">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         <Navigation v-if="navigation" @triggerNavigation="navigation = !navigation"/>
-        <Hero @closeMenu="contactForm = !contactForm" @triggerContact="contactForm = !contactForm" />
+        <Hero  @triggerContact="contactForm = !contactForm" />
         <main>
             <WorkWeb />
             <WorkPen />
@@ -28,7 +28,7 @@
             <footer class="footer">
                 <p>&copy; Made by Stjepan Erdeljac. Circa 2020.</p>
             </footer>
-            <ContactForm v-if="contactForm" @triggerContact="contactForm = !contactForm"/>
+            <ContactForm v-if="contactForm" @triggerContact="contactForm = !contactForm" />
         </main>
     </div>
 </template>
@@ -40,24 +40,20 @@ import WorkWeb from '@/components/Work_web.vue';
 import WorkPen from '@/components/Work_pen.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
-
+import ContactForm from '@/components/Contact_form.vue'
 
 export default {
   name: "Landing",
-  components: { Navigation, Hero, WorkWeb, WorkPen, About, Contact},
+  components: { Navigation, Hero, WorkWeb, WorkPen, About, Contact, ContactForm},
   data() {
       return {
           navigation: false,
-          contactForm: false
+          contactForm: true
       }
   },
   methods: {
       triggerNavigation: function() {
           this.navigation = !this.navigation;
-      },
-      triggerContact: function() {
-        this.contactForm = !this.contactForm;
-        this.triggerContactApp();
       },
   },
   updated() {
