@@ -40,6 +40,7 @@ import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
 import ContactForm from '@/components/Contact_form.vue';
 import $ from 'jquery';
+import gsap from 'gsap';
 
 export default {
   name: "Landing",
@@ -53,9 +54,22 @@ export default {
   },
   methods: {
       triggerNavigation: function() {
-          this.closeNav = !this.closeNav;
-          this.navigation = !this.navigation;
+
+          if (this.closeNav == true) {
+              
+            const closeTl = gsap.timeline({onComplete: this.trigNav});
+            closeTl.to('.navigation', {duration: 0.5, opacity: 0, filter: 'blur(100px)', ease: "ease-out"});
+            
+          }else {
+              this.trigNav();
+          }
+
           
+          
+      },
+      trigNav: function() {
+        this.closeNav = !this.closeNav;
+          this.navigation = !this.navigation;
       },
   },
   mounted() {

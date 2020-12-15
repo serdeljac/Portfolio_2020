@@ -3,7 +3,7 @@
 
     <router-view />
 
-    <div class="cursor">
+    <div class="cursor" v-show="!msg">
       <div class="cursor__dot"></div>
       <div class="cursor__circle"></div>
     </div>
@@ -12,11 +12,19 @@
 </template>
 
 <script>
-  import gsap from 'gsap';
+import gsap from 'gsap';
+import { isMobile } from 'mobile-device-detect';
 
   export default {
     name: "Assemble",
+    data() {
+      return {
+        msg: isMobile
+      }
+    },
     mounted() {
+
+      if (!this.msg) {
 
         gsap.set(".cursor__circle", {xPercent: 0, yPercent: 0});
         gsap.set(".cursor__dot", {xPercent: 0, yPercent: 0});
@@ -47,7 +55,7 @@
           ballxSet(pos.x);
           ballySet(pos.y);
         });
-
+      }
     }
   }
 </script>

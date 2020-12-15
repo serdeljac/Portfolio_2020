@@ -117,6 +117,9 @@ body {
     max-width: 300px;
     left: 40px;
     top: 25px;
+    @include sm {
+        max-width: 200px;
+    }
     img {
         width: 100%;
     }
@@ -1011,6 +1014,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             display: grid;
             grid-template-columns: auto 1fr;
             width: 100%;
+        }
+        @include sm {
+            font-size: 0.8em;
         }
 
         &-h2 {
