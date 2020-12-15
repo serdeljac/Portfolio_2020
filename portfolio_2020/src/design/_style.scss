@@ -114,9 +114,12 @@ body {
 .brand {
     position: fixed;
     z-index: 100;
-    width: 70px;
+    max-width: 300px;
     left: 40px;
-    top: 20px;
+    top: 25px;
+    img {
+        width: 100%;
+    }
 }
 
 .menu {
@@ -323,7 +326,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
     &__header-h1, &__header-h3 {
         font-weight: 300;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         opacity: 0;
         span {
             font-weight: 700;

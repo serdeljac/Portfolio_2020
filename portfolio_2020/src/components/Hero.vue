@@ -5,7 +5,7 @@
             <div>
                 <header>
                     <h1 class="hero__header-h1">
-                        Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>front-end developer and designer</span> from Vancouver.
+                        Hello, I'm <span>Stjepan Erdeljac</span>. <br />A <span>web developer </span> from Vancouver.
                     </h1>
                     <h3 class="hero__header-h3">
                         I'm a <span>web developer, photographer,</span> and a <span>goal-oriented</span> individual, spending my time at the gym, gardening, and researching inspirational UI trends and styles.

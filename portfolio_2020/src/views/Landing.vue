@@ -2,12 +2,7 @@
     <div class="landing" >
             <div class="brand clickable">
                 <a href="/">
-                    <svg data-name="Brand" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 81.7 81.7">
-                        <text transform="translate(40.9 61.23)" style="font-size: 60px;fill: #fff;font-family: MongolianBaiti, Mongolian Baiti">3</text>
-                        <text transform="translate(10.38 60.46)" style="font-size: 60px;fill: #fff;font-family: MongolianBaiti, Mongolian Baiti">S</text>
-                        <path d="M40.85,81.2A40.35,40.35,0,0,1,.5,40.85" style="fill: none;stroke: #fff;stroke-miterlimit: 10"/>
-                        <path d="M14.16,10.59A40.35,40.35,0,0,1,75.25,62" style="fill: none;stroke: #fff;stroke-miterlimit: 10"/>
-                    </svg>
+                    <img src="../assets/brand.png" alt="Stjepan Erdeljac" />
                 </a>
             </div>
 
