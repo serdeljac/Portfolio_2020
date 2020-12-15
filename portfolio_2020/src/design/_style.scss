@@ -469,8 +469,11 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     }
 
     // Initial for GSAP
-    .item__wrapper {
-        opacity: 0;
+    .item {
+        transform: perspective(400px) rotateY(-50deg) translateY(700px);
+
+        transform-style: preserve-3d;
+        opacity: 0.1;
     }
 }
 
@@ -645,6 +648,11 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
 
 }
+
+// Initial for GSAP
+// .web-details {
+
+// }
 
 /******************************************************
     WORK - Pen 
@@ -1234,6 +1242,15 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
 
 
+}
+
+// Initial for GSAP
+.quick_contact {
+    opacity: 0;
+    filter: blur(100px);
+}
+.close_quick-contact {
+    opacity: 0;
 }
 
 /******************************************************

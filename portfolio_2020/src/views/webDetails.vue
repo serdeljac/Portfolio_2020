@@ -106,6 +106,7 @@ import websites from '@/shared/websites_info.js';
                 $('.cursor').removeClass('active');
                 }
             );
+
         },
         updated: function() {
             this.prevSite = this.validateLink(websites[0][this.site.id - 1]);

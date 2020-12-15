@@ -37,7 +37,9 @@ const scroll = new SmoothScroll('a[href*="#"]', {
                 const closeTl = gsap.timeline({onComplete: this.trigClose});
                 closeTl.to('.navigation', {duration: 0.5, opacity: 0, filter: 'blur(100px)', ease: "ease-out"});
             },
-            trigClose: () => this.$emit('triggerNavigation'),
+            trigClose: function() {
+                this.$emit('triggerNavigation')
+            },
             
         },
         mounted() {

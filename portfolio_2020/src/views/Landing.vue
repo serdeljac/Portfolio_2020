@@ -43,7 +43,8 @@ import WorkWeb from '@/components/Work_web.vue';
 import WorkPen from '@/components/Work_pen.vue';
 import About from '@/components/About.vue';
 import Contact from '@/components/Contact.vue';
-import ContactForm from '@/components/Contact_form.vue'
+import ContactForm from '@/components/Contact_form.vue';
+import $ from 'jquery';
 
 export default {
   name: "Landing",
@@ -57,9 +58,21 @@ export default {
   },
   methods: {
       triggerNavigation: function() {
-          this.navigation = !this.navigation;
           this.closeNav = !this.closeNav;
+          this.navigation = !this.navigation;
+          
       },
+  },
+  mounted() {
+      $('.cursor').removeClass('active');
+      $('.clickable').hover(
+          function() {
+            $('.cursor').addClass('active');
+          },
+          function() {
+            $('.cursor').removeClass('active');
+          }
+        );
   },
   updated() {
 

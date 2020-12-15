@@ -11,7 +11,7 @@
                 <p class="quick_contact__title-review" :class="{active: pageNum == 4 }">Review</p>
             </div>
 
-            <form class="quick_contact__form" action="" method="post">
+            <form class="quick_contact__form" action="submittion-form.php" method="POST">
 
                 <div class="page page-1">
                     <div class="form-group">
@@ -60,7 +60,7 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn_next clickable"  v-if="pageNum < 4" v-on:click="pageChange(1)">Next Page</button>
-                        <button type="submit" v-show="pageNum == 4" class="btn btn_next clickable" disabled>Submit</button>
+                        <button type="submit" v-show="pageNum == 4" class="btn btn_next clickable">Submit</button>
                     </div>
                 </div>
 
@@ -74,6 +74,10 @@
 
 <script>
     import $ from 'jquery';
+    import gsap from 'gsap';
+
+    const openTl = gsap.timeline({});
+    
 
     export default {
         name: 'ContactForm',
@@ -130,10 +134,17 @@
                 
             },
             triggerContact: function() {
+                const closeTl = gsap.timeline({onComplete: this.trigClose});
+                closeTl.to('.quick_contact', {duration: 0.5, opacity: 0, filter: 'blur(100px)', ease: "ease-out"});
+            },
+            trigClose: function() {
                 this.$emit('triggerContact');
             }
         },
         mounted() {
+
+            openTl.to('.quick_contact', {duration: 0.5, opacity: 1, filter: 'blur(0px)', ease: "ease-out"})
+                  .to('.close_quick-contact', {duration: 0.8, opacity: 1, ease: "ease-out"})
 
             if (this.pageNum == 1) {
                 $('.page-' + this.pageNum).css('transform', 'translateX(0vw)');

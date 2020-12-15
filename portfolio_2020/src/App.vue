@@ -12,7 +12,6 @@
 </template>
 
 <script>
-  import $ from 'jquery';
   import gsap from 'gsap';
 
   export default {
@@ -49,15 +48,6 @@
           ballySet(pos.y);
         });
 
-      
-        $('.clickable').hover(
-          function() {
-            $('.cursor').addClass('active');
-          },
-          function() {
-            $('.cursor').removeClass('active');
-          }
-        );
     }
   }
 </script>

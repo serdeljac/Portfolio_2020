@@ -19,7 +19,7 @@
                     site: site
                     }
                 }">
-                    <div class="item clickable">
+                    <div class="item clickable" :class="`item-animate-${site.id}`">
                         <div 
                             class="item__display" 
                             v-bind:style="{backgroundImage: 'url('+site.img+')'}"
@@ -46,20 +46,36 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
         name: "Work_web",
         data() {
             return {
-                websites: websites[0]
+                websites: websites[0],
+                testing: ''
             }
         },
         mounted() {
             gsap.registerPlugin(ScrollTrigger);
 
-            gsap.to('.item__wrapper', {
+            const targets = gsap.utils.toArray('.item__wrapper');
+
+            for(let i = 1; i <= targets.length; i++) {
+
+                const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: '.title-web',
-                    markers: true,
-                    start: "top center"
-                }, 
-                opacity: 1, 
-                duration: 3})
+                    trigger: '.item-animate-' + i,
+                    // markers: true,
+                    start: "-400px 80%",
+                }});
+
+                tl.to('.item-animate-' + i, {
+                    rotationY: 0,
+                    y: 0,
+                    skewY: 0,
+                    opacity: 1
+                    })
+
+            }
+            
         },
+        
+
     }
+
 </script>
