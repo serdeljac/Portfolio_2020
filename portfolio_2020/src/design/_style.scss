@@ -63,7 +63,6 @@
  }
 
 
-
 ::-webkit-scrollbar {
     display: none;
 }
@@ -390,7 +389,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
 .web {
 
-
     &__container {
         margin: 60px auto 0;
         padding-top: 400px;
@@ -474,10 +472,12 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         }
     }
 
-    // Initial for GSAP
+}
+
+// Initial for GSAP
+.web {
     .item {
         transform: perspective(400px) rotateY(-50deg) translateY(700px);
-
         transform-style: preserve-3d;
         opacity: 0.1;
     }
@@ -1278,7 +1278,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 }
 
 /******************************************************
-    Cursor 
+    CURSOR 
 ******************************************************/
 
 .cursor {
@@ -1321,6 +1321,61 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             top: -30px;
             left: -30px;
             filter: blur(1px)
+        }
+    }
+}
+
+/******************************************************
+    404 
+******************************************************/
+
+.error {
+    min-width: 100vw;
+    min-height: 100vh;
+    color: $fontColor;
+    display: flex;
+    align-items: center;
+    background: url('./assets/quick_contact.jpg') center / cover no-repeat;
+
+    &__wrapper {
+        max-width: 1400px;
+        margin: auto;
+    }
+
+    .title {
+        font-size: 5em;
+        h3 {
+            font-size: 0.6em;
+            text-indent: 40px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .content {
+        border-top: 1px solid #fff;
+        padding-top: 40px;
+        font-size: 1.5em;
+    }
+
+    ol {
+        margin-left: 40px;
+        margin-top: 20px;
+    }
+
+    hr {
+        margin: 40px auto;
+        width: 80%
+    }
+
+    .return {
+        margin: auto;
+        width: 85%;
+
+        a {
+            color: #fff;
+            &:hover {
+                color: #ccc;
+            }
         }
     }
 }
