@@ -76,13 +76,16 @@
     -ms-content-zooming: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    cursor: none !important;
+    // cursor: none !important;
 }
 
 button, a {
+    &:link,
+    &:visited,
     &:active,
     &:focus {
         outline: none;
+        color: inherit;
     }
 }
 
@@ -665,65 +668,39 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 ******************************************************/
 
 .pens {
-    
 
     &__container {
-        display: grid;
-        grid-template-columns: 100px auto 0;
+
         margin: 60px auto 0;
-        max-width: 1600px;
         padding-top: 400px;
-        @include md {
-            display: block;
-            padding: 0 0 0 2em;
-        }
-        &::before {
-            content: '';
-        }
-        ul {
-  
-            list-style-type: none;
-        }
-    }
-
-    .pen {
-        
-        a {
-            font-size: 3em;
-            font-family: $font_title;
-            color: $paletColor2;
-            margin: 5px;
-            position: relative;
-            z-index: 10;
-            text-decoration: none;
-            @include transitions(all .23s ease);
-
-            &:hover {
-                color: $paletColor3;
-            }
-        }
-    }
-
-    .pen__display {
-        display: flex;
-        align-content: center;
+        max-width: 1400px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax($penWidth, 350px));
         justify-content: center;
-        height: 100%;
-        @include md {
-            display: none;
+   
+        .pens__wrapper {
+            @include transitions(all .23s ease);
+            @include transform(translateY(400px) scale(0.8));
+           opacity: 0;
+           &:hover {
+               @include transform(scale(1) !important)
+           }
         }
-        &-frame {
-            min-width: 500px;
-            height: 300px;
-            position: absolute;
-            right: 10%;
-            z-index: 5;
-            background-color: $paletColor5;
-            box-shadow: 0px 0px 53px #040107;
-            border-radius: 6px;
+
+        .item {
+            @include dimensions($penWidth, $penHeight);
+            border: 1px solid #000;
+
+            &__meta {
+                font-size: 1.6em;
+                font-weight: bold;
+                text-align: center;
+                width: $penWidth;
+                padding-top: 20px;
+            }
 
         }
-    }
+   }
 }
 
 /******************************************************
@@ -745,7 +722,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
     &__container {
         display: grid;
-        margin: 200px auto 0;
+        margin: 100px auto 0;
         padding-top: 200px;
         grid-template-columns: minmax(auto, 700px);
         justify-content: end;

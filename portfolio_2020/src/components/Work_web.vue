@@ -60,8 +60,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
                 const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: '.item-animate-' + i,
-                    // markers: true,
-                    start: "-400px 80%",
+                    start: "-400px 70%",
                 }});
 
                 tl.to('.item-animate-' + i, {

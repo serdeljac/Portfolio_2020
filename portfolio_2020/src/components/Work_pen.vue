@@ -6,54 +6,26 @@
         </div>
 
         <div class="pens__container">
-            <ul>
-                <li 
-                    class="pen"
-                    v-for="pen in pens"
-                    :key="pen.id">
-                    <a 
-                        v-bind:href="pen.href"
-                        target="_blank"
-                        class="pen__link clickable">0{{ pen.id }} - {{ pen.name }}</a>
-                </li>
-            </ul>
-
-            <div class="pen__display">
-                <div class="pen__display-frame">
-
-                </div>
+            <div 
+                class="pens__wrapper clickable"
+                :class="`pens-animate-${pen.id}`"
+                v-for="pen in pens"
+                :key="pen.id"
+                >
+                <div class="item"  v-bind:style="{backgroundImage: 'url('+pen.img+')'}"></div>
+                <p class="item__meta"> {{ pen.name }}</p>
             </div>
-
         </div>
-
-
     </section>
 </template>
 
 
 
 <script>
+import pens from '@/shared/pens_info.js';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
-const pens = [
-    {
-        id: 1,
-        name: 'Cursor animations',
-        href: 'https://codepen.io/serdeljac/pen/LYZxdYx',
-        img: '',
-    }, 
-    {
-        id: 2,
-        name: 'Custom scrollbars',
-        href: 'https://codepen.io/serdeljac/pen/LYZxdYx',
-        img: '',
-    },
-    {
-        id: 3,
-        name: '3D Card flip transition',
-        href: 'https://codepen.io/serdeljac/pen/LYZxdYx',
-        img: '',
-    }
-];
     export default {
         name: 'Work_pen',
         data() {
@@ -61,9 +33,28 @@ const pens = [
                 pens
             }
         },
+        mounted() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const targets = gsap.utils.toArray('.pens__wrapper');
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.pens__wrapper',
+                    start: "-400px 70%",
+                }});
+
+            for(let i = 1; i <= targets.length; i++) {
+
+                tl.to('.pens-animate-' + i, {
+                    y: 0,
+                    opacity: 1,
+                    scale: 0.8,
+                    duration: 0.4
+                    })
+
+            }
+
+        }
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
