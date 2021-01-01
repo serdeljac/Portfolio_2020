@@ -13,18 +13,18 @@
 
 <script>
 import gsap from 'gsap';
-import { isMobile } from 'mobile-device-detect';
+import { isMobile, isSafari } from 'mobile-device-detect';
 
   export default {
     name: "Assemble",
     data() {
       return {
-        msg: isMobile
+        device: isMobile || isSafari
       }
     },
     mounted() {
 
-      if (!this.msg) {
+      if (!this.device) {
 
         gsap.set(".cursor__circle", {xPercent: 0, yPercent: 0});
         gsap.set(".cursor__dot", {xPercent: 0, yPercent: 0});

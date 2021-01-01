@@ -101,7 +101,7 @@ html {
 
 body {
     overflow-X: hidden;
-    width: 100vw;
+    max-width: 100vw;
     font-family: $font_default;
     color: $fontColor;
     background-color: $paletColor4;
@@ -119,9 +119,12 @@ body {
     max-width: 300px;
     left: 40px;
     top: 25px;
-    @include sm {
-        max-width: 200px;
+     @include transitions(all .23s ease);
+    @include md {
+        @include transform(scale(0.7));
+        left: 0px;
     }
+
     img {
         width: 100%;
     }
@@ -132,9 +135,13 @@ body {
     z-index: 100;
     width: 70px;
     height: 60px;
-    right: 40px;
+    left: calc(100vw - 110px);
     top: 20px;
     overflow: hidden;
+     @include transitions(all .23s ease);
+    @include md {
+        @include transform(scale(0.7))
+    }
 
     .openMenu {
         @include transitions(all .23s ease);
@@ -186,6 +193,11 @@ body {
     
 }
 
+.hide {
+    top: -40px;
+    transform: rotateX(90deg);
+}
+
 .btn {
     padding: 0.8em 1.7em;
     font-size: 0.7em;
@@ -216,11 +228,13 @@ body {
         line-height: 0;
     }
     p {
-        margin-top: 120px;
         font-size: 3em;
-        text-indent: 20px;
+        text-indent: 70px;
+        line-height: 1;
+        margin-top: 65px;
         @include md {
             margin-top: 60px;
+            text-indent: 0px;
         }
     }
 }
@@ -392,27 +406,32 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
 .web {
 
+    overflow: hidden;
+    padding-top: 40px;
+
     &__container {
-        margin: 60px auto 0;
+        margin: 0 auto;
         padding-top: 400px;
         max-width: 1400px;
         display: grid;
-        grid-template-columns: repeat(3, 33%);
-        justify-items: center;
+        grid-template-columns: repeat(auto-fill, $webWidth + 40px);
+        justify-content: center;
         @include md {
             grid-template-columns: 1fr;
             padding: 0;
+            justify-items: center;
         }
     }
 
     .item {
-
+        opacity: 0;
         &:hover {
             .item__display {
                 filter: opacity(20%);
             }
             .item__meta {
-                @include transform(translateY(-$webHeight + 50px));
+                @include transform(translateY(-$webHeight * 0.7));
+
             }
             .view_more {
                 opacity: 1;
@@ -420,27 +439,11 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         }
 
         &__wrapper {
-            min-height: 500px;
+            min-height: $webHeight * 1.4;
             width: $webWidth;
-                    @include md {
-                        min-height: 0;
-                        @include transform(scale(0.8) !important);
-                    }
-            
-            &.item-1 {
-                @include transform(translateY(0px));
-            }
-            &.item-2 {
-                @include transform(translateY(300px));
-            }
-            &.item-3 {
-                @include transform(translateY(50px));
-            }
-            &.item-4 {
-                @include transform(translateY(0px));
-            }
-            &.item-5 {
-                @include transform(translateY(200px));
+            @include md {
+                min-height: 0;
+                @include transform(scale(0.8) !important);
             }
             a:visited {
                 color: $fontColor
@@ -449,7 +452,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
         &__display {
             height: $webHeight;
-            
             @include transitions(all .4s ease);
         }
 
@@ -457,11 +459,11 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             text-align: center;
             font-weight: bold;
             font-size: 1.7em;
-            display: flex;
+            display: grid;
+            
             flex-direction: column;
             position: absolute;
             pointer-events: none;
-
             @include dimensions($webWidth, $webHeight);
             @include transitions(all .4s ease);
         }
@@ -471,7 +473,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             margin-top: 20px;
             opacity: 0;
             @include transitions(all .23s ease);
-            
         }
     }
 
@@ -480,7 +481,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 // Initial for GSAP
 .web {
     .item {
-        transform: perspective(400px) rotateY(-50deg) translateY(700px);
+        transform: perspective(400px) rotateY(-50deg) translateY(1200px);
         transform-style: preserve-3d;
         opacity: 0.1;
     }
@@ -677,6 +678,13 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax($penWidth, 350px));
         justify-content: center;
+        overflow: hidden;
+
+        @include md {
+            padding: 0;
+            grid-template-columns: auto auto;
+        }
+
    
         .pens__wrapper {
             @include transitions(all .23s ease);
@@ -684,6 +692,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
            opacity: 0;
            &:hover {
                @include transform(scale(1) !important)
+           }
+           @include md {
+               @include dimensions($penWidth * 0.75, $penHeight);
            }
         }
 
@@ -697,6 +708,14 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
                 text-align: center;
                 width: $penWidth;
                 padding-top: 20px;
+                @include md {
+                    @include dimensions($penWidth * 0.75, $penHeight * 0.75);
+                    width: $penWidth * 0.75
+                }
+            }
+
+            @include md {
+                @include dimensions($penWidth * 0.75, $penHeight * 0.75);
             }
 
         }
@@ -708,46 +727,70 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 ******************************************************/
 
 .about {
-
-    padding: 0 2em;
-    background-image: radial-gradient(37.43% 68.29% at 29.96% 53.95%, rgba(16, 1, 38, 0.8) 47.4%, #100126 63.02%), url('./assets/about_bg.jpg');
-    max-width: 1400px;
-    margin: auto;
-    background-position: 0 -15%;
-    background-size: 1600px auto;
-    background-repeat: no-repeat, no-repeat;
+    min-height: 100vh;
+    margin-top: 100px;
+    background-color: $paletColor6;
     @include md {
-        background-image: none;
+        margin: 0;
+    }
+
+    .section__title {
+        position: relative;
+        padding-top: 100px;
+        margin: 0;
+        h2 {
+            line-height: 1;
+        }
+        @include lg {
+            text-align: center;
+            @include transform(translateX(0))
+        }
+        @include md {
+            margin: 0;
+        }
     }
 
     &__container {
-        display: grid;
+        display: flex;
+        justify-content: center;
         margin: 100px auto 0;
-        padding-top: 200px;
-        grid-template-columns: minmax(auto, 700px);
-        justify-content: end;
-            @include md {
-                padding: 0;
-                margin: 100px auto 0;
-            }
+        max-width: 1200px;
+        @include lg {
+            margin: 0;
+        }
     }
 
     &__content {
-        text-align: right;
-        h3 {
-            font-size: 2em;
-            font-weight: 700;
-        }
-        p {
-            font-size: 1.5em;
-            margin: 40px 0;
-        }
-
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
-    .traits {
+    &__paragrapgh {
+        padding: 20px;
+        margin: 20px;
+        font-size: 1.6em;
+
+        p {
+            font-size: 0.9em;
+            margin: 20px 0;
+        }
+    }
+
+    &__traits {
         font-size: 1.4em;
-        @include transform(translateX(-200px));
+        display: grid;
+        grid-template-columns: auto auto;
+        @include sm {
+            grid-template-columns: auto;
+            justify-items: center;
+            @include transform(translateX(-80px))
+        }
+
+        .trait {
+            padding-left: 44px;
+            padding-bottom: 10px;
+        }
 
         .toggle__container {
             @include dimensions(60px, 35px);
@@ -756,62 +799,63 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             cursor: pointer;
             font-weight: bold;
             padding-left: 20px;
+        }
+
+        .switch {
+            opacity: 0;
+            margin-right: 60px;
+            width: 0;
+            height: 0;
+
+            &:checked+.slider:before {
+                @include transform(translateX(25px));
             }
-            
-            .switch {
-                opacity: 0;
-                margin-right: 60px;
-                width: 0;
-                height: 0;
-                &:checked + .slider:before {
-                    @include transform(translateX(25px));
-                }
-            }
-            
-            .slider {
+        }
+
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            pointer-events: none;
+            @include transitions(.4s);
+            background: $disableColor;
+
+            &:before {
                 position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                border-radius: 50px;
-                
-                pointer-events: none;
+                content: "";
+                left: 5px;
+                top: 5px;
+                @include dimensions(25px, 25px);
                 @include transitions(.4s);
-                
-                &:before {
-                    position: absolute;
-                    border-radius: 10%;
-                    content: "";
-                    left: 5px; 
-                    top: 5px;
-                    @include dimensions(25px, 25px);
-                    @include transitions(.4s);
-                }
+                border-radius: 50%;
+                background-color: #fff;
             }
-            
-            
-            .slider {
-                background: $disableColor;
-                &:before {
-                    border-radius: 50%;
-                    background-color: #fff;
-                }
-            }
-            
-            .switch:checked + .slider {
-                background: $enableColor;
-            }
+        }
+
+        .switch:checked+.slider {
+            background: $enableColor;
+        }
     }
 
-    .skills {
-        text-align: center;
-        font-size: 1.5em;
-        margin: 40px auto;
-        max-width: 700px;
-        font-weight: 700;
-        font-style: italic;
+    &__skillset {
+
+       padding: 20px;
+       margin: 20px;
+       font-size: 1.4em;
+       text-align: center;
     }
+
+    &__profile {
+        background: url('./assets/about_bg.jpg') left top/auto 100% no-repeat;
+        width: 600px;
+        @include lg {
+            display: none;
+        }
+    }
+
 }
 
 /******************************************************
@@ -819,26 +863,34 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 ******************************************************/
 
 .contact {
-    height: calc(100vh - 50px);
+    min-height: 100vh;
     display: grid;
-    background-color: $paletColor4;
+    background-color: $paletColor6;
     color: $fontColor;
-    margin-top: 150px;
 
     @include md {
         min-height: auto;
         margin-top: 0;
-       
+    }
+
+    .section__title {
+        position: relative;
+        padding-top: 100px;
+        margin: 0;
+        h2 {
+            line-height: 1;
+        }
+        @include lg {
+            text-align: center;
+            padding: 0;
+            @include transform(translateX(0))
+        }
     }
 
     &__container {
-        @include transform(translateY(100px));
         max-width: 1800px;
         margin: auto;
         padding: 0 2em;
-        @include md {
-            @include transform(none)
-        }
     }
 
     .contact_header h3 {
@@ -1246,7 +1298,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 .footer {
     padding: 0 5em;
     color: $fontColor;
-    background-color: transparent;
+    background-color: $paletColor6;
     font-size: 1.2em;
     height: 50px;
     font-size: 0.95em;

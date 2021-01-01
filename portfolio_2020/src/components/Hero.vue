@@ -24,15 +24,17 @@
 <script>
     import gsap from 'gsap';
 
+
     export default {
         name: "Hero",
         methods: {
             animateSection: function() {
                 const tl = gsap.timeline({duration: 0.4});
+
                 tl.to('.hero', {duration: 0.8, x: 0, filter: 'opacity(100%)', ease: "ease-out"})
-                  .to('.hero__header-h1', {duration: 0.4, opacity: 1, ease: "ease-out"})
-                  .to('.hero__header-h3', {duration: 0.4, opacity: 1, ease: "ease-out"})
-                  .to('.call_to_action', {duration: 0.4, opacity: 1, ease: "ease-out"});
+                    .to('.hero__header-h1', {duration: 0.4, opacity: 1, ease: "ease-out"})
+                    .to('.hero__header-h3', {duration: 0.4, opacity: 1, ease: "ease-out"})
+                    .to('.call_to_action', {duration: 0.4, opacity: 1, ease: "ease-out"});
             },
             openContact: function() {
                 this.$emit('closeMenu');

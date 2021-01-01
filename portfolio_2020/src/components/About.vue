@@ -6,14 +6,16 @@
         </div>
 
         <div class="about__container">
+
             <div class="about__content">
-                <h3>Get to know me</h3>
 
-                <p>In the past few years, I have taken an intrest in the creative minds of designers and artists that have helped me find a calling in web development.</p>
+                <div class="about__paragrapgh">
+                    <h3>Get to know me</h3>
+                    <p>In the past few years, I have taken an intrest in the creative minds of designers and artists that have helped me find a calling in web development.</p>
+                    <p>The mindset of a developer and designer pushed me into a mindset where one can create quality and inspirational work that I found helped inspire others to also take part.</p>
+                </div>
 
-                <p>The mindset of a developer and designer pushed me into a mindset where one can create quality and inspirational work that I found helped inspire others to also take part.</p>
-
-                <div class="traits">
+                <div class="about__traits">
                     <div
                         class="trait "
                         v-for="trait in traits"
@@ -25,12 +27,17 @@
                             </label>
                     </div>
                 </div>
-            </div>
-        </div>
 
-         <p class="skills">
-            HTML/CSS/JS, Node.JS, jQuery, Bootstrap, Bulma, Git, PHP, npm, SASS/Less, Vue.JS, WordPress, Webflow, Asana, Figma, Photoshop, Illustrator, UI/UX
-        </p>
+                <div class="about__skillset">
+                    <p>
+                        HTML/CSS/JS, Node.JS, jQuery, Bootstrap, Bulma, Git, PHP, npm, SASS/Less, Vue.JS, WordPress, Webflow, Asana, Figma, Photoshop, Illustrator, UI/UX
+                    </p>
+                </div>
+
+            </div>
+            <div class="about__profile"></div>
+
+        </div>
 
     </section>
 </template>

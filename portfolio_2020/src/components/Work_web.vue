@@ -26,8 +26,10 @@
                             >
                         </div>
                         <div class="item__meta">
-                            <span>{{ site.title }}</span>
-                            <p class="view_more">0{{ site.id }} | view more 🡢</p>
+                            <div>
+                                <p>{{ site.title }}</p>
+                                <p class="view_more">0{{ site.id }} | view more 🡢</p>
+                            </div>
                         </div>
                     </div>
                 </router-link>
@@ -55,19 +57,23 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
             const targets = gsap.utils.toArray('.item__wrapper');
 
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.web',
+                    start: "300px 70%",
+                }});
+
+
             for(let i = 1; i <= targets.length; i++) {
 
-                const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.item-animate-' + i,
-                    start: "-400px 70%",
-                }});
+                
 
                 tl.to('.item-animate-' + i, {
                     rotationY: 0,
                     y: 0,
                     skewY: 0,
-                    opacity: 1
+                    opacity: 1,
+                    duration: 0.4
                     })
 
             }

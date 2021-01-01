@@ -42,6 +42,9 @@ import ContactForm from '@/components/Contact_form.vue';
 import $ from 'jquery';
 import gsap from 'gsap';
 
+let position = $(window).scrollTop(); 
+
+
 export default {
   name: "Landing",
   components: { Navigation, Hero, WorkWeb, WorkPen, About, Contact, ContactForm},
@@ -63,9 +66,6 @@ export default {
           }else {
               this.trigNav();
           }
-
-          
-          
       },
       trigNav: function() {
         this.closeNav = !this.closeNav;
@@ -82,6 +82,17 @@ export default {
             $('.cursor').removeClass('active');
           }
         );
+const scroll = $(window).scrollTop();
+
+        $(window).scroll(function() {
+            
+            if(scroll > position) {
+            $('.brand, .menu').addClass('hide');
+            } else {
+            $('.navigation').removeClass('hide');
+            }
+            position = scroll;
+        });
   },
   updated() {
 
