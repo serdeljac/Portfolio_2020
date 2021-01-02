@@ -41,46 +41,14 @@
 
 <script>
 import websites from '@/shared/websites_info.js';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
     export default {
         name: "Work_web",
         data() {
             return {
                 websites: websites[0],
-                testing: ''
             }
         },
-        mounted() {
-            gsap.registerPlugin(ScrollTrigger);
-
-            const targets = gsap.utils.toArray('.item__wrapper');
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.web',
-                    start: "300px 70%",
-                }});
-
-
-            for(let i = 1; i <= targets.length; i++) {
-
-                
-
-                tl.to('.item-animate-' + i, {
-                    rotationY: 0,
-                    y: 0,
-                    skewY: 0,
-                    opacity: 1,
-                    duration: 0.4
-                    })
-
-            }
-            
-        },
-        
-
     }
 
 </script>

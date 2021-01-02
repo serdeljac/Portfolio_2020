@@ -321,7 +321,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     background: transparent right bottom/cover no-repeat;
     background-image: $hero_gradient, url('./assets/hero_profile.png');
     background-blend-mode: lighten, screen;
-    filter: opacity(0);
+    filter: opacity(100);
     @include transform(translateX(20px) scaleX(1.05));
     @include md {
         background-image: $hero_gradient, none;
@@ -346,7 +346,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
     &__header-h1, &__header-h3 {
         font-weight: 300;
         margin-bottom: 40px;
-        opacity: 0;
+        
         span {
             font-weight: 700;
         }
@@ -362,7 +362,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
     .call_to_action {
         justify-content: center;
-        opacity: 0;
+        
         
         @include lg {
             display: grid;
@@ -481,9 +481,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 // Initial for GSAP
 .web {
     .item {
-        transform: perspective(400px) rotateY(-50deg) translateY(1200px);
+        transform: perspective(400px);
         transform-style: preserve-3d;
-        opacity: 0.1;
+        opacity: 1;
     }
 }
 
@@ -659,10 +659,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
 }
 
-// Initial for GSAP
-// .web-details {
-
-// }
 
 /******************************************************
     WORK - Pen 
@@ -688,8 +684,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
    
         .pens__wrapper {
             @include transitions(all .23s ease);
-            @include transform(translateY(400px) scale(0.8));
-           opacity: 0;
            &:hover {
                @include transform(scale(1) !important)
            }

@@ -23,8 +23,6 @@
 
 <script>
 import pens from '@/shared/pens_info.js';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
     export default {
         name: 'Work_pen',
@@ -32,29 +30,6 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
             return {
                 pens
             }
-        },
-        mounted() {
-            gsap.registerPlugin(ScrollTrigger);
-
-            const targets = gsap.utils.toArray('.pens__wrapper');
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.pens__wrapper',
-                    start: "-400px 70%",
-                }});
-
-            for(let i = 1; i <= targets.length; i++) {
-
-                tl.to('.pens-animate-' + i, {
-                    y: 0,
-                    opacity: 1,
-                    scale: 0.8,
-                    duration: 0.4
-                    })
-
-            }
-
         }
     }
 </script>

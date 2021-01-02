@@ -13,7 +13,9 @@
 
 <script>
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import { isMobile, isSafari } from 'mobile-device-detect';
+gsap.registerPlugin(ScrollTrigger);
 
   export default {
     name: "Assemble",
@@ -21,6 +23,57 @@ import { isMobile, isSafari } from 'mobile-device-detect';
       return {
         device: isMobile || isSafari
       }
+    },
+    methods: {
+        heroAnimate: function() {
+            const tl = gsap.timeline({duration: 0.4
+            });
+
+            tl.from('.hero', {duration: 0.8, x: 0, filter: 'opacity(0)', ease: "ease-out"})
+                .from('.hero__header-h1', {duration: 0.4, opacity: 0, ease: "ease-out"})
+                .from('.hero__header-h3', {duration: 0.4, opacity: 0, ease: "ease-out"}, '-=0.2')
+                .from('.call_to_action', {duration: 0.4, opacity: 0, ease: "ease-out"}, '-=0.1');
+        },
+        webWorkAnimate: function() {
+
+            const targets = gsap.utils.toArray('.item__wrapper');
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.web',
+                    start: "300px 70%",
+                }});
+
+            for(let i = 1; i <= targets.length; i++) {
+
+                tl.from('.item-animate-' + i, {
+                    rotationY: -50,
+                    y: 1200,
+                    opacity: 0.1,
+                    duration: 0.4
+                    }, '-=0.3')
+            }
+        },
+        penWorkAnimate: function() {
+          
+            const targets = gsap.utils.toArray('.pens__wrapper');
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.pens__wrapper',
+                    start: "-400px 70%",
+                }});
+
+            for(let i = 1; i <= targets.length; i++) {
+
+                tl.from('.pens-animate-' + i, {
+                    y: 400,
+                    opacity: 0,
+                    duration: 0.4
+                    }, '-=0.3')
+
+            }
+        }
     },
     mounted() {
 
@@ -56,6 +109,9 @@ import { isMobile, isSafari } from 'mobile-device-detect';
           ballySet(pos.y);
         });
       }
+      this.heroAnimate();
+      this.webWorkAnimate();
+      this.penWorkAnimate();
     }
   }
 </script>
