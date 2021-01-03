@@ -2,25 +2,25 @@
     <main class="web-details">
         <section class="web-details__meta meta">
             <div class="web-details__header">
-                <div>
+                <div class="web-details__site-id animate-hide">
                     <p class="id-tag">0{{ site.id }}</p>
                 </div>
-                    <router-link :to="{name: 'Welcome'}" tag="button" class="btn go-back clickable">
+                    <router-link :to="{name: 'Welcome'}" tag="button" class="btn go-back clickable animate-hide">
                     &#8610;
                     </router-link>
             </div>
 
             <div class="web-details__details">
-                <h2 class="meta__title">{{ site.title }}</h2>
-                <p class="meta__description">{{ site.desc }}</p>
-                <p class="meta__tags">{{ site.tags }}</p>
-                <a v-bind:href="site.href" target="_blank" class="meta__link clickable">
+                <h2 class="meta__title animate-hide">{{ site.title }}</h2>
+                <p class="meta__description animate-hide">{{ site.desc }}</p>
+                <p class="meta__tags animate-hide">{{ site.tags }}</p>
+                <a v-bind:href="site.href" target="_blank" class="meta__link clickable animate-hide">
                     <button class="btn btn-view-site">WEBSITE</button>
                 </a>
 
             </div>
 
-            <div class="web-details__navigation">
+            <div class="web-details__navigation animate-hide">
                 <router-link 
                     :to="{
                         name: 'web-details', 
@@ -59,7 +59,10 @@
 
 <script>
 import $ from 'jquery';
+import gsap from 'gsap';
 import websites from '@/shared/websites_info.js';
+
+
 
     export default {
         name: 'web-details',
@@ -88,11 +91,29 @@ import websites from '@/shared/websites_info.js';
                 } else {
                     return val;
                 }
+            },
+            openAnimation: function() {
+
+                const tl = gsap.timeline(
+                {
+                    defaults: {duration: 0.45, opacity: 1},
+                });
+
+                tl.to('.web-details__site-id', {})
+                    .to('.go-back', {}, '-=0.25')
+                    .to('.meta__title', {}, '-=0.25')
+                    .to('.meta__description', {}, '-=0.25')
+                    .to('.meta__tags', {}, '-=0.25')
+                    .to('.meta__link', {}, '-=0.25')
+                    .to('.web-details__navigation', {}, '-=0.25')
+
             }
         },
         beforeMount() {
             this.prevSite = this.validateLink(websites[0][this.site.id - 1]);
             this.nextSite = this.validateLink(websites[0][this.site.id + 1]);
+
+            
         },
         mounted() {
             window.scrollTo(0, 0);
@@ -103,8 +124,10 @@ import websites from '@/shared/websites_info.js';
                 function() {
                 $('.cursor').removeClass('active');
                 }
-                
             );
+
+            this.openAnimation();
+
         },
         updated: function() {
             this.prevSite = this.validateLink(websites[0][this.site.id - 1]);

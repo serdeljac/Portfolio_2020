@@ -479,6 +479,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             font-weight: bold;
             font-size: 1.7em;
             display: grid;
+            text-shadow: 3px 3px 5px #000;
             flex-direction: column;
             position: absolute;
             z-index: 20;
@@ -538,7 +539,7 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         .id-tag {
             font-size: 120px;
             font-family: $font_title;
-            mix-blend-mode: overlay;
+            color: #1e0247
         }
 
         .go-back {
@@ -672,6 +673,10 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         @include lg {
             display: none;
         }
+    }
+
+    .animate-hide {
+        opacity: 0;
     }
 
 

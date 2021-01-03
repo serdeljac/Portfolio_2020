@@ -51,12 +51,12 @@ import gsap from 'gsap';
 
                 const tl = gsap.timeline(
                 {
-                    defaults: {duration: 0.35},
+                    defaults: {duration: 0.35, x:0},
                     onComplete: this.changePage,
                 });
 
-                tl.to('.item__transition-mask-1', {x: 0})
-                    .to('.item__transition-mask-2', {x: 0})
+                tl.to('.item__transition-mask-1', {})
+                    .to('.item__transition-mask-2', {})
 
             },
             changePage: function() {
