@@ -11,7 +11,7 @@
                 <p class="quick_contact__title-review" :class="{active: pageNum == 4 }">Review</p>
             </div>
 
-            <form class="quick_contact__form" action="submittion-form.php" method="POST">
+            <form class="quick_contact__form" id="form" @submit="sendEmail">
 
                 <div class="page page-1">
                     <div class="form-group">
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="page page-4">
-                    <p><span>To:</span> hi@stjepanerdeljac.com</p>
+                    <p><span>To:</span> hi@stjepanerdeljac.com </p>
                     <p><span>From:</span> {{ formEmail }}</p>
                     <p><span>Subject:</span> {{ formName }} is contacting you regarding {{ formProject }}</p>
                     <p><span>Message:</span></p>
@@ -60,7 +60,7 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn_next clickable"  v-if="pageNum < 4" v-on:click="pageChange(1)">Next Page</button>
-                        <button type="submit" v-show="pageNum == 4" class="btn btn_next clickable">Submit</button>
+                        <input type="submit" value="Submit" v-show="pageNum == 4" class="btn btn_next submit clickable">
                     </div>
                 </div>
 
@@ -75,6 +75,8 @@
 <script>
     import $ from 'jquery';
     import gsap from 'gsap';
+    import emailjs from 'emailjs-com';
+     emailjs.init("user_qIkBfR0L8wd0Qb7TPV8fK");
 
     const openTl = gsap.timeline({});
     
@@ -87,8 +89,7 @@
                 formName: '',
                 formEmail: '',
                 formProject: '',
-                formMsg: ''
-                
+                formMsg: '',
             }
         },
         methods: {
@@ -139,7 +140,19 @@
             },
             trigClose: function() {
                 this.$emit('triggerContact');
-            }
+            },
+            sendEmail: (e) => {
+                emailjs.sendForm('default_service', 'template_9ltnwo4', e.target)
+                    .then((result) => {
+                        console.log('SUCCESS!', result.status, result.text);
+                    }, (error) => {
+                        console.log('FAILED...', error);
+                    });
+                }
+          
+
+
+                
         },
         mounted() {
 
