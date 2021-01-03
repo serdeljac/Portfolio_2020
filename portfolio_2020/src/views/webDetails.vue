@@ -1,7 +1,6 @@
 <template>
     <main class="web-details">
         <section class="web-details__meta meta">
-
             <div class="web-details__header">
                 <div>
                     <p class="id-tag">0{{ site.id }}</p>
@@ -77,7 +76,6 @@ import websites from '@/shared/websites_info.js';
         props: {
             link: {
                 type: String,
-                default: ' '
             },
             site: {
                 type: Object,
@@ -105,8 +103,8 @@ import websites from '@/shared/websites_info.js';
                 function() {
                 $('.cursor').removeClass('active');
                 }
+                
             );
-
         },
         updated: function() {
             this.prevSite = this.validateLink(websites[0][this.site.id - 1]);

@@ -12,8 +12,10 @@
                 v-for="pen in pens"
                 :key="pen.id"
                 >
-                <div class="item"  v-bind:style="{backgroundImage: 'url('+pen.img+')'}"></div>
-                <p class="item__meta"> {{ pen.name }}</p>
+                <a v-bind:href="pen.href" target="_blank">
+                    <div class="item"  v-bind:style="{backgroundImage: 'url('+pen.img+')'}"></div>
+                    <p class="item__meta"> {{ pen.name }}</p>
+                </a>
             </div>
         </div>
     </section>

@@ -425,16 +425,14 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 
     .item {
         opacity: 0;
+        overflow: hidden;
         &:hover {
             .item__display {
-                filter: opacity(20%);
+                filter: opacity(10%);
+                
             }
             .item__meta {
                 @include transform(translateY(-$webHeight * 0.7));
-
-            }
-            .view_more {
-                opacity: 1;
             }
         }
 
@@ -450,8 +448,29 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             }
         }
 
+        &__transition-mask-1, &__transition-mask-2  {
+            height: $webHeight;
+            width: 100%;
+            position: absolute;
+            @include transform(translatex(-$webWidth - 100));
+            
+            z-index: 15;
+        }
+
+        &__transition-mask-1 {
+            background: $paletColor3;
+            box-shadow: 20px 0 20px 50px $paletColor3;
+        }
+
+        &__transition-mask-2 {
+            background: #fff;
+            box-shadow: 20px 0 20px 50px #fff;
+        }
+
         &__display {
             height: $webHeight;
+            position: relative;
+            z-index: 10;
             @include transitions(all .4s ease);
         }
 
@@ -460,9 +479,9 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             font-weight: bold;
             font-size: 1.7em;
             display: grid;
-            
             flex-direction: column;
             position: absolute;
+            z-index: 20;
             pointer-events: none;
             @include dimensions($webWidth, $webHeight);
             @include transitions(all .4s ease);
@@ -471,7 +490,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         .view_more {
             font-size: 0.8em;
             margin-top: 20px;
-            opacity: 0;
             @include transitions(all .23s ease);
         }
     }
@@ -667,7 +685,6 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
 .pens {
 
     &__container {
-
         margin: 60px auto 0;
         padding-top: 400px;
         max-width: 1400px;
@@ -680,40 +697,44 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
             padding: 0;
             grid-template-columns: auto auto;
         }
+   }
 
-   
-        .pens__wrapper {
-            @include transitions(all .23s ease);
-           &:hover {
-               @include transform(scale(1) !important)
-           }
-           @include md {
-               @include dimensions($penWidth * 0.75, $penHeight);
-           }
+   &__wrapper {
+        @include transitions(all .23s ease);
+        @include transform(scale(0.9));
+
+        a {
+            text-decoration: none;
         }
+        &:hover {
+            @include transform(scale(1))
+        }
+        @include md {
+            @include dimensions($penWidth * 0.75, $penHeight);
+        }
+    }
 
-        .item {
-            @include dimensions($penWidth, $penHeight);
-            border: 1px solid #000;
+    .item {
+        @include dimensions($penWidth, $penHeight);
+        border: 1px solid #000;
 
-            &__meta {
-                font-size: 1.6em;
-                font-weight: bold;
-                text-align: center;
-                width: $penWidth;
-                padding-top: 20px;
-                @include md {
-                    @include dimensions($penWidth * 0.75, $penHeight * 0.75);
-                    width: $penWidth * 0.75
-                }
-            }
-
+        &__meta {
+            font-size: 1.6em;
+            font-weight: bold;
+            text-align: center;
+            width: $penWidth;
+            padding-top: 20px;
             @include md {
                 @include dimensions($penWidth * 0.75, $penHeight * 0.75);
+                width: $penWidth * 0.75
             }
-
         }
-   }
+
+        @include md {
+            @include dimensions($penWidth * 0.75, $penHeight * 0.75);
+        }
+
+    }
 }
 
 /******************************************************

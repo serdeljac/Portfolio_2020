@@ -11,20 +11,11 @@
                 v-for="site in websites"
                 :key="site.id"
                 >
-                <router-link
-                :to="{ 
-                name: 'web-details', 
-                params: { 
-                    link: site.link,
-                    site: site
-                    }
-                }">
-                    <div class="item clickable" :class="`item-animate-${site.id}`">
-                        <div 
-                            class="item__display" 
-                            v-bind:style="{backgroundImage: 'url('+site.img+')'}"
-                            >
-                        </div>
+                <a class="clickable" @click="toPage(site.link, site)">
+                    <div class="item" :class="`item-animate-${site.id}`">
+                        <div class="item__transition-mask-1"></div>
+                        <div class="item__transition-mask-2"></div>
+                        <div class="item__display" v-bind:style="{backgroundImage: 'url('+site.img+')'}"></div>
                         <div class="item__meta">
                             <div>
                                 <p>{{ site.title }}</p>
@@ -32,7 +23,7 @@
                             </div>
                         </div>
                     </div>
-                </router-link>
+                </a>
             </div>
         </div>
 
@@ -41,14 +32,37 @@
 
 <script>
 import websites from '@/shared/websites_info.js';
+import gsap from 'gsap';
 
     export default {
         name: "Work_web",
         data() {
             return {
                 websites: websites[0],
+                openLink: '',
+                openSite: []
             }
         },
+        methods: {
+            toPage: function(siteLink, siteArr) {
+
+                this.openLink = siteLink;
+                this.openSite = siteArr;
+
+                const tl = gsap.timeline(
+                {
+                    defaults: {duration: 0.35},
+                    onComplete: this.changePage,
+                });
+
+                tl.to('.item__transition-mask-1', {x: 0})
+                    .to('.item__transition-mask-2', {x: 0})
+
+            },
+            changePage: function() {
+                this.$router.push({name: 'web-details', params: {link: this.openLink, site: this.openSite}})
+            }
+        }
     }
 
 </script>

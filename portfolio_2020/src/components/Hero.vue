@@ -27,6 +27,11 @@
 
     export default {
         name: "Hero",
+         methods: {
+            triggerContact: function() {
+                this.$emit('triggerContact');
+            }
+        },
     }
 </script>
 

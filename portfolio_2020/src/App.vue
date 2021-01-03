@@ -3,7 +3,7 @@
 
     <router-view />
 
-    <div class="cursor" v-show="!msg">
+    <div class="cursor" v-show="!device">
       <div class="cursor__dot"></div>
       <div class="cursor__circle"></div>
     </div>
@@ -73,41 +73,45 @@ gsap.registerPlugin(ScrollTrigger);
                     }, '-=0.3')
 
             }
+        },
+        customCursor: function() {
+
+          gsap.set(".cursor__circle", {xPercent: 0, yPercent: 0});
+          gsap.set(".cursor__dot", {xPercent: 0, yPercent: 0});
+
+          const circle = document.querySelector(".cursor__circle");
+          const ball = document.querySelector(".cursor__dot");
+          const pos = { x: document.body.clientWidth / 2, y: document.body.clientHeight / 2 };
+          const mouse = { x: pos.x, y: pos.y };
+          const speed = 0.7;
+
+          const xSet = gsap.quickSetter(circle, "x", "px");
+          const ySet = gsap.quickSetter(circle, "y", "px");
+          const ballxSet = gsap.quickSetter(ball, "x", "px");
+          const ballySet = gsap.quickSetter(ball, "y", "px");
+
+          window.addEventListener("mousemove", e => {    
+            mouse.x = e.x;
+            mouse.y = e.y;  
+          });
+
+          gsap.ticker.add(() => {
+            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio()); 
+            
+            pos.x += (mouse.x - pos.x) * dt;
+            pos.y += (mouse.y - pos.y) * dt;
+            xSet(pos.x);
+            ySet(pos.y);
+            ballxSet(pos.x);
+            ballySet(pos.y);
+          });
+
         }
     },
     mounted() {
 
       if (!this.device) {
-
-        gsap.set(".cursor__circle", {xPercent: 0, yPercent: 0});
-        gsap.set(".cursor__dot", {xPercent: 0, yPercent: 0});
-
-        const circle = document.querySelector(".cursor__circle");
-        const ball = document.querySelector(".cursor__dot");
-        const pos = { x: document.body.clientWidth / 2, y: document.body.clientHeight / 2 };
-        const mouse = { x: pos.x, y: pos.y };
-        const speed = 0.7;
-
-        const xSet = gsap.quickSetter(circle, "x", "px");
-        const ySet = gsap.quickSetter(circle, "y", "px");
-        const ballxSet = gsap.quickSetter(ball, "x", "px");
-        const ballySet = gsap.quickSetter(ball, "y", "px");
-
-        window.addEventListener("mousemove", e => {    
-          mouse.x = e.x;
-          mouse.y = e.y;  
-        });
-
-        gsap.ticker.add(() => {
-          const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio()); 
-          
-          pos.x += (mouse.x - pos.x) * dt;
-          pos.y += (mouse.y - pos.y) * dt;
-          xSet(pos.x);
-          ySet(pos.y);
-          ballxSet(pos.x);
-          ballySet(pos.y);
-        });
+        this.customCursor();
       }
       this.heroAnimate();
       this.webWorkAnimate();
