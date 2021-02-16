@@ -20,7 +20,7 @@
         <Hero  @triggerContact="contactForm = !contactForm" />
         <main>
             <WorkWeb />
-            <WorkPen />
+            <WorkPen v-if="!hide"/>
             <About />
             <Contact @triggerContact="contactForm = !contactForm" />
             <footer class="footer">
@@ -52,7 +52,8 @@ export default {
       return {
           navigation: false,
           contactForm: false,
-          closeNav: false
+          closeNav: false,
+          hide: true
       }
   },
   methods: {

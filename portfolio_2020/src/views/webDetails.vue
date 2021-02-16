@@ -134,17 +134,17 @@ import websites from '@/shared/websites_info.js';
             );
 
             this.openAnimation();
-            this.fakeLoader();
+            this.loader();
         },
         updated: function() {
-            this.imgAttr.src = "";
-            this.imgAttr.alt = "";
+            $('.web-details__preview img').hide();
             this.prevSite = this.validateLink(websites[0][this.site.id - 1]);
             this.nextSite = this.validateLink(websites[0][this.site.id + 1]);
             this.imgAttr.src = this.site.full
             this.imgAttr.alt = this.site.alt
             window.scrollTo(0, 0);
             this.loader();
+            $('.web-details__preview img').show();
         }
     }
 </script>
