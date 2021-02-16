@@ -1,6 +1,8 @@
 <template>
   <div class="site__wrapper">
 
+
+
     <router-view />
 
     <div class="cursor" v-show="!device">
@@ -21,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
     name: "Assemble",
     data() {
       return {
-        device: isMobile || isSafari
+        device: isMobile || isSafari,
       }
     },
     methods: {

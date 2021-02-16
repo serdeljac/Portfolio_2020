@@ -76,7 +76,7 @@
     -ms-content-zooming: none;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    // cursor: none !important;
+    cursor: none !important;
 }
 
 button, a {
@@ -312,12 +312,13 @@ body {
     HERO 
 ******************************************************/
 
-$hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 0, 0.05) 2.15%, #000 47.5%);
+$hero_gradient: linear-gradient(45deg, rgba(15,1,64,1) 0%,rgba(15,1,64,0.08) 28%,rgba(15,1,64,0.05) 29%,rgba(15,1,64,0.05) 56%,rgba(16,1,66,0.05) 57%,rgba(72,3,140,0.4) 100%);
 
 .hero {
 
     width: 100%;
     height: 100vh;
+    
     background: transparent right bottom/cover no-repeat;
     background-image: $hero_gradient, url('./assets/hero_profile.png');
     background-blend-mode: lighten, screen;
@@ -669,6 +670,13 @@ $hero_gradient: linear-gradient(259.94deg, rgba(0, 0, 0, 0.5) 1.09%, rgba(0, 0, 
         right: 0;
         img {
             width: 100%;
+            position: absolute;
+            top: 0;
+            opacity: 0;
+        }
+        .loader {
+            width: 100%;
+            height: 100vh;
         }
         @include lg {
             display: none;

@@ -51,6 +51,9 @@
             
         </section>
         <aside class="web-details__preview" >
+            <div class="loader">
+                <Loader />
+            </div>
             <img v-bind="imgAttr" />
         </aside>
 
@@ -60,9 +63,8 @@
 <script>
 import $ from 'jquery';
 import gsap from 'gsap';
+import Loader from '@/components/Loader.vue';
 import websites from '@/shared/websites_info.js';
-
-
 
     export default {
         name: 'web-details',
@@ -76,6 +78,7 @@ import websites from '@/shared/websites_info.js';
                 },
             }
         },
+        components: {Loader},
         props: {
             link: {
                 type: String,
@@ -107,13 +110,17 @@ import websites from '@/shared/websites_info.js';
                     .to('.meta__link', {}, '-=0.25')
                     .to('.web-details__navigation', {}, '-=0.25')
 
+            },
+            loader: function() {
+                $('.web-details__preview img').removeAttr('style');
+                setTimeout(function() {
+                    $('.web-details__preview img').css('opacity', 1);
+                }, 1000);
             }
         },
         beforeMount() {
             this.prevSite = this.validateLink(websites[0][this.site.id - 1]);
             this.nextSite = this.validateLink(websites[0][this.site.id + 1]);
-
-            
         },
         mounted() {
             window.scrollTo(0, 0);
@@ -127,14 +134,17 @@ import websites from '@/shared/websites_info.js';
             );
 
             this.openAnimation();
-
+            this.fakeLoader();
         },
         updated: function() {
+            this.imgAttr.src = "";
+            this.imgAttr.alt = "";
             this.prevSite = this.validateLink(websites[0][this.site.id - 1]);
             this.nextSite = this.validateLink(websites[0][this.site.id + 1]);
             this.imgAttr.src = this.site.full
             this.imgAttr.alt = this.site.alt
             window.scrollTo(0, 0);
+            this.loader();
         }
     }
 </script>
