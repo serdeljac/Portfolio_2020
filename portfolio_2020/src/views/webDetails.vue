@@ -115,7 +115,7 @@ import websites from '@/shared/websites_info.js';
                 $('.web-details__preview img').removeAttr('style');
                 setTimeout(function() {
                     $('.web-details__preview img').css('opacity', 1);
-                }, 1000);
+                }, 1500);
             }
         },
         beforeMount() {
