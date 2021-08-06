@@ -11,8 +11,9 @@
 
                 <div class="about__paragrapgh">
                     <h3>Get to know me</h3>
-                    <p>In the past few years, I have taken an intrest in the creative minds of designers and artists that have helped me find a calling in web development.</p>
-                    <p>The mindset of a developer and designer pushed me into a mindset where one can create quality and inspirational work that I found helped inspire others to also take part.</p>
+                    <p>Since beginning my journey into web development nearly 3 years ago, I’ve done remote work for business professionals, grew my passionate skills by working on personal projects, and event hosted local meetups for developers, to help educate in web development and design.</p>
+                    <p>I don’t like to define myself by the work I’ve done. I define myself by the work I want to do. Skills can be taught, personality is inherent. I prefer to keep learning, continue challenging myself, and do interesting things that matter.</p>
+                    <p>My abundant energy fuels me in the pursuit of many interests, hobbies, areas of study and artistic endeavors. My greatest motivation is being useful to thought who need my skills for something that matters to them.</p>
                 </div>
 
                 <div class="about__traits">
