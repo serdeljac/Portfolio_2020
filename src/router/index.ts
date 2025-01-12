@@ -4,7 +4,7 @@ import Landing from '@/views/Landing.vue'
 
 Vue.use(VueRouter)
 
-  const routes: Array<RouteConfig> = [
+const routes: Array<RouteConfig> = [
   {
     path: '/',
     redirect: '/Welcome'
@@ -20,14 +20,13 @@ Vue.use(VueRouter)
     component: () =>
       import(/* webpackChunckName: "bundle-details" */'@/views/webDetails.vue'),
     props: true,
-    
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () =>
-      import(/* webpackChunckName: "bundle-error" */'@/views/404.vue'), 
-      
+      import(/* webpackChunckName: "bundle-error" */'@/views/404.vue'),
+
   }
 
 ]
